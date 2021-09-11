@@ -1,0 +1,2367 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<exchange xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://download.autodesk.com/us/navisworks/schemas/nw-exchange-8.0.xsd" units="ft">
+  <selectionsets>
+    <viewfolder name="Architectural" guid="83804c16-92c7-43c2-9145-ed47dec79223">
+<!--       <selectionset name="Architectural-All" guid="90e10a09-cb1f-4158-bbb2-2345c376d71b">
+        <findspec mode="all" disjoint="0">
+          <conditions>
+            <condition test="contains" flags="10">
+              <property>
+                <name internal="LcOaNodeSourceFile">Source File</name>
+              </property>
+              <value>
+                <data type="wstring">Architectural</data>
+              </value>
+            </condition>
+          </conditions>
+          <locator>/</locator>
+        </findspec>
+      </selectionset> -->
+      <viewfolder name="Interior" guid="154ce847-59ef-4a6f-b5e8-d5fca1e44016">
+        <selectionset name="Arch-Int-FixedWindows" guid="f266559d-23ef-47a6-9fef-7dff331a509b">
+          <findspec mode="all" disjoint="0">
+            <conditions>
+              <condition test="contains" flags="10">
+                <property>
+                  <name internal="LcOaNodeSourceFile">Source File</name>
+                </property>
+                <value>
+                  <data type="wstring">Architectural</data>
+                </value>
+              </condition>
+              <condition test="regex" flags="138">
+                <property>
+                  <name internal="LcOaSceneBaseUserName">Name</name>
+                </property>
+                <value>
+                  <data type="wstring">Fixed|Windows</data>
+                </value>
+              </condition>
+              <!-- <condition test="equals" flags="10">
+                <category>
+                  <name internal="LcRevitData">Element</name>
+                </category>
+                <property>
+                  <name internal="LcRevitPropertyElementCategory">Category</name>
+                </property>
+                <value>
+                  <data type="wstring">Windows</data>
+                </value>
+              </condition> -->
+            </conditions>
+            <locator>/</locator>
+          </findspec>
+        </selectionset>
+        <selectionset name="Arch-Int-Casework+Counters+InfoDesk" guid="94421358-e545-412c-a34d-211c39dc3c48">
+          <findspec mode="all" disjoint="0">
+            <conditions>
+              <condition test="contains" flags="10">
+                <property>
+                  <name internal="LcOaNodeSourceFile">Source File</name>
+                </property>
+                <value>
+                  <data type="wstring">Architectural</data>
+                </value>
+              </condition>
+<!--               <condition test="equals" flags="10">
+                <category>
+                  <name internal="LcRevitData">Element</name>
+                </category>
+                <property>
+                  <name internal="LcRevitPropertyElementCategory">Category</name>
+                </property>
+                <value>
+                  <data type="wstring">Casework</data>
+                </value>
+              </condition> -->
+              <condition test="regex" flags="138">
+                <property>
+                  <name internal="LcOaSceneBaseUserName">Name</name>
+                </property>
+                <value>
+                  <data type="wstring">Counter Top|Front Entry Info Desk|Nurse Station|\b169\b|\b174\b</data>
+                </value>
+              </condition>
+            </conditions>
+            <locator>/</locator>
+          </findspec>
+        </selectionset>
+        <selectionset name="Arch-Int-WaterFountain" guid="075d6a16-5236-4d48-8ec8-e447e03ed0f0">
+          <findspec mode="all" disjoint="0">
+            <conditions>
+            <condition test="contains" flags="10">
+              <property>
+                <name internal="LcOaNodeSourceFile">Source File</name>
+              </property>
+              <value>
+                <data type="wstring">Architectural</data>
+              </value>
+            </condition>
+              <condition test="contains" flags="10">
+                <property>
+                  <name internal="LcOaSceneBaseUserName">Name</name>
+                </property>
+                <value>
+                  <data type="wstring">Entry Water Fountain</data>
+                </value>
+              </condition>
+            </conditions>
+            <locator>/</locator>
+          </findspec>
+        </selectionset>
+        <selectionset name="Arch-Int-Elevators" guid="5ff0717f-e867-495b-a2bb-8e1cf4fabe0e">
+          <findspec mode="all" disjoint="0">
+            <conditions>
+              <condition test="contains" flags="10">
+                <property>
+                  <name internal="LcOaNodeSourceFile">Source File</name>
+                </property>
+                <value>
+                  <data type="wstring">Architectural</data>
+                </value>
+              </condition>
+              <condition test="contains" flags="10">
+                <property>
+                  <name internal="LcOaSceneBaseUserName">Name</name>
+                </property>
+                <value>
+                  <data type="wstring">Elevator</data>
+                </value>
+              </condition>
+<!--               <condition test="equals" flags="74">
+                <category>
+                  <name internal="LcRevitData">Element</name>
+                </category>
+                <property>
+                  <name internal="LcRevitPropertyElementCategory">Category</name>
+                </property>
+                <value>
+                  <data type="wstring">Generic Models</data>
+                </value>
+              </condition> -->
+        <!--       <condition test="contains" flags="10">
+                <property>
+                  <name internal="LcOaSceneBaseUserName">Name</name>
+                </property>
+                <value>
+                  <data type="wstring">Metric</data>
+                </value>
+              </condition> -->
+            </conditions>
+            <locator>/</locator>
+          </findspec>
+        </selectionset>
+        <selectionset name="Arch-Int-Stairs+Railings" guid="4e5b25ad-df58-4588-8a2d-a74b48ec55c3">
+          <findspec mode="all" disjoint="0">
+            <conditions>
+              <condition test="contains" flags="10">
+                <property>
+                  <name internal="LcOaNodeSourceFile">Source File</name>
+                </property>
+                <value>
+                  <data type="wstring">Architectural</data>
+                </value>
+              </condition>
+              <condition test="contains" flags="10">
+                <category>
+                  <name internal="LcRevitData">Element</name>
+                </category>
+                <property>
+                  <name internal="LcRevitPropertyElementCategory">Category</name>
+                </property>
+                <value>
+                  <data type="wstring">Stairs</data>
+                </value>
+              </condition>
+              <condition test="regex" flags="74">
+                <property>
+                  <name internal="LcOaSceneBaseUserName">Name</name>
+                </property>
+                <value>
+                  <!-- <data type="wstring">HAS – 42”- Series 200 cable railing – stringer mounted w/ 100 top rail|Pipe</data> -->
+                  <data type="wstring">Stair:7|Railing</data>
+                </value>
+              </condition>
+<!--               <condition test="contains" flags="74">
+                <category>
+                  <name internal="LcRevitData">Element</name>
+                </category>
+                <property>
+                  <name internal="LcRevitPropertyElementCategory">Category</name>
+                </property>
+                <value>
+                  <data type="wstring">Railing</data>
+                </value>
+              </condition>
+              <condition test="contains" flags="10">
+                <category>
+                  <name internal="LcRevitData">Element</name>
+                </category>
+                <property>
+                  <name internal="LcRevitPropertyElementName">Name</name>
+                </property>
+                <value>
+                  <data type="wstring">Pipe</data>
+                </value>
+              </condition> -->
+            </conditions>
+            <locator>/</locator>
+          </findspec>
+        </selectionset>
+        <selectionset name="Arch-Int-Atrium Railings" guid="0df8f5e8-db29-4cdb-ab0d-1ef64c37c8ac">
+          <findspec mode="all" disjoint="0">
+            <conditions>
+              <condition test="contains" flags="10">
+                <property>
+                  <name internal="LcOaNodeSourceFile">Source File</name>
+                </property>
+                <value>
+                  <data type="wstring">Architectural</data>
+                </value>
+              </condition>
+              <condition test="equals" flags="10">
+                <property>
+                  <name internal="LcOaSceneBaseUserName">Name</name>
+                </property>
+                <value>
+                  <!-- <data type="wstring">HAS – 42”- Series 200 cable railing – fascia mounted w/ 100 top rail</data> -->
+                  <data type="wstring">Railing:</data>
+                </value>
+              </condition>
+            </conditions>
+            <locator>/</locator>
+          </findspec>
+        </selectionset>
+        <viewfolder name="Walls" guid="b45cab4c-a514-48fb-8955-3f4307a0b037">
+          <selectionset name="Arch-Int-Wall-L1" guid="5b36f992-f88f-4d68-81c6-3ba782260654">
+            <findspec mode="all" disjoint="0">
+              <conditions>
+                <condition test="contains" flags="10">
+                  <property>
+                    <name internal="LcOaNodeSourceFile">Source File</name>
+                  </property>
+                  <value>
+                    <data type="wstring">Architectural</data>
+                  </value>
+                </condition>
+                <condition test="regex" flags="138">
+                  <property>
+                    <name internal="LcOaSceneBaseUserName">Name</name>
+                  </property>
+                  <value>
+                    <data type="wstring">Basic Wall:Interior|Rectangular Column|Round Column</data>
+                  </value>
+                </condition>
+            <!--     <condition test="contains" flags="10">
+                  <property>
+                    <name internal="LcOaSceneBaseClassUserName">Type</name>
+                  </property>
+                  <value>
+                    <data type="wstring">Walls: Basic Wall:Interior</data>
+                  </value>
+                </condition> -->
+                <condition test="contains" flags="10">
+                  <property>
+                    <name internal="LcOaNodeLayer">Layer</name>
+                  </property>
+                  <value>
+                    <data type="wstring">Level 1</data>
+                  </value>
+                </condition>
+<!--                 <condition test="contains" flags="74">
+                  <property>
+                    <name internal="LcOaSceneBaseClassUserName">Type</name>
+                  </property>
+                  <value>
+                    <data type="wstring">Rectangular Column</data>
+                  </value>
+                </condition>
+                <condition test="contains" flags="10">
+                  <property>
+                    <name internal="LcOaNodeLayer">Layer</name>
+                  </property>
+                  <value>
+                    <data type="wstring">Level 1</data>
+                  </value>
+                </condition>
+                <condition test="contains" flags="74">
+                  <property>
+                    <name internal="LcOaSceneBaseClassUserName">Type</name>
+                  </property>
+                  <value>
+                    <data type="wstring">Round Column</data>
+                  </value>
+                </condition> -->
+              </conditions>
+              <locator>/</locator>
+            </findspec>
+          </selectionset>
+          <selectionset name="Arch-Int-Wall-L4" guid="834e5ee1-fa34-4647-a510-435ed3aa5a58">
+            <findspec mode="all" disjoint="0">
+              <conditions>
+                <condition test="contains" flags="10">
+                  <property>
+                    <name internal="LcOaNodeSourceFile">Source File</name>
+                  </property>
+                  <value>
+                    <data type="wstring">Architectural</data>
+                  </value>
+                </condition>
+                <condition test="regex" flags="138">
+                  <property>
+                    <name internal="LcOaSceneBaseUserName">Name</name>
+                  </property>
+                  <value>
+                    <data type="wstring">Basic Wall:Interior|Rectangular Column|Round Column</data>
+                  </value>
+                </condition>
+                <condition test="contains" flags="10">
+                  <property>
+                    <name internal="LcOaNodeLayer">Layer</name>
+                  </property>
+                  <value>
+                    <data type="wstring">Level 4</data>
+                  </value>
+                </condition>
+               <!--  <condition test="contains" flags="74">
+                  <property>
+                    <name internal="LcOaSceneBaseClassUserName">Type</name>
+                  </property>
+                  <value>
+                    <data type="wstring">Rectangular Column</data>
+                  </value>
+                </condition>
+                <condition test="contains" flags="10">
+                  <property>
+                    <name internal="LcOaNodeLayer">Layer</name>
+                  </property>
+                  <value>
+                    <data type="wstring">Level 4</data>
+                  </value>
+                </condition>
+                <condition test="contains" flags="74">
+                  <property>
+                    <name internal="LcOaSceneBaseClassUserName">Type</name>
+                  </property>
+                  <value>
+                    <data type="wstring">Round Column</data>
+                  </value>
+                </condition>
+                <condition test="contains" flags="10">
+                  <property>
+                    <name internal="LcOaNodeLayer">Layer</name>
+                  </property>
+                  <value>
+                    <data type="wstring">Level 4</data>
+                  </value>
+                </condition> -->
+              </conditions>
+              <locator>/</locator>
+            </findspec>
+          </selectionset>
+          <selectionset name="Arch-Int-Wall-L2" guid="b649f8cf-feeb-477e-a22f-cf95074f73e0">
+            <findspec mode="all" disjoint="0">
+              <conditions>
+                <condition test="contains" flags="10">
+                  <property>
+                    <name internal="LcOaNodeSourceFile">Source File</name>
+                  </property>
+                  <value>
+                    <data type="wstring">Architectural</data>
+                  </value>
+                </condition>
+                <condition test="regex" flags="10">
+                  <property>
+                    <name internal="LcOaSceneBaseUserName">Name</name>
+                  </property>
+                  <value>
+                    <data type="wstring">Basic Wall:Interior|Rectangular Column|Round Column</data>
+                  </value>
+                </condition>
+                <condition test="contains" flags="10">
+                  <property>
+                    <name internal="LcOaNodeLayer">Layer</name>
+                  </property>
+                  <value>
+                    <data type="wstring">Level 2</data>
+                  </value>
+                </condition>
+               <!--  <condition test="contains" flags="74">
+                  <property>
+                    <name internal="LcOaSceneBaseClassUserName">Type</name>
+                  </property>
+                  <value>
+                    <data type="wstring">Rectangular Column</data>
+                  </value>
+                </condition>
+                <condition test="contains" flags="10">
+                  <property>
+                    <name internal="LcOaNodeLayer">Layer</name>
+                  </property>
+                  <value>
+                    <data type="wstring">Level 2</data>
+                  </value>
+                </condition>
+                <condition test="contains" flags="74">
+                  <property>
+                    <name internal="LcOaSceneBaseClassUserName">Type</name>
+                  </property>
+                  <value>
+                    <data type="wstring">Round Column</data>
+                  </value>
+                </condition>
+                <condition test="contains" flags="10">
+                  <property>
+                    <name internal="LcOaNodeLayer">Layer</name>
+                  </property>
+                  <value>
+                    <data type="wstring">Level 2</data>
+                  </value>
+                </condition> -->
+              </conditions>
+              <locator>/</locator>
+            </findspec>
+          </selectionset>
+          <selectionset name="Arch-Int-Wall-L3" guid="5b22ece0-c63c-4efa-b3bb-e4d69b7ace3b">
+            <findspec mode="all" disjoint="0">
+              <conditions>
+                <condition test="contains" flags="10">
+                  <property>
+                    <name internal="LcOaNodeSourceFile">Source File</name>
+                  </property>
+                  <value>
+                    <data type="wstring">Architectural</data>
+                  </value>
+                </condition>
+                <condition test="regex" flags="10">
+                  <property>
+                    <name internal="LcOaSceneBaseUserName">Name</name>
+                  </property>
+                  <value>
+                    <data type="wstring">Basic Wall:Interior|Rectangular Column|Round Column</data>
+                  </value>
+                </condition>
+                <condition test="contains" flags="10">
+                  <property>
+                    <name internal="LcOaNodeLayer">Layer</name>
+                  </property>
+                  <value>
+                    <data type="wstring">Level 3</data>
+                  </value>
+                </condition>
+               <!--  <condition test="contains" flags="74">
+                  <property>
+                    <name internal="LcOaSceneBaseClassUserName">Type</name>
+                  </property>
+                  <value>
+                    <data type="wstring">Rectangular Column</data>
+                  </value>
+                </condition>
+                <condition test="contains" flags="10">
+                  <property>
+                    <name internal="LcOaNodeLayer">Layer</name>
+                  </property>
+                  <value>
+                    <data type="wstring">Level 3</data>
+                  </value>
+                </condition>
+                <condition test="contains" flags="74">
+                  <property>
+                    <name internal="LcOaSceneBaseClassUserName">Type</name>
+                  </property>
+                  <value>
+                    <data type="wstring">Round Column</data>
+                  </value>
+                </condition>
+                <condition test="contains" flags="10">
+                  <property>
+                    <name internal="LcOaNodeLayer">Layer</name>
+                  </property>
+                  <value>
+                    <data type="wstring">Level 3</data>
+                  </value>
+                </condition> -->
+              </conditions>
+              <locator>/</locator>
+            </findspec>
+          </selectionset>
+          <selectionset name="Arch-Int-Wall-L5" guid="d5345af2-7e42-4cd0-ab7f-378a275920cf">
+            <findspec mode="all" disjoint="0">
+              <conditions>
+                <condition test="contains" flags="10">
+                  <property>
+                    <name internal="LcOaNodeSourceFile">Source File</name>
+                  </property>
+                  <value>
+                    <data type="wstring">Architectural</data>
+                  </value>
+                </condition>
+                <condition test="regex" flags="10">
+                  <property>
+                    <name internal="LcOaSceneBaseUserName">Name</name>
+                  </property>
+                  <value>
+                    <data type="wstring">Basic Wall:Interior|Rectangular Column|Round Column</data>
+                  </value>
+                </condition>
+                <condition test="contains" flags="10">
+                  <property>
+                    <name internal="LcOaNodeLayer">Layer</name>
+                  </property>
+                  <value>
+                    <data type="wstring">Level 5</data>
+                  </value>
+                </condition>
+               <!--  <condition test="contains" flags="74">
+                  <property>
+                    <name internal="LcOaSceneBaseClassUserName">Type</name>
+                  </property>
+                  <value>
+                    <data type="wstring">Rectangular Column</data>
+                  </value>
+                </condition>
+                <condition test="contains" flags="10">
+                  <property>
+                    <name internal="LcOaNodeLayer">Layer</name>
+                  </property>
+                  <value>
+                    <data type="wstring">Level 5</data>
+                  </value>
+                </condition>
+                <condition test="contains" flags="74">
+                  <property>
+                    <name internal="LcOaSceneBaseClassUserName">Type</name>
+                  </property>
+                  <value>
+                    <data type="wstring">Round Column</data>
+                  </value>
+                </condition>
+                <condition test="contains" flags="10">
+                  <property>
+                    <name internal="LcOaNodeLayer">Layer</name>
+                  </property>
+                  <value>
+                    <data type="wstring">Level 5</data>
+                  </value>
+                </condition> -->
+              </conditions>
+              <locator>/</locator>
+            </findspec>
+          </selectionset>
+          <selectionset name="Arch-Int-Wall-L6" guid="fa93dea6-b9cc-42bc-96ff-3e80d361b1f6">
+            <findspec mode="all" disjoint="0">
+              <conditions>
+                <condition test="contains" flags="10">
+                  <property>
+                    <name internal="LcOaNodeSourceFile">Source File</name>
+                  </property>
+                  <value>
+                    <data type="wstring">Architectural</data>
+                  </value>
+                </condition>
+                <condition test="regex" flags="10">
+                  <property>
+                    <name internal="LcOaSceneBaseUserName">Name</name>
+                  </property>
+                  <value>
+                    <data type="wstring">Basic Wall:Interior|Rectangular Column|Round Column</data>
+                  </value>
+                </condition>
+                <condition test="contains" flags="10">
+                  <property>
+                    <name internal="LcOaNodeLayer">Layer</name>
+                  </property>
+                  <value>
+                    <data type="wstring">Level 6</data>
+                  </value>
+                </condition>
+<!--                 <condition test="contains" flags="74">
+                  <property>
+                    <name internal="LcOaSceneBaseClassUserName">Type</name>
+                  </property>
+                  <value>
+                    <data type="wstring">Rectangular Column</data>
+                  </value>
+                </condition>
+                <condition test="contains" flags="10">
+                  <property>
+                    <name internal="LcOaNodeLayer">Layer</name>
+                  </property>
+                  <value>
+                    <data type="wstring">Level 6</data>
+                  </value>
+                </condition>
+                <condition test="contains" flags="74">
+                  <property>
+                    <name internal="LcOaSceneBaseClassUserName">Type</name>
+                  </property>
+                  <value>
+                    <data type="wstring">Round Column</data>
+                  </value>
+                </condition>
+                <condition test="contains" flags="10">
+                  <property>
+                    <name internal="LcOaNodeLayer">Layer</name>
+                  </property>
+                  <value>
+                    <data type="wstring">Level 6</data>
+                  </value>
+                </condition> -->
+              </conditions>
+              <locator>/</locator>
+            </findspec>
+          </selectionset>
+        </viewfolder>
+        <viewfolder name="Doors" guid="2f6632a2-06b6-45e2-bb06-4d7a7b97ceaf">
+          <selectionset name="Arch-Int-Doors-L1" guid="dcb36500-caf0-4173-a251-007b10929bce">
+            <findspec mode="all" disjoint="0">
+              <conditions>
+                <condition test="contains" flags="10">
+                  <property>
+                    <name internal="LcOaNodeSourceFile">Source File</name>
+                  </property>
+                  <value>
+                    <data type="wstring">Architectural</data>
+                  </value>
+                </condition>
+                <condition test="equals" flags="10">
+                  <property>
+                    <name internal="LcOaNodeLayer">Layer</name>
+                  </property>
+                  <value>
+                    <data type="wstring">Level 1</data>
+                  </value>
+                </condition>
+
+                <condition test="regex" flags="10">
+                  <property>
+                    <name internal="LcOaSceneBaseUserName">Name</name>
+                  </property>
+                  <value> <!-- https://regex101.com/r/xA5n0P/1/ -->
+                    <data type="wstring">(Double-Panel|Double-Flush)|(^(?=.*Single-Flush:|Double-Flush*)(?=.*Wood))</data>
+                  </value>
+                </condition>
+<!--                 <condition test="contains" flags="10">
+                  <property>
+                    <name internal="LcOaNodeMaterial">Material</name>
+                  </property>
+                  <value>
+                    <data type="wstring">Wood</data>
+                  </value>
+                </condition>
+                <condition test="contains" flags="10">
+                  <category>
+                    <name internal="LcRevitData">Element</name>
+                  </category>
+                  <property>
+                    <name internal="LcRevitPropertyElementCategory">Category</name>
+                  </property>
+                  <value>
+                    <data type="wstring">Door</data>
+                  </value>
+                </condition> -->
+              </conditions>
+              <locator>/</locator>
+            </findspec>
+          </selectionset>
+          <selectionset name="Arch-Int-Doors-L2" guid="4849c58e-ad0f-403e-b72f-310bdee5b234">
+            <findspec mode="all" disjoint="0">
+              <conditions>
+                <condition test="contains" flags="10">
+                  <property>
+                    <name internal="LcOaNodeSourceFile">Source File</name>
+                  </property>
+                  <value>
+                    <data type="wstring">Architectural</data>
+                  </value>
+                </condition>
+                <condition test="equals" flags="10">
+                  <property>
+                    <name internal="LcOaNodeLayer">Layer</name>
+                  </property>
+                  <value>
+                    <data type="wstring">Level 2</data>
+                  </value>
+                </condition>
+                <condition test="regex" flags="10">
+                  <property>
+                    <name internal="LcOaSceneBaseUserName">Name</name>
+                  </property>
+                  <value>
+                    <data type="wstring">Single-Flush:|Double-Flush*|h_Wood|Double-Panel</data>
+                  </value>
+                </condition>
+              </conditions>
+              <locator>/</locator>
+            </findspec>
+          </selectionset>
+          <selectionset name="Arch-Int-Doors-L3" guid="56196280-c3bf-4b20-a0c9-04ca7e95e6a2">
+            <findspec mode="all" disjoint="0">
+              <conditions>
+                <condition test="contains" flags="10">
+                  <property>
+                    <name internal="LcOaNodeSourceFile">Source File</name>
+                  </property>
+                  <value>
+                    <data type="wstring">Architectural</data>
+                  </value>
+                </condition>
+                <condition test="equals" flags="10">
+                  <property>
+                    <name internal="LcOaNodeLayer">Layer</name>
+                  </property>
+                  <value>
+                    <data type="wstring">Level 3</data>
+                  </value>
+                </condition>
+                <condition test="regex" flags="10">
+                  <property>
+                    <name internal="LcOaSceneBaseUserName">Name</name>
+                  </property>
+                  <value>
+                    <data type="wstring">Single-Flush:|Double-Flush*|h_Wood|Double-Panel</data>
+                  </value>
+                </condition>
+              </conditions>
+              <locator>/</locator>
+            </findspec>
+          </selectionset>
+          <selectionset name="Arch-Int-Doors-L4" guid="81ece1cb-4b78-4c46-9e7f-496ce216b643">
+            <findspec mode="all" disjoint="0">
+              <conditions>
+                <condition test="contains" flags="10">
+                  <property>
+                    <name internal="LcOaNodeSourceFile">Source File</name>
+                  </property>
+                  <value>
+                    <data type="wstring">Architectural</data>
+                  </value>
+                </condition>
+                <condition test="equals" flags="10">
+                  <property>
+                    <name internal="LcOaNodeLayer">Layer</name>
+                  </property>
+                  <value>
+                    <data type="wstring">Level 4</data>
+                  </value>
+                </condition>
+                <condition test="regex" flags="10">
+                  <property>
+                    <name internal="LcOaSceneBaseUserName">Name</name>
+                  </property>
+                  <value>
+                    <data type="wstring">Single-Flush:|Double-Flush*|h_Wood|Double-Panel</data>
+                  </value>
+                </condition>
+              </conditions>
+              <locator>/</locator>
+            </findspec>
+          </selectionset>
+          <selectionset name="Arch-Int-Doors-L5" guid="ad2f7c29-7418-4748-87b7-ed08a912f40c">
+            <findspec mode="all" disjoint="0">
+              <conditions>
+                <condition test="contains" flags="10">
+                  <property>
+                    <name internal="LcOaNodeSourceFile">Source File</name>
+                  </property>
+                  <value>
+                    <data type="wstring">Architectural</data>
+                  </value>
+                </condition>
+                <condition test="equals" flags="10">
+                  <property>
+                    <name internal="LcOaNodeLayer">Layer</name>
+                  </property>
+                  <value>
+                    <data type="wstring">Level 5</data>
+                  </value>
+                </condition>
+                <condition test="regex" flags="10">
+                  <property>
+                    <name internal="LcOaSceneBaseUserName">Name</name>
+                  </property>
+                  <value>
+                    <data type="wstring">Single-Flush:|Double-Flush*|h_Wood|Double-Panel</data>
+                  </value>
+                </condition>
+              </conditions>
+              <locator>/</locator>
+            </findspec>
+          </selectionset>
+          <selectionset name="Arch-Int-Doors-L6" guid="f275b915-8b67-4779-989f-62f0d2d895b5">
+            <findspec mode="all" disjoint="0">
+              <conditions>
+                <condition test="contains" flags="10">
+                  <property>
+                    <name internal="LcOaNodeSourceFile">Source File</name>
+                  </property>
+                  <value>
+                    <data type="wstring">Architectural</data>
+                  </value>
+                </condition>
+                <condition test="equals" flags="10">
+                  <property>
+                    <name internal="LcOaNodeLayer">Layer</name>
+                  </property>
+                  <value>
+                    <data type="wstring">Level 6</data>
+                  </value>
+                </condition>
+                <condition test="regex" flags="10">
+                  <property>
+                    <name internal="LcOaSceneBaseUserName">Name</name>
+                  </property>
+                  <value>
+                    <data type="wstring">Single-Flush:|Double-Flush*|h_Wood|Double-Panel</data>
+                  </value>
+                </condition>
+              </conditions>
+              <locator>/</locator>
+            </findspec>
+          </selectionset>
+        </viewfolder>
+        <viewfolder name="Ceilings" guid="7659c6aa-6406-483b-9a77-4ea5a2a27874">
+<!--           <selectionset name="Arch-Int-Ceilings-All" guid="c1b2054c-2864-4963-9905-80877aedf85b">
+            <findspec mode="all" disjoint="0">
+              <conditions>
+                <condition test="contains" flags="10">
+                  <property>
+                    <name internal="LcOaSceneBaseUserName">Name</name>
+                  </property>
+                  <value>
+                    <data type="wstring">Compound Ceiling</data>
+                  </value>
+                </condition>
+              </conditions>
+              <locator>/</locator>
+            </findspec>
+          </selectionset> -->
+          <selectionset name="Arch-Int-Ceiling-L1" guid="205609c6-7aec-452f-b902-51092d0632e6">
+            <findspec mode="all" disjoint="0">
+              <conditions>
+                <condition test="contains" flags="10">
+                  <property>
+                    <name internal="LcOaNodeSourceFile">Source File</name>
+                  </property>
+                  <value>
+                    <data type="wstring">Architectural</data>
+                  </value>
+                </condition>
+                <condition test="equals" flags="10">
+                  <property>
+                    <name internal="LcOaNodeLayer">Layer</name>
+                  </property>
+                  <value>
+                    <data type="wstring">Level 1</data>
+                  </value>
+                </condition>
+                <condition test="contains" flags="10">
+                  <property>
+                    <name internal="LcOaSceneBaseUserName">Name</name>
+                  </property>
+                  <value>
+                    <data type="wstring">Compound Ceiling</data>
+                  </value>
+                </condition>
+              </conditions>
+              <locator>/</locator>
+            </findspec>
+          </selectionset>
+          <selectionset name="Arch-Int-Ceiling-L2" guid="90d1369d-3ff5-43c6-8589-27e068eea3e8">
+            <findspec mode="all" disjoint="0">
+              <conditions>
+                <condition test="contains" flags="10">
+                  <property>
+                    <name internal="LcOaNodeSourceFile">Source File</name>
+                  </property>
+                  <value>
+                    <data type="wstring">Architectural</data>
+                  </value>
+                </condition>
+                <condition test="equals" flags="10">
+                  <property>
+                    <name internal="LcOaNodeLayer">Layer</name>
+                  </property>
+                  <value>
+                    <data type="wstring">Level 2</data>
+                  </value>
+                </condition>
+                <condition test="contains" flags="10">
+                  <property>
+                    <name internal="LcOaSceneBaseUserName">Name</name>
+                  </property>
+                  <value>
+                    <data type="wstring">Compound Ceiling</data>
+                  </value>
+                </condition>
+              </conditions>
+              <locator>/</locator>
+            </findspec>
+          </selectionset>
+          <selectionset name="Arch-Int-Ceiling-L3" guid="267579b3-be7d-440c-9c7b-f35df7a035d2">
+            <findspec mode="all" disjoint="0">
+              <conditions>
+                <condition test="contains" flags="10">
+                  <property>
+                    <name internal="LcOaNodeSourceFile">Source File</name>
+                  </property>
+                  <value>
+                    <data type="wstring">Architectural</data>
+                  </value>
+                </condition>
+                <condition test="equals" flags="10">
+                  <property>
+                    <name internal="LcOaNodeLayer">Layer</name>
+                  </property>
+                  <value>
+                    <data type="wstring">Level 3</data>
+                  </value>
+                </condition>
+                <condition test="contains" flags="10">
+                  <property>
+                    <name internal="LcOaSceneBaseUserName">Name</name>
+                  </property>
+                  <value>
+                    <data type="wstring">Compound Ceiling</data>
+                  </value>
+                </condition>
+              </conditions>
+              <locator>/</locator>
+            </findspec>
+          </selectionset>
+          <selectionset name="Arch-Int-Ceiling-L4" guid="948ae34b-f77a-4a8e-bb74-ed0bf05b476a">
+            <findspec mode="all" disjoint="0">
+              <conditions>
+                <condition test="contains" flags="10">
+                  <property>
+                    <name internal="LcOaNodeSourceFile">Source File</name>
+                  </property>
+                  <value>
+                    <data type="wstring">Architectural</data>
+                  </value>
+                </condition>
+                <condition test="equals" flags="10">
+                  <property>
+                    <name internal="LcOaNodeLayer">Layer</name>
+                  </property>
+                  <value>
+                    <data type="wstring">Level 4</data>
+                  </value>
+                </condition>
+                <condition test="contains" flags="10">
+                  <property>
+                    <name internal="LcOaSceneBaseUserName">Name</name>
+                  </property>
+                  <value>
+                    <data type="wstring">Compound Ceiling</data>
+                  </value>
+                </condition>
+              </conditions>
+              <locator>/</locator>
+            </findspec>
+          </selectionset>
+          <selectionset name="Arch-Int-Ceiling-L5" guid="39a033a0-1acf-4f51-9658-9deee87cb86b">
+            <findspec mode="all" disjoint="0">
+              <conditions>
+                <condition test="contains" flags="10">
+                  <property>
+                    <name internal="LcOaNodeSourceFile">Source File</name>
+                  </property>
+                  <value>
+                    <data type="wstring">Architectural</data>
+                  </value>
+                </condition>
+                <condition test="equals" flags="10">
+                  <property>
+                    <name internal="LcOaNodeLayer">Layer</name>
+                  </property>
+                  <value>
+                    <data type="wstring">Level 5</data>
+                  </value>
+                </condition>
+                <condition test="contains" flags="10">
+                  <property>
+                    <name internal="LcOaSceneBaseUserName">Name</name>
+                  </property>
+                  <value>
+                    <data type="wstring">Compound Ceiling</data>
+                  </value>
+                </condition>
+              </conditions>
+              <locator>/</locator>
+            </findspec>
+          </selectionset>
+        </viewfolder>
+        <viewfolder name="Plumbing" guid="840f851b-d559-4252-828f-3761e80c4339">
+          <selectionset name="Arch-Int-GrabBar+Stalls-All Levels" guid="47f52db9-f1fb-4fd9-a2d7-174500c3d6f5">
+            <findspec mode="all" disjoint="0">
+              <conditions>
+                <condition test="contains" flags="10">
+                  <property>
+                    <name internal="LcOaNodeSourceFile">Source File</name>
+                  </property>
+                  <value>
+                    <data type="wstring">Architectural</data>
+                  </value>
+                </condition>
+                <condition test="regex" flags="10">
+                  <property>
+                    <name internal="LcOaSceneBaseUserName">Name</name>
+                  </property>
+                  <value>
+                    <data type="wstring">Stall|Grab-Bar|Urinal|Sink_Wall-Mounted|Grab-Bar_Corner|Toilet|Stall Door|Shower</data>
+                  </value>
+                </condition>
+              </conditions>
+              <locator>/</locator>
+            </findspec>
+          </selectionset>
+        </viewfolder>
+        <viewfolder name="Furniture" guid="19b2a294-0029-41da-8b0c-b003bf9310a7">
+          <selectionset name="Arch-Int-Dining_Tables+Chairs" guid="aac54a6b-5e3d-4de5-9b44-a2ab48c0f6a8">
+            <findspec mode="all" disjoint="0">
+              <conditions>
+                <condition test="contains" flags="10">
+                  <property>
+                    <name internal="LcOaNodeSourceFile">Source File</name>
+                  </property>
+                  <value>
+                    <data type="wstring">Architectural</data>
+                  </value>
+                </condition>
+                <condition test="regex" flags="10">
+                  <property>
+                    <name internal="LcOaSceneBaseUserName">Name</name>
+                  </property>
+                  <value>
+                    <data type="wstring">Chair-Breuer|Chair|Table-Dining Round w Chairs</data>
+                  </value>
+                </condition>
+         <!--        <condition test="contains" flags="74">
+                  <property>
+                    <name internal="LcOaSceneBaseUserName">Name</name>
+                  </property>
+                  <value>
+                    <data type="wstring">Table-Dining Round w Chairs</data>
+                  </value>
+                </condition> -->
+              </conditions>
+              <locator>/</locator>
+            </findspec>
+          </selectionset>
+          <selectionset name="Arch-Int-LectureRm_Tables+Chairs" guid="4bb067d9-edff-4905-9a42-3cfac1e0eefd">
+            <findspec mode="all" disjoint="0">
+              <conditions>
+                <condition test="contains" flags="10">
+                  <property>
+                    <name internal="LcOaNodeSourceFile">Source File</name>
+                  </property>
+                  <value>
+                    <data type="wstring">Architectural</data>
+                  </value>
+                </condition>
+                <condition test="contains" flags="10">
+                  <property>
+                    <name internal="LcOaSceneBaseUserName">Name</name>
+                  </property>
+                  <value>
+                    <data type="wstring">Chair-Task (Arms)|Table-Rectangular|Chair-Stacking</data>
+                  </value>
+                </condition>
+               <!--  <condition test="contains" flags="74">
+                  <property>
+                    <name internal="LcOaSceneBaseUserName">Name</name>
+                  </property>
+                  <value>
+                    <data type="wstring">Table-Rectangular</data>
+                  </value>
+                </condition>
+                <condition test="contains" flags="74">
+                  <property>
+                    <name internal="LcOaSceneBaseUserName">Name</name>
+                  </property>
+                  <value>
+                    <data type="wstring">Chair-Stacking</data>
+                  </value>
+                </condition> -->
+              </conditions>
+              <locator>/</locator>
+            </findspec>
+          </selectionset>
+        </viewfolder>
+      </viewfolder>
+      <viewfolder name="Exterior" guid="cb100d7e-7969-49bb-a9ab-e9a2eaeb550e">
+        <selectionset name="Arch-Ext-BeamSoffit+Enclosure" guid="096fe7a4-0f8f-4c2c-932f-a6eaae6f94cf">
+          <findspec mode="all" disjoint="0">
+            <conditions>
+              <condition test="contains" flags="10">
+                <property>
+                  <name internal="LcOaNodeSourceFile">Source File</name>
+                </property>
+                <value>
+                  <data type="wstring">Architectural</data>
+                </value>
+              </condition>
+              <condition test="regex" flags="10">
+                <property>
+                  <name internal="LcOaSceneBaseUserName">Name</name>
+                </property>
+                <value>
+                  <data type="wstring">Beam Soffit 2|Beam Enclosure - Wing E</data>
+                </value>
+              </condition>
+             <!--  <condition test="equals" flags="74">
+                <property>
+                  <name internal="LcOaSceneBaseUserName">Name</name>
+                </property>
+                <value>
+                  <data type="wstring">Beam Enclosure - Wing E</data>
+                </value>
+              </condition> -->
+            </conditions>
+            <locator>/</locator>
+          </findspec>
+        </selectionset>
+        <viewfolder name="Walls" guid="440d12fd-aee6-4220-849e-b01e452a6968">
+          <selectionset name="Arch-Ext-Wall-L1" guid="77bab5f1-940c-4ae9-9ba6-2d5bb267374a">
+            <findspec mode="all" disjoint="0">
+              <conditions>
+                <condition test="contains" flags="10">
+                  <property>
+                    <name internal="LcOaNodeSourceFile">Source File</name>
+                  </property>
+                  <value>
+                    <data type="wstring">Architectural</data>
+                  </value>
+                </condition>
+                <condition test="regex" flags="138">
+                  <property>
+                    <name internal="LcOaSceneBaseUserName">Name</name>
+                  </property>
+                  <value>
+                    <data type="wstring">Basic Wall:Exterior|Instance</data>
+                  </value>
+                </condition>
+                <condition test="contains" flags="10">
+                  <property>
+                    <name internal="LcOaNodeLayer">Base Level</name>
+                  </property>
+                  <value>
+                    <data type="wstring">Level 1</data>
+                  </value>
+                </condition>
+               <!--  <condition test="contains" flags="10">
+                  <property>
+                    <name internal="LcOaSceneBaseUserName">Name</name>
+                  </property>
+                  <value>
+                    <data type="wstring">Exterior</data>
+                  </value>
+                </condition> -->
+              </conditions>
+              <locator>/</locator>
+            </findspec>
+          </selectionset>
+          <selectionset name="Arch-Ext-Wall-L2" guid="d61a28dc-baa5-49ec-923a-991240d00e95">
+            <findspec mode="all" disjoint="0">
+              <conditions>
+                <condition test="contains" flags="10">
+                  <property>
+                    <name internal="LcOaNodeSourceFile">Source File</name>
+                  </property>
+                  <value>
+                    <data type="wstring">Architectural</data>
+                  </value>
+                </condition>
+                <condition test="contains" flags="10">
+                  <property>
+                    <name internal="LcOaNodeLayer">Base Level</name>
+                  </property>
+                  <value>
+                    <data type="wstring">Level 2</data>
+                  </value>
+                </condition>
+                <condition test="regex" flags="10">
+                  <property>
+                    <name internal="LcOaSceneBaseUserName">Name</name>
+                  </property>
+                  <value>
+                    <data type="wstring">Basic Wall:Exterior|Instance</data>
+                  </value>
+                </condition>
+              </conditions>
+              <locator>/</locator>
+            </findspec>
+          </selectionset>
+          <selectionset name="Arch-Ext-Wall-L3" guid="9059cf89-362a-47cf-b85f-5ac74f1c812e">
+            <findspec mode="all" disjoint="0">
+              <conditions>
+                <condition test="contains" flags="10">
+                  <property>
+                    <name internal="LcOaNodeLayer">Base Level</name>
+                  </property>
+                  <value>
+                    <data type="wstring">Level 3</data>
+                  </value>
+                </condition>
+                <condition test="contains" flags="10">
+                  <property>
+                    <name internal="LcOaNodeSourceFile">Source File</name>
+                  </property>
+                  <value>
+                    <data type="wstring">Architectural</data>
+                  </value>
+                </condition>
+                <condition test="regex" flags="10">
+                  <property>
+                    <name internal="LcOaSceneBaseUserName">Name</name>
+                  </property>
+                  <value>
+                    <data type="wstring">Basic Wall:Exterior|Instance</data>
+                  </value>
+                </condition>
+              </conditions>
+              <locator>/</locator>
+            </findspec>
+          </selectionset>
+          <selectionset name="Arch-Ext-Wall-L4" guid="310a9db8-f96d-4163-b993-de61e6994f2d">
+            <findspec mode="all" disjoint="0">
+              <conditions>
+                <condition test="contains" flags="10">
+                  <property>
+                    <name internal="LcOaNodeLayer">Base Level</name>
+                  </property>
+                  <value>
+                    <data type="wstring">Level 4</data>
+                  </value>
+                </condition>
+                <condition test="contains" flags="10">
+                  <property>
+                    <name internal="LcOaNodeSourceFile">Source File</name>
+                  </property>
+                  <value>
+                    <data type="wstring">Architectural</data>
+                  </value>
+                </condition>
+                <condition test="regex" flags="10">
+                  <property>
+                    <name internal="LcOaSceneBaseUserName">Name</name>
+                  </property>
+                  <value>
+                    <data type="wstring">Basic Wall:Exterior|Instance</data>
+                  </value>
+                </condition>
+              </conditions>
+              <locator>/</locator>
+            </findspec>
+          </selectionset>
+          <selectionset name="Arch-Ext-Wall-L5" guid="e3e7fb6a-0d04-4aab-bbd1-519762656230">
+            <findspec mode="all" disjoint="0">
+              <conditions>
+                <condition test="contains" flags="10">
+                  <property>
+                    <name internal="LcOaNodeLayer">Base Level</name>
+                  </property>
+                  <value>
+                    <data type="wstring">Level 5</data>
+                  </value>
+                </condition>
+                <condition test="contains" flags="10">
+                  <property>
+                    <name internal="LcOaNodeSourceFile">Source File</name>
+                  </property>
+                  <value>
+                    <data type="wstring">Architectural</data>
+                  </value>
+                </condition>
+                <condition test="regex" flags="10">
+                  <property>
+                    <name internal="LcOaSceneBaseUserName">Name</name>
+                  </property>
+                  <value>
+                    <data type="wstring">Basic Wall:Exterior|Instance</data>
+                  </value>
+                </condition>
+              </conditions>
+              <locator>/</locator>
+            </findspec>
+          </selectionset>
+          <selectionset name="Arch-Ext-Wall-L6" guid="bfa84759-ba7a-4fbd-bc69-7e0dc1789481">
+            <findspec mode="all" disjoint="0">
+              <conditions>
+                <condition test="contains" flags="10">
+                  <property>
+                    <name internal="LcOaNodeLayer">Base Level</name>
+                  </property>
+                  <value>
+                    <data type="wstring">Level 6</data>
+                  </value>
+                </condition>
+                <condition test="contains" flags="10">
+                  <property>
+                    <name internal="LcOaNodeSourceFile">Source File</name>
+                  </property>
+                  <value>
+                    <data type="wstring">Architectural</data>
+                  </value>
+                </condition>
+                <condition test="regex" flags="10">
+                  <property>
+                    <name internal="LcOaSceneBaseUserName">Name</name>
+                  </property>
+                  <value>
+                    <data type="wstring">Basic Wall:Exterior|Instance</data>
+                  </value>
+                </condition>
+              </conditions>
+              <locator>/</locator>
+            </findspec>
+          </selectionset>
+          <selectionset name="Arch-Ext-Wall-L7" guid="db80c364-3884-44b5-a3e6-6c1633d77e1e">
+            <findspec mode="all" disjoint="0">
+              <conditions>
+                <condition test="contains" flags="10">
+                  <property>
+                    <name internal="LcOaNodeLayer">Layer</name>
+                  </property>
+                  <value>
+                    <data type="wstring">Level 7</data>
+                  </value>
+                </condition>
+                <condition test="contains" flags="10">
+                  <property>
+                    <name internal="LcOaNodeSourceFile">Source File</name>
+                  </property>
+                  <value>
+                    <data type="wstring">Architectural</data>
+                  </value>
+                </condition>
+                <condition test="regex" flags="10">
+                  <property>
+                    <name internal="LcOaSceneBaseUserName">Name</name>
+                  </property>
+                  <value>
+                    <data type="wstring">Basic Wall:Exterior|Instance</data>
+                  </value>
+                </condition>
+              </conditions>
+              <locator>/</locator>
+            </findspec>
+          </selectionset>
+        </viewfolder>
+        <selectionset name="Arch-Ext-Louver-L6+7" guid="dae4daf4-8cf1-47c9-a56a-9fa82cc58ce2">
+          <findspec mode="all" disjoint="0">
+            <conditions>
+              <condition test="contains" flags="10">
+                <property>
+                  <name internal="LcOaNodeSourceFile">Source File</name>
+                </property>
+                <value>
+                  <data type="wstring">Architectural</data>
+                </value>
+              </condition>
+              <condition test="contains" flags="10">
+                <property>
+                  <name internal="LcOaSceneBaseUserName">Name</name>
+                </property>
+                <value>
+                  <data type="wstring">Louver</data>
+                </value>
+              </condition>
+            </conditions>
+            <locator>/</locator>
+          </findspec>
+        </selectionset>
+        <viewfolder name="Columns and Sweeps" guid="f6ca963f-871d-4a38-9f3e-da2f249c5835">
+          <selectionset name="Arch-Ext-Col_Sweeps-L1+L2" guid="2dada30f-54f2-44a4-92bc-00656a6bcf55">
+            <findspec mode="all" disjoint="0">
+              <conditions>
+                <condition test="contains" flags="10">
+                  <property>
+                    <name internal="LcOaNodeSourceFile">Source File</name>
+                  </property>
+                  <value>
+                    <data type="wstring">Architectural</data>
+                  </value>
+                </condition>
+                <condition test="regex" flags="10">
+                  <property>
+                    <name internal="LcOaSceneBaseUserName">Name</name>
+                  </property>
+                  <value>
+                    <data type="wstring">Limestone Column|Brick Column|Wall Sweeps</data>
+                  </value>
+                </condition>
+<!--                 <condition test="contains" flags="74">
+                  <property>
+                    <name internal="LcOaSceneBaseUserName">Name</name>
+                  </property>
+                  <value>
+                    <data type="wstring">Brick Column</data>
+                  </value>
+                </condition>
+                <condition test="equals" flags="74">
+                  <category>
+                    <name internal="LcRevitData">Element</name>
+                  </category>
+                  <property>
+                    <name internal="LcRevitPropertyElementCategory">Category</name>
+                  </property>
+                  <value>
+                    <data type="wstring">Wall Sweeps</data>
+                  </value>
+                </condition> -->
+              </conditions>
+              <locator>/</locator>
+            </findspec>
+          </selectionset>
+          <selectionset name="Arch-Ext-Col-L1" guid="3976997f-48fb-4035-95bc-24e9a2a1230b">
+            <findspec mode="all" disjoint="0">
+              <conditions>
+                <condition test="contains" flags="10">
+                  <property>
+                    <name internal="LcOaNodeSourceFile">Source File</name>
+                  </property>
+                  <value>
+                    <data type="wstring">Architectural</data>
+                  </value>
+                </condition>
+                <condition test="contains" flags="10">
+                  <property>
+                    <name internal="LcOaNodeLayer">Layer</name>
+                  </property>
+                  <value>
+                    <data type="wstring">Level 1</data>
+                  </value>
+                </condition>
+                <condition test="contains" flags="10">
+                  <property>
+                    <name internal="LcOaSceneBaseUserName">Name</name>
+                  </property>
+                  <value>
+                    <data type="wstring">Limestone Column</data>
+                  </value>
+                </condition>
+              </conditions>
+              <locator>/</locator>
+            </findspec>
+          </selectionset>
+          <selectionset name="Arch-Ext-Col-L2" guid="8f7f530c-28f5-4b79-bac7-0ca0275bcb66">
+            <findspec mode="all" disjoint="0">
+              <conditions>
+                <condition test="contains" flags="10">
+                  <property>
+                    <name internal="LcOaNodeSourceFile">Source File</name>
+                  </property>
+                  <value>
+                    <data type="wstring">Architectural</data>
+                  </value>
+                </condition>
+                <condition test="contains" flags="10">
+                  <property>
+                    <name internal="LcOaNodeLayer">Layer</name>
+                  </property>
+                  <value>
+                    <data type="wstring">Level 2</data>
+                  </value>
+                </condition>
+                <condition test="contains" flags="10">
+                  <property>
+                    <name internal="LcOaSceneBaseUserName">Name</name>
+                  </property>
+                  <value>
+                    <data type="wstring">Brick Column</data>
+                  </value>
+                </condition>
+              </conditions>
+              <locator>/</locator>
+            </findspec>
+          </selectionset>
+          <selectionset name="Arch-Ext-Sweeps" guid="5cf3d789-6fe5-4a87-b8af-c9b4f09cc373">
+            <findspec mode="all" disjoint="0">
+              <conditions>
+                <condition test="contains" flags="10">
+                  <property>
+                    <name internal="LcOaNodeSourceFile">Source File</name>
+                  </property>
+                  <value>
+                    <data type="wstring">Architectural</data>
+                  </value>
+                </condition>
+                <condition test="equals" flags="10">
+                  <property>
+                    <name internal="LcOaSceneBaseUserName">Name</name>
+                  </property>
+                  <value>
+                    <data type="wstring">Wall Sweeps</data>
+                  </value>
+                </condition>
+              </conditions>
+              <locator>/</locator>
+            </findspec>
+          </selectionset>
+        </viewfolder>
+        <viewfolder name="Curtain Walls and Windows" guid="a14e2c29-2cde-4266-8871-7f1233795aa0">
+          <selectionset name="Arch-Ext-CurtWall_Windows-L1" guid="a241f6e2-eee1-4af2-9f6f-b0f7d6126b0b">
+            <findspec mode="all" disjoint="0">
+              <conditions>
+                <condition test="contains" flags="10">
+                  <property>
+                    <name internal="LcOaNodeSourceFile">Source File</name>
+                  </property>
+                  <value>
+                    <data type="wstring">Architectural</data>
+                  </value>
+                </condition>
+                <condition test="contains" flags="10">
+                  <property>
+                    <name internal="LcOaNodeLayer">Layer</name>
+                  </property>
+                  <value>
+                    <data type="wstring">Level 1</data>
+                  </value>
+                </condition>
+                <condition test="regex" flags="10">
+                  <property>
+                    <name internal="LcOaSceneBaseUserName">Name</name>
+                  </property>
+                  <value>
+                    <data type="wstring">Storefront|Curtain</data>
+                  </value>
+                </condition>
+              </conditions>
+              <locator>/</locator>
+            </findspec>
+          </selectionset>
+          <selectionset name="Arch-Ext-CurtWall_Windows-L2" guid="e6738b54-fec1-47be-972f-7a444384998b">
+            <findspec mode="all" disjoint="0">
+              <conditions>
+                <condition test="contains" flags="10">
+                  <property>
+                    <name internal="LcOaNodeSourceFile">Source File</name>
+                  </property>
+                  <value>
+                    <data type="wstring">Architectural</data>
+                  </value>
+                </condition>
+                <condition test="contains" flags="10">
+                  <property>
+                    <name internal="LcOaNodeLayer">Layer</name>
+                  </property>
+                  <value>
+                    <data type="wstring">Level 2</data>
+                  </value>
+                </condition>
+                <condition test="regex" flags="10">
+                  <property>
+                    <name internal="LcOaSceneBaseUserName">Name</name>
+                  </property>
+                  <value>
+                    <data type="wstring">Storefront|Curtain</data>
+                  </value>
+                </condition>
+          <!--       <condition test="equals" flags="10">
+                  <property>
+                    <name internal="LcOaNodeLayer">Layer</name>
+                  </property>
+                  <value>
+                    <data type="wstring">&lt;No level&gt;</data>
+                  </value>
+                </condition> -->
+                <condition test="equals" flags="74">
+                  <property>
+                    <name internal="LcOaSceneBaseClassUserName">Type</name>
+                  </property>
+                  <value>
+                    <data type="wstring">Curtain Wall Mullions</data>
+                  </value>
+                </condition>
+               <!--  <condition test="equals" flags="10">
+                  <property>
+                    <name internal="LcOaNodeLayer">Layer</name>
+                  </property>
+                  <value>
+                    <data type="wstring">&lt;No level&gt;</data>
+                  </value>
+                </condition> -->
+              </conditions>
+              <locator>/</locator>
+            </findspec>
+          </selectionset>
+          <selectionset name="Arch-Ext-CurtWall-EntryTilted" guid="05ab1732-fdd0-4afa-9f7d-751cd2dce6d8">
+            <findspec mode="all" disjoint="1">
+              <conditions>
+                <condition test="contains" flags="10">
+                  <property>
+                    <name internal="LcOaNodeSourceFile">Source File</name>
+                  </property>
+                  <value>
+                    <data type="wstring">Architectural</data>
+                  </value>
+                </condition>
+                <condition test="regex" flags="10">
+                  <property>
+                    <name internal="LcOaSceneBaseClassUserName">Type</name>
+                  </property>
+                  <value>
+                    <data type="wstring">Curtain Panels|Curtain Wall Mullions</data>
+                  </value>
+                </condition>
+<!--                 <condition test="equals" flags="10">
+                  <property>
+                    <name internal="LcOaNodeLayer">Layer</name>
+                  </property>
+                  <value>
+                    <data type="wstring">&lt;No level&gt;</data>
+                  </value>
+                </condition>
+                <condition test="equals" flags="74">
+                  <property>
+                    <name internal="LcOaSceneBaseClassUserName">Type</name>
+                  </property>
+                  <value>
+                    <data type="wstring">Curtain Wall Mullions</data>
+                  </value>
+                </condition>
+                <condition test="equals" flags="10">
+                  <property>
+                    <name internal="LcOaNodeLayer">Layer</name>
+                  </property>
+                  <value>
+                    <data type="wstring">&lt;No level&gt;</data>
+                  </value>
+                </condition> -->
+              </conditions>
+              <locator>/</locator>
+            </findspec>
+          </selectionset>
+          <selectionset name="Arch-Ext-CurtWall-L3" guid="ac6a358b-c6da-4b67-a908-42bb0bdedfb4">
+            <findspec mode="all" disjoint="0">
+              <conditions>
+                <condition test="contains" flags="10">
+                  <property>
+                    <name internal="LcOaNodeSourceFile">Source File</name>
+                  </property>
+                  <value>
+                    <data type="wstring">Architectural</data>
+                  </value>
+                </condition>
+                <condition test="contains" flags="10">
+                  <property>
+                    <name internal="LcOaNodeLayer">Layer</name>
+                  </property>
+                  <value>
+                    <data type="wstring">Level 3</data>
+                  </value>
+                </condition>
+                <condition test="contains" flags="10">
+                  <property>
+                    <name internal="LcOaSceneBaseUserName">Name</name>
+                  </property>
+                  <value>
+                    <data type="wstring">Curtain</data>
+                  </value>
+                </condition>
+              </conditions>
+              <locator>/</locator>
+            </findspec>
+          </selectionset>
+          <selectionset name="Arch-Ext-CurtWall-L4" guid="85c86439-5ad0-4bb5-a2bd-4f41de44d23d">
+            <findspec mode="all" disjoint="0">
+              <conditions>
+                <condition test="contains" flags="10">
+                  <property>
+                    <name internal="LcOaNodeSourceFile">Source File</name>
+                  </property>
+                  <value>
+                    <data type="wstring">Architectural</data>
+                  </value>
+                </condition>
+                <condition test="contains" flags="10">
+                  <property>
+                    <name internal="LcOaNodeLayer">Layer</name>
+                  </property>
+                  <value>
+                    <data type="wstring">Level 4</data>
+                  </value>
+                </condition>
+                <condition test="contains" flags="10">
+                  <property>
+                    <name internal="LcOaSceneBaseUserName">Name</name>
+                  </property>
+                  <value>
+                    <data type="wstring">Curtain</data>
+                  </value>
+                </condition>
+              </conditions>
+              <locator>/</locator>
+            </findspec>
+          </selectionset>
+          <selectionset name="Arch-Ext-CurtWall-L5" guid="2bbc1685-6cd5-4ad6-9a28-98b84e73653e">
+            <findspec mode="all" disjoint="0">
+              <conditions>
+                <condition test="contains" flags="10">
+                  <property>
+                    <name internal="LcOaNodeSourceFile">Source File</name>
+                  </property>
+                  <value>
+                    <data type="wstring">Architectural</data>
+                  </value>
+                </condition>
+                <condition test="contains" flags="10">
+                  <property>
+                    <name internal="LcOaNodeLayer">Layer</name>
+                  </property>
+                  <value>
+                    <data type="wstring">Level 5</data>
+                  </value>
+                </condition>
+                <condition test="contains" flags="10">
+                  <property>
+                    <name internal="LcOaSceneBaseUserName">Name</name>
+                  </property>
+                  <value>
+                    <data type="wstring">Curtain</data>
+                  </value>
+                </condition>
+              </conditions>
+              <locator>/</locator>
+            </findspec>
+          </selectionset>
+          <selectionset name="Arch-Ext-CurtWall-L6" guid="c90c45b6-d499-4ff0-8b2a-689b45d5c23b">
+            <findspec mode="all" disjoint="0">
+              <conditions>
+                <condition test="contains" flags="10">
+                  <property>
+                    <name internal="LcOaNodeSourceFile">Source File</name>
+                  </property>
+                  <value>
+                    <data type="wstring">Architectural</data>
+                  </value>
+                </condition>
+                <condition test="contains" flags="10">
+                  <property>
+                    <name internal="LcOaNodeLayer">Layer</name>
+                  </property>
+                  <value>
+                    <data type="wstring">Level 6</data>
+                  </value>
+                </condition>
+                <condition test="contains" flags="10">
+                  <property>
+                    <name internal="LcOaSceneBaseUserName">Name</name>
+                  </property>
+                  <value>
+                    <data type="wstring">Curtain</data>
+                  </value>
+                </condition>
+              </conditions>
+              <locator>/</locator>
+            </findspec>
+          </selectionset>
+ <!--          <selectionset name="Arch-Ext-CurtWall-All Panels" guid="6dc7496a-3700-463d-9e4a-1181d4154f9a">
+            <findspec mode="all" disjoint="0">
+              <conditions>
+                <condition test="equals" flags="10">
+                  <category>
+                    <name internal="LcRevitData">Element</name>
+                  </category>
+                  <property>
+                    <name internal="LcRevitPropertyElementCategory">Category</name>
+                  </property>
+                  <value>
+                    <data type="wstring">Curtain Panels</data>
+                  </value>
+                </condition>
+              </conditions>
+              <locator>/</locator>
+            </findspec>
+          </selectionset> -->
+<!--           <selectionset name="Arch-Ext-CurtWall-All Mullions" guid="4af69be0-630c-4253-9553-741a8f39985f">
+            <findspec mode="all" disjoint="0">
+              <conditions>
+                <condition test="equals" flags="10">
+                  <category>
+                    <name internal="LcRevitData">Element</name>
+                  </category>
+                  <property>
+                    <name internal="LcRevitPropertyElementCategory">Category</name>
+                  </property>
+                  <value>
+                    <data type="wstring">Curtain Wall Mullions</data>
+                  </value>
+                </condition>
+              </conditions>
+              <locator>/</locator>
+            </findspec>
+          </selectionset> -->
+ <!--          <selectionset name="Arch-Ext-All Storefront Windows" guid="5899591a-f26f-4dc3-92b4-7c23e0578098">
+            <findspec mode="all" disjoint="0">
+              <conditions>
+                <condition test="contains" flags="10">
+                  <property>
+                    <name internal="LcOaSceneBaseClassUserName">Type</name>
+                  </property>
+                  <value>
+                    <data type="wstring">Store Front</data>
+                  </value>
+                </condition>
+              </conditions>
+              <locator>/</locator>
+            </findspec>
+          </selectionset> -->
+        </viewfolder>
+        <viewfolder name="Doors" guid="0272a331-0b97-454c-9b1d-84c7289e36c2">
+          <selectionset name="Arch-Ext-Doors-L1" guid="d0113c8f-40a4-4000-9a8b-115a63dab8ef">
+            <findspec mode="all" disjoint="0">
+              <conditions>
+                <condition test="contains" flags="10">
+                  <property>
+                    <name internal="LcOaNodeSourceFile">Source File</name>
+                  </property>
+                  <value>
+                    <data type="wstring">Architectural</data>
+                  </value>
+                </condition>
+                <condition test="equals" flags="10">
+                  <property>
+                    <name internal="LcOaNodeLayer">Layer</name>
+                  </property>
+                  <value>
+                    <data type="wstring">Level 1</data>
+                  </value>
+                </condition>
+<!--                 <condition test="contains" flags="10">
+                  <property>
+                    <name internal="LcOaSceneBaseUserName">Name</name>
+                  </property>
+                  <value>
+                    <data type="wstring">Metal</data>
+                  </value>
+                </condition>
+                <condition test="equals" flags="10">
+                  <category>
+                    <name internal="LcRevitData">Element</name>
+                  </category>
+                  <property>
+                    <name internal="LcRevitPropertyElementCategory">Category</name>
+                  </property>
+                  <value>
+                    <data type="wstring">Doors</data>
+                  </value>
+                </condition> -->
+                <condition test="regex" flags="10">
+                  <property>
+                    <name internal="LcOaSceneBaseUserName">Name</name>
+                  </property>
+                  <value>
+                    <data type="wstring">(Overhead)|(^(?=.*Double-Flush|Single-Flush)(?=.*Metal))</data>
+                  </value>
+                </condition>
+              </conditions>
+              <locator>/</locator>
+            </findspec>
+          </selectionset>
+          <selectionset name="Arch-Ext-Doors-L6" guid="bb965290-aed5-4293-b432-adf1697381f1">
+            <findspec mode="all" disjoint="0">
+              <conditions>
+                <condition test="contains" flags="10">
+                  <property>
+                    <name internal="LcOaNodeSourceFile">Source File</name>
+                  </property>
+                  <value>
+                    <data type="wstring">Architectural</data>
+                  </value>
+                </condition>
+                <condition test="equals" flags="10">
+                  <property>
+                    <name internal="LcOaNodeLayer">Layer</name>
+                  </property>
+                  <value>
+                    <data type="wstring">Level 6</data>
+                  </value>
+                </condition>
+                <condition test="regex" flags="10">
+                  <property>
+                    <name internal="LcOaSceneBaseUserName">Name</name>
+                  </property>
+                  <value>
+                    <data type="wstring">Overhead Door|Single-Flush</data>
+                  </value>
+                </condition>
+<!--                 <condition test="equals" flags="10">
+                  <category>
+                    <name internal="LcRevitData">Element</name>
+                  </category>
+                  <property>
+                    <name internal="LcRevitPropertyElementCategory">Category</name>
+                  </property>
+                  <value>
+                    <data type="wstring">Doors</data>
+                  </value>
+                </condition> -->
+              </conditions>
+              <locator>/</locator>
+            </findspec>
+          </selectionset>
+          <selectionset name="Arch-Ext-Doors-L7" guid="1c47d3c9-2b0f-47e8-b099-ad9ca20eea15">
+            <findspec mode="all" disjoint="0">
+              <conditions>
+                <condition test="contains" flags="10">
+                  <property>
+                    <name internal="LcOaNodeSourceFile">Source File</name>
+                  </property>
+                  <value>
+                    <data type="wstring">Architectural</data>
+                  </value>
+                </condition>
+                <condition test="equals" flags="10">
+                  <property>
+                    <name internal="LcOaNodeLayer">Layer</name>
+                  </property>
+                  <value>
+                    <data type="wstring">Level 7</data>
+                  </value>
+                </condition>
+                <condition test="regex" flags="10">
+                  <property>
+                    <name internal="LcOaSceneBaseUserName">Name</name>
+                  </property>
+                  <value>
+                    <data type="wstring">Overhead Door|Single-Flush</data>
+                  </value>
+                </condition>
+<!--                 <condition test="equals" flags="10">
+                  <category>
+                    <name internal="LcRevitData">Element</name>
+                  </category>
+                  <property>
+                    <name internal="LcRevitPropertyElementCategory">Category</name>
+                  </property>
+                  <value>
+                    <data type="wstring">Doors</data>
+                  </value>
+                </condition> -->
+              </conditions>
+              <locator>/</locator>
+            </findspec>
+          </selectionset>
+        </viewfolder>
+        <viewfolder name="Roof" guid="a7c7e6ee-9bf2-44df-a732-d39abf99b9d0">
+          <viewfolder name="Courtyard" guid="713de9da-c9e2-412b-81a3-b70cd5f9f4a8">
+            <selectionset name="Arch-Ext-Roof_Plantings" guid="bba883ac-a87c-4732-a6e1-de166cd1276a">
+              <findspec mode="all" disjoint="0">
+                <conditions>
+                  <condition test="contains" flags="10">
+                    <property>
+                      <name internal="LcOaNodeSourceFile">Source File</name>
+                    </property>
+                    <value>
+                      <data type="wstring">Architectural</data>
+                    </value>
+                  </condition>
+  <!--                 <condition test="equals" flags="10">
+                    <category>
+                      <name internal="LcRevitData">Element</name>
+                    </category>
+                    <property>
+                      <name internal="LcRevitPropertyElementCategory">Category</name>
+                    </property>
+                    <value>
+                      <data type="wstring">Planting</data>
+                    </value>
+                  </condition> -->
+                  <condition test="regex" flags="10">
+                    <property>
+                      <name internal="LcOaSceneBaseUserName">Name</name>
+                    </property>
+                    <value>
+                      <data type="wstring">Shrub|Tree</data>
+                    </value>
+                  </condition>
+                </conditions>
+                <locator>/</locator>
+              </findspec>
+            </selectionset>
+            <selectionset name="Arch-Ext-Roof_ParkBenches" guid="9f79ba88-f87d-47a2-8ca9-ced2ea50e817">
+              <findspec mode="all" disjoint="0">
+                <conditions>
+                  <condition test="contains" flags="10">
+                    <property>
+                      <name internal="LcOaNodeSourceFile">Source File</name>
+                    </property>
+                    <value>
+                      <data type="wstring">Architectural</data>
+                    </value>
+                  </condition>
+                  <condition test="regex" flags="10">
+                    <property>
+                      <name internal="LcOaSceneBaseUserName">Name</name>
+                    </property>
+                    <value>
+                      <data type="wstring">Park Bench</data>
+                    </value>
+                  </condition>
+                </conditions>
+                <locator>/</locator>
+              </findspec>
+            </selectionset>
+          </viewfolder>
+          <viewfolder name="By Level" guid="af2e6238-5520-4637-a87f-1111cada778f">
+            <selectionset name="Arch-Ext-Roof-L2" guid="ccda30bf-70b6-44e7-bcf2-5e18048d5377">
+              <findspec mode="all" disjoint="0">
+                <conditions>
+                  <condition test="contains" flags="10">
+                    <property>
+                      <name internal="LcOaNodeSourceFile">Source File</name>
+                    </property>
+                    <value>
+                      <data type="wstring">Architectural</data>
+                    </value>
+                  </condition>
+                  <condition test="regex" flags="10">
+                    <property>
+                      <name internal="LcOaSceneBaseUserName">Name</name>
+                    </property>
+                    <value>
+                      <data type="wstring">Basic Roof|Roof Soffit:|Roof Drain</data>
+                    </value>
+                  </condition>
+                  <condition test="contains" flags="10">
+                    <property>
+                      <name internal="LcOaNodeLayer">Layer</name>
+                    </property>
+                    <value>
+                      <data type="wstring">Level 2</data>
+                    </value>
+                  </condition>
+                </conditions>
+                <locator>/</locator>
+              </findspec>
+            </selectionset>
+            <selectionset name="Arch-Ext-Roof-L3" guid="c8a63273-7a77-4bb3-bf71-2f152565606d">
+              <findspec mode="all" disjoint="0">
+                <conditions>
+                  <condition test="contains" flags="10">
+                    <property>
+                      <name internal="LcOaNodeSourceFile">Source File</name>
+                    </property>
+                    <value>
+                      <data type="wstring">Architectural</data>
+                    </value>
+                  </condition>
+                  <condition test="regex" flags="10">
+                    <property>
+                      <name internal="LcOaSceneBaseUserName">Name</name>
+                    </property>
+                    <value>
+                      <data type="wstring">Basic Roof|Roof Soffit:|Roof Drain</data>
+                    </value>
+                  </condition>
+                  <condition test="contains" flags="10">
+                    <property>
+                      <name internal="LcOaNodeLayer">Layer</name>
+                    </property>
+                    <value>
+                      <data type="wstring">Level 3</data>
+                    </value>
+                  </condition>
+                </conditions>
+                <locator>/</locator>
+              </findspec>
+            </selectionset>
+            <selectionset name="Arch-Ext-Roof-L4" guid="6cda7c6b-fa73-4ba6-8ee8-632daff85c9f">
+              <findspec mode="all" disjoint="0">
+                <conditions>
+                  <condition test="contains" flags="10">
+                    <property>
+                      <name internal="LcOaNodeSourceFile">Source File</name>
+                    </property>
+                    <value>
+                      <data type="wstring">Architectural</data>
+                    </value>
+                  </condition>
+                  <condition test="regex" flags="10">
+                    <property>
+                      <name internal="LcOaSceneBaseUserName">Name</name>
+                    </property>
+                    <value>
+                      <data type="wstring">Basic Roof|Roof Soffit:|Roof Drain</data>
+                    </value>
+                  </condition>
+                  <condition test="contains" flags="10">
+                    <property>
+                      <name internal="LcOaNodeLayer">Layer</name>
+                    </property>
+                    <value>
+                      <data type="wstring">Level 4</data>
+                    </value>
+                  </condition>
+                </conditions>
+                <locator>/</locator>
+              </findspec>
+            </selectionset>
+            <selectionset name="Arch-Ext-Roof-L5" guid="64ec4ded-a059-4017-ac29-0fb1ccbb1640">
+              <findspec mode="all" disjoint="0">
+                <conditions>
+                  <condition test="contains" flags="10">
+                    <property>
+                      <name internal="LcOaNodeSourceFile">Source File</name>
+                    </property>
+                    <value>
+                      <data type="wstring">Architectural</data>
+                    </value>
+                  </condition>
+                  <condition test="regex" flags="10">
+                    <property>
+                      <name internal="LcOaSceneBaseUserName">Name</name>
+                    </property>
+                    <value>
+                      <data type="wstring">Basic Roof|Roof Soffit:|Roof Drain</data>
+                    </value>
+                  </condition>
+                  <condition test="contains" flags="10">
+                    <property>
+                      <name internal="LcOaNodeLayer">Layer</name>
+                    </property>
+                    <value>
+                      <data type="wstring">Level 5</data>
+                    </value>
+                  </condition>
+                </conditions>
+                <locator>/</locator>
+              </findspec>
+            </selectionset>
+            <selectionset name="Arch-Ext-Roof-L6" guid="315f2ce2-7f64-48eb-af2d-b8f9d9ddd233">
+              <findspec mode="all" disjoint="0">
+                <conditions>
+                  <condition test="contains" flags="10">
+                    <property>
+                      <name internal="LcOaNodeSourceFile">Source File</name>
+                    </property>
+                    <value>
+                      <data type="wstring">Architectural</data>
+                    </value>
+                  </condition>
+                  <condition test="regex" flags="10">
+                    <property>
+                      <name internal="LcOaSceneBaseUserName">Name</name>
+                    </property>
+                    <value>
+                      <data type="wstring">Basic Roof|Roof Soffit:|Roof Drain</data>
+                    </value>
+                  </condition>
+                  <condition test="contains" flags="10">
+                    <property>
+                      <name internal="LcOaNodeLayer">Layer</name>
+                    </property>
+                    <value>
+                      <data type="wstring">Level 6</data>
+                    </value>
+                  </condition>
+                </conditions>
+                <locator>/</locator>
+              </findspec>
+            </selectionset>
+            <selectionset name="Arch-Ext-Roof-L7" guid="ebb0af03-499b-4759-9e42-ff78b35e7d6e">
+              <findspec mode="all" disjoint="0">
+                <conditions>
+                  <condition test="contains" flags="10">
+                    <property>
+                      <name internal="LcOaNodeSourceFile">Source File</name>
+                    </property>
+                    <value>
+                      <data type="wstring">Architectural</data>
+                    </value>
+                  </condition>
+                  <condition test="regex" flags="10">
+                    <property>
+                      <name internal="LcOaSceneBaseUserName">Name</name>
+                    </property>
+                    <value>
+                      <data type="wstring">Basic Roof|Roof Soffit:|Roof Drain</data>
+                    </value>
+                  </condition>
+                  <condition test="contains" flags="10">
+                    <property>
+                      <name internal="LcOaNodeLayer">Layer</name>
+                    </property>
+                    <value>
+                      <data type="wstring">Level 7</data>
+                    </value>
+                  </condition>
+                </conditions>
+                <locator>/</locator>
+              </findspec>
+            </selectionset>
+          </viewfolder>
+<!--           <selectionset name="Arch-Ext-Roofs-All Levels" guid="64e58f3e-b499-4059-a3fc-c1ffee68e016">
+            <findspec mode="all" disjoint="0">
+              <conditions>
+                <condition test="contains" flags="10">
+                  <property>
+                    <name internal="LcOaNodeSourceFile">Source File</name>
+                  </property>
+                  <value>
+                    <data type="wstring">Architectural</data>
+                  </value>
+                </condition>
+                <condition test="contains" flags="10">
+                  <property>
+                    <name internal="LcOaSceneBaseUserName">Name</name>
+                  </property>
+                  <value>
+                    <data type="wstring">Rooftop Solar Panel</data>
+                  </value>
+                </condition>
+              </conditions>
+              <locator>/</locator>
+            </findspec>
+          </selectionset> -->
+          <selectionset name="Arch-Helipad" guid="4d3bd61f-6740-4a72-8d6d-2ec531e18d45">
+            <findspec mode="all" disjoint="0">
+              <conditions>
+                <condition test="contains" flags="10">
+                  <property>
+                    <name internal="LcOaNodeSourceFile">Source File</name>
+                  </property>
+                  <value>
+                    <data type="wstring">Architectural</data>
+                  </value>
+                </condition>
+                <condition test="regex" flags="10">
+                  <property>
+                    <name internal="LcOaSceneBaseUserName">Name</name>
+                  </property>
+                  <value>
+                    <data type="wstring">HeliPad:</data>
+                  </value>
+                </condition>
+              </conditions>
+              <locator>/</locator>
+            </findspec>
+          </selectionset>
+        </viewfolder>
+      </viewfolder>
+<!--       <selectionset name="Arch-All Doors" guid="29c4509c-911d-4585-9a1f-f982f8c2374f">
+        <findspec mode="all" disjoint="0">
+          <conditions>
+            <condition test="contains" flags="10">
+              <property>
+                <name internal="LcOaNodeSourceFile">Source File</name>
+              </property>
+              <value>
+                <data type="wstring">Architectural</data>
+              </value>
+            </condition>
+            <condition test="equals" flags="10">
+              <category>
+                <name internal="LcRevitData">Element</name>
+              </category>
+              <property>
+                <name internal="LcRevitPropertyElementCategory">Category</name>
+              </property>
+              <value>
+                <data type="wstring">Doors</data>
+              </value>
+            </condition>
+          </conditions>
+          <locator>/</locator>
+        </findspec>
+      </selectionset> -->
+      <selectionset name="Arch-Solar Panels" guid="b2f17070-abf6-4644-9ab7-04a9408c7ce1">
+        <findspec mode="all" disjoint="0">
+          <conditions>
+            <condition test="contains" flags="10">
+              <property>
+                <name internal="LcOaNodeSourceFile">Source File</name>
+              </property>
+              <value>
+                <data type="wstring">Architectural</data>
+              </value>
+            </condition>
+            <condition test="contains" flags="10">
+              <property>
+                <name internal="LcOaSceneBaseUserName">Name</name>
+              </property>
+              <value>
+                <data type="wstring">Rooftop Solar Panel</data>
+              </value>
+            </condition>
+          </conditions>
+          <locator>/</locator>
+        </findspec>
+      </selectionset>
+      <selectionset name="Arch-Wind Turbines" guid="b8d16142-5b0f-4e02-9b69-65a752ee0a2e">
+        <findspec mode="all" disjoint="0">
+          <conditions>
+            <condition test="contains" flags="10">
+              <property>
+                <name internal="LcOaNodeSourceFile">Source File</name>
+              </property>
+              <value>
+                <data type="wstring">Architectural</data>
+              </value>
+            </condition>
+            <condition test="regex" flags="10">
+              <property>
+                <name internal="LcOaSceneBaseUserName">Name</name>
+              </property>
+              <value>
+                <data type="wstring">Turbine</data>
+              </value>
+            </condition>
+          </conditions>
+          <locator>/</locator>
+        </findspec>
+      </selectionset>
+      <selectionset name="Life_Flight_Helicopter" guid="280880ef-e0f9-415d-8f3b-1fb3c68f22e7">
+        <findspec mode="all" disjoint="0">
+          <conditions>
+            <condition test="contains" flags="10">
+              <property>
+                <name internal="LcOaNodeSourceFile">Source File</name>
+              </property>
+              <value>
+                <data type="wstring">Architectural</data>
+              </value>
+            </condition>
+            <condition test="regex" flags="10">
+              <property>
+                <name internal="LcOaSceneBaseUserName">Name</name>
+              </property>
+              <value>
+                <data type="wstring">Life_Flight_Helicopter</data>
+              </value>
+            </condition>
+          </conditions>
+          <locator>/</locator>
+        </findspec>
+      </selectionset>
+      <selectionset name="Semi Trucks" guid="ec5f8136-e655-4158-84aa-98e931e2dea9">
+        <findspec mode="all" disjoint="0">
+          <conditions>
+            <condition test="contains" flags="10">
+              <property>
+                <name internal="LcOaNodeSourceFile">Source File</name>
+              </property>
+              <value>
+                <data type="wstring">Architectural</data>
+              </value>
+            </condition>
+            <condition test="regex" flags="10">
+              <property>
+                <name internal="LcOaSceneBaseUserName">Name</name>
+              </property>
+              <value>
+                <data type="wstring">Semi Truck</data>
+              </value>
+            </condition>
+          </conditions>
+          <locator>/</locator>
+        </findspec>
+      </selectionset>
+    </viewfolder>
+  </selectionsets>
+</exchange>

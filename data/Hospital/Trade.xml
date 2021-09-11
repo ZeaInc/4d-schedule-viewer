@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<exchange xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://download.autodesk.com/us/navisworks/schemas/nw-exchange-8.0.xsd" units="ft">
+  <selectionsets>
+    <viewfolder name="Trade" guid="03bf48d4-3221-421a-8f16-80d48c55e867">
+      <selectionset name="Conrete" guid="a684f2e5-cff0-4591-81e5-e09258e51b8f">
+        <findspec mode="all" disjoint="0">
+          <conditions>
+            <condition test="contains" flags="26">
+              <category>
+                <name internal="LcOaExMaterial">Material</name>
+              </category>
+              <property>
+                <name internal="LcOaSceneBaseUserName">Name</name>
+              </property>
+              <value>
+                <data type="wstring">Concrete</data>
+              </value>
+            </condition>
+          </conditions>
+          <locator>/</locator>
+        </findspec>
+      </selectionset>
+      <selectionset name="Plantings" guid="24ff2349-f11f-4144-91ac-69189a86846b">
+        <findspec mode="all" disjoint="0">
+          <conditions>
+            <condition test="equals" flags="26">
+              <category>
+                <name internal="LcRevitData">Element</name>
+              </category>
+              <property>
+                <name internal="LcRevitPropertyElementCategory">Category</name>
+              </property>
+              <value>
+                <data type="wstring">Planting</data>
+              </value>
+            </condition>
+          </conditions>
+          <locator>/</locator>
+        </findspec>
+      </selectionset>
+      <selectionset name="Railings" guid="c15b6e38-7189-40dd-85ae-429a6347d1dc">
+        <findspec mode="all" disjoint="0">
+          <conditions>
+            <condition test="equals" flags="10">
+              <category>
+                <name internal="LcRevitData">Element</name>
+              </category>
+              <property>
+                <name internal="LcRevitPropertyElementCategory">Category</name>
+              </property>
+              <value>
+                <data type="wstring">Railings</data>
+              </value>
+            </condition>
+          </conditions>
+          <locator>/</locator>
+        </findspec>
+      </selectionset>
+    </viewfolder>
+  </selectionsets>
+</exchange>

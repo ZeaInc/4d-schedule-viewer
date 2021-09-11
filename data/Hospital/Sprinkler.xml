@@ -1,0 +1,213 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<exchange xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://download.autodesk.com/us/navisworks/schemas/nw-exchange-8.0.xsd" units="ft">
+  <selectionsets>
+    <viewfolder name="Sprinkler" guid="a779c39f-0c89-4e86-80eb-b2a6dcab4f62">
+<!--       <selectionset name="Sprinkler-All" guid="b64e0ee2-6643-43c1-97b9-68afdfa241f7">
+        <findspec mode="all" disjoint="0">
+          <conditions>
+            <condition test="contains" flags="10">
+              <property>
+                <name internal="LcOaNodeSourceFile">Source File</name>
+              </property>
+              <value>
+                <data type="wstring">Sprinkler</data>
+              </value>
+            </condition>
+          </conditions>
+          <locator>/</locator>
+        </findspec>
+      </selectionset> -->
+      <selectionset name="Sprinkler-L1" guid="b28a46ec-b10d-492a-a0c7-b797dfa8757d">
+        <findspec mode="all" disjoint="0">
+          <conditions>
+            <condition test="contains" flags="10">
+              <property>
+                <name internal="LcOaNodeSourceFile">Source File</name>
+              </property>
+              <value>
+                <data type="wstring">Sprinkler</data>
+              </value>
+            </condition>
+            <condition test="equals" flags="10">
+              <category>
+                <name internal="LcRevitData">Base Level</name>
+              </category>
+              <property>
+                <name internal="LcRevitPropertyElementName">Name</name>
+              </property>
+              <value>
+                <data type="wstring">Level 1</data>
+              </value>
+            </condition>
+            <condition test="not_equals" flags="10">
+              <property>
+                <name internal="LcOaSceneBaseUserName">Name</name>
+              </property>
+              <value>
+                <data type="wstring">Center Line</data>
+              </value>
+            </condition>
+          </conditions>
+          <locator>/</locator>
+        </findspec>
+      </selectionset>
+      <selectionset name="Sprinkler-L2" guid="8c499e1d-8040-4c70-8f02-1217cd1f87ec">
+        <findspec mode="all" disjoint="0">
+          <conditions>
+            <condition test="contains" flags="10">
+              <property>
+                <name internal="LcOaNodeSourceFile">Source File</name>
+              </property>
+              <value>
+                <data type="wstring">Sprinkler</data>
+              </value>
+            </condition>
+            <condition test="equals" flags="10">
+              <category>
+                <name internal="LcRevitData">Base Level</name>
+              </category>
+              <property>
+                <name internal="LcRevitPropertyElementName">Name</name>
+              </property>
+              <value>
+                <data type="wstring">Level 2</data>
+              </value>
+            </condition>
+            <condition test="not_equals" flags="10">
+              <property>
+                <name internal="LcOaSceneBaseUserName">Name</name>
+              </property>
+              <value>
+                <data type="wstring">Center Line</data>
+              </value>
+            </condition>
+          </conditions>
+          <locator>/</locator>
+        </findspec>
+      </selectionset>
+      <selectionset name="Sprinkler-L3" guid="ed09a231-c943-422e-b0f7-1e2135d657ec">
+        <findspec mode="all" disjoint="0">
+          <conditions>
+            <condition test="contains" flags="10">
+              <property>
+                <name internal="LcOaNodeSourceFile">Source File</name>
+              </property>
+              <value>
+                <data type="wstring">Sprinkler</data>
+              </value>
+            </condition>
+            <condition test="equals" flags="10">
+              <category>
+                <name internal="LcRevitData">Base Level</name>
+              </category>
+              <property>
+                <name internal="LcRevitPropertyElementName">Name</name>
+              </property>
+              <value>
+                <data type="wstring">Level 3</data>
+              </value>
+            </condition>
+            <condition test="not_equals" flags="10">
+              <property>
+                <name internal="LcOaSceneBaseUserName">Name</name>
+              </property>
+              <value>
+                <data type="wstring">Center Line</data>
+              </value>
+            </condition>
+          </conditions>
+          <locator>/</locator>
+        </findspec>
+      </selectionset>
+      <selectionset name="Sprinkler-L4" guid="92899641-d957-48c7-883b-6a44b7817191">
+        <findspec mode="all" disjoint="0">
+          <conditions>
+            <condition test="contains" flags="10">
+              <property>
+                <name internal="LcOaNodeSourceFile">Source File</name>
+              </property>
+              <value>
+                <data type="wstring">Sprinkler</data>
+              </value>
+            </condition>
+            <condition test="equals" flags="10">
+              <category>
+                <name internal="LcRevitData">Base Level</name>
+              </category>
+              <property>
+                <name internal="LcRevitPropertyElementName">Name</name>
+              </property>
+              <value>
+                <data type="wstring">Level 4</data>
+              </value>
+            </condition>
+            <condition test="not_equals" flags="10">
+              <property>
+                <name internal="LcOaSceneBaseUserName">Name</name>
+              </property>
+              <value>
+                <data type="wstring">Center Line</data>
+              </value>
+            </condition>
+          </conditions>
+          <locator>/</locator>
+        </findspec>
+      </selectionset>
+      <selectionset name="Sprinkler-L5" guid="0646100f-a72c-4c75-91ed-d24551dfd596">
+        <findspec mode="all" disjoint="0">
+          <conditions>
+            <condition test="contains" flags="10">
+              <property>
+                <name internal="LcOaNodeSourceFile">Source File</name>
+              </property>
+              <value>
+                <data type="wstring">Sprinkler</data>
+              </value>
+            </condition>
+            <condition test="equals" flags="10">
+              <category>
+                <name internal="LcRevitData">Base Level</name>
+              </category>
+              <property>
+                <name internal="LcRevitPropertyElementName">Name</name>
+              </property>
+              <value>
+                <data type="wstring">Level 5</data>
+              </value>
+            </condition>
+            <condition test="not_equals" flags="10">
+              <property>
+                <name internal="LcOaSceneBaseUserName">Name</name>
+              </property>
+              <value>
+                <data type="wstring">Center Line</data>
+              </value>
+            </condition>
+          </conditions>
+          <locator>/</locator>
+        </findspec>
+      </selectionset>
+      <selectionset name="Sprinkler-Fire Protect Wet" guid="0b2313ef-68af-4bdd-b6a3-3044c7abd086">
+        <findspec mode="all" disjoint="0">
+          <conditions>
+            <condition test="equals" flags="26">
+              <category>
+                <name internal="LcRevitData">Element</name>
+              </category>
+              <property>
+                <name internal="revit_System Type">System Type</name>
+              </property>
+              <value>
+                <data type="name">
+                  <name internal="LcRevitElement">PipingSystemType &quot;Fire Protection Wet&quot;, #548522</name>
+                </data>
+              </value>
+            </condition>
+          </conditions>
+          <locator>/</locator>
+        </findspec>
+      </selectionset>
+    </viewfolder>
+  </selectionsets>
+</exchange>

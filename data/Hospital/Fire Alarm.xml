@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<exchange xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://download.autodesk.com/us/navisworks/schemas/nw-exchange-8.0.xsd" units="in">
+  <selectionsets>
+    <viewfolder name="Fire Alarm" guid="ba0ce1c8-4f81-4527-99f0-52ae4a79b9fc">
+      <selectionset name="Fire Alarm-All" guid="b64e0ee2-6643-43c1-97b9-68afdfa241f7">
+        <findspec mode="all" disjoint="0">
+          <conditions>
+            <condition test="contains" flags="10">
+              <property>
+                <name internal="LcOaNodeSourceFile">Source File</name>
+              </property>
+              <value>
+                <data type="wstring">FireAlarm</data>
+              </value>
+            </condition>
+          </conditions>
+          <locator>/</locator>
+        </findspec>
+      </selectionset>
+      <selectionset name="FireAlarm-Control_Panels" guid="93d54e8b-14d6-4f35-8197-2d97fb229f5d">
+        <findspec mode="all" disjoint="0">
+          <conditions>
+            <condition test="regex" flags="10">
+              <property>
+                <name internal="LcOaSceneBaseUserName">Name</name>
+              </property>
+              <value>
+                <data type="wstring">Fire Alarm Control Panel*|^147$</data>
+              </value>
+            </condition>
+          </conditions>
+          <locator>/</locator>
+        </findspec>
+      </selectionset>
+      <selectionset name="FireAlarm-Horn Strobes" guid="0341b3cc-695e-4b3f-9540-ad88bb3181fb">
+        <findspec mode="all" disjoint="0">
+          <conditions>
+            <condition test="regex" flags="10">
+              <property>
+                <name internal="LcOaSceneBaseUserName">Name</name>
+              </property>
+              <value>
+                <data type="wstring">Fire Alarm Horn Strobe</data>
+              </value>
+            </condition>
+          </conditions>
+          <locator>/</locator>
+        </findspec>
+      </selectionset>
+      <selectionset name="FireAlarm-Smoke Detectors" guid="fa96c122-2d74-4eaf-a965-f75168f13d87">
+        <findspec mode="all" disjoint="0">
+          <conditions>
+            <condition test="contains" flags="10">
+              <property>
+                <name internal="LcOaSceneBaseUserName">Name</name>
+              </property>
+              <value>
+                <data type="wstring">Smoke Detector</data>
+              </value>
+            </condition>
+          </conditions>
+          <locator>/</locator>
+        </findspec>
+      </selectionset>
+      <selectionset name="FireAlarm-Pull Stations" guid="8144e798-1c87-4e0d-8902-2d0a5099f8ed">
+        <findspec mode="all" disjoint="0">
+          <conditions>
+            <condition test="contains" flags="10">
+              <property>
+                <name internal="LcOaSceneBaseUserName">Name</name>
+              </property>
+              <value>
+                <data type="wstring">Manual Pull Station</data>
+              </value>
+            </condition>
+          </conditions>
+          <locator>/</locator>
+        </findspec>
+      </selectionset>
+<!--       <selectionset name="FireAlarm-All Devices" guid="91c604de-6368-414e-88dd-2c1715a5165a">
+        <findspec mode="all" disjoint="0">
+          <conditions>
+            <condition test="equals" flags="10">
+              <category>
+                <name internal="LcRevitData">Element</name>
+              </category>
+              <property>
+                <name internal="LcRevitPropertyElementCategory">Category</name>
+              </property>
+              <value>
+                <data type="wstring">Fire Alarm Devices</data>
+              </value>
+            </condition>
+            <condition test="equals" flags="74">
+              <category>
+                <name internal="LcRevitData">Element</name>
+              </category>
+              <property>
+                <name internal="LcRevitPropertyElementCategory">Category</name>
+              </property>
+              <value>
+                <data type="wstring">Electrical Equipment</data>
+              </value>
+            </condition>
+            <condition test="contains" flags="10">
+              <property>
+                <name internal="LcOaNodeSourceFile">Source File</name>
+              </property>
+              <value>
+                <data type="wstring">Fire</data>
+              </value>
+            </condition>
+          </conditions>
+          <locator>/</locator>
+        </findspec>
+      </selectionset> -->
+    </viewfolder>
+  </selectionsets>
+</exchange>

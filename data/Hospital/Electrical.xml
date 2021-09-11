@@ -1,0 +1,817 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<exchange xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://download.autodesk.com/us/navisworks/schemas/nw-exchange-8.0.xsd" units="in">
+  <selectionsets>
+    <viewfolder name="Electrical" guid="c450ba79-4dd4-4694-81e2-88cd7b2c90ce">
+<!--       <selectionset name="Electrical-All" guid="fa43e304-1b62-430c-88c7-0a0b7a904844">
+        <findspec mode="all" disjoint="0">
+          <conditions>
+            <condition test="contains" flags="10">
+              <property>
+                <name internal="LcOaNodeSourceFile">Source File</name>
+              </property>
+              <value>
+                <data type="wstring">Electrical</data>
+              </value>
+            </condition>
+          </conditions>
+          <locator>/</locator>
+        </findspec>
+      </selectionset> -->
+      <!-- <viewfolder name="General Items" guid="e78ad6e0-ff97-4190-bed1-3881603fe4fc"> -->
+<!--         <selectionset name="Elect-Conduit" guid="66f94025-4edb-4ff6-9b0f-84fa0ff3734e">
+          <findspec mode="all" disjoint="0">
+            <conditions>
+              <condition test="contains" flags="10">
+                <property>
+                  <name internal="LcOaNodeSourceFile">Source File</name>
+                </property>
+                <value>
+                  <data type="wstring">Electrical</data>
+                </value>
+              </condition>
+              <condition test="equals" flags="10">
+                <property>
+                  <name internal="LcOaSceneBaseUserName">Name</name>
+                </property>
+                <value>
+                  <data type="wstring">Conduit</data>
+                </value>
+              </condition>
+            </conditions>
+            <locator>/</locator>
+          </findspec>
+        </selectionset> -->
+      <!--   <selectionset name="Elect-ConduitFittings" guid="8252d934-6c55-4c6f-be11-6cf53486110a">
+          <findspec mode="all" disjoint="0">
+            <conditions>
+              <condition test="contains" flags="10">
+                <property>
+                  <name internal="LcOaNodeSourceFile">Source File</name>
+                </property>
+                <value>
+                  <data type="wstring">Electrical</data>
+                </value>
+              </condition>
+              <condition test="equals" flags="10">
+                <category>
+                  <name internal="LcRevitData">Element</name>
+                </category>
+                <property>
+                  <name internal="revit_OmniClass Title">OmniClass Title</name>
+                </property>
+                <value>
+                  <data type="wstring">Conduits</data>
+                </value>
+              </condition>
+            </conditions>
+            <locator>/</locator>
+          </findspec>
+        </selectionset> -->
+<!--         <selectionset name="Elect-Equipment" guid="d34f8b25-8556-49d1-9bbb-20d52ba86ae0">
+          <findspec mode="all" disjoint="0">
+            <conditions>
+              <condition test="contains" flags="10">
+                <property>
+                  <name internal="LcOaNodeSourceFile">Source File</name>
+                </property>
+                <value>
+                  <data type="wstring">Electrical</data>
+                </value>
+              </condition>
+              <condition test="regex" flags="10">
+                <property>
+                  <name internal="LcOaSceneBaseUserName">Name</name>
+                </property>
+                <value>
+                  <data type="wstring">Panelboard|Transformer|Main Distribution Panel</data>
+                </value>
+              </condition>
+            </conditions>
+            <locator>/</locator>
+          </findspec>
+        </selectionset>
+        <selectionset name="Elect-CableTrays" guid="3062f932-eadd-4aa7-861d-b19b6aa45f8f">
+          <findspec mode="all" disjoint="0">
+            <conditions>
+              <condition test="contains" flags="10">
+                <property>
+                  <name internal="LcOaNodeSourceFile">Source File</name>
+                </property>
+                <value>
+                  <data type="wstring">Electrical</data>
+                </value>
+              </condition>
+              <condition test="regex" flags="10">
+                <property>
+                  <name internal="LcOaSceneBaseUserName">Name</name>
+                </property>
+                <value>
+                  <data type="wstring">Ladder</data>
+                </value>
+              </condition>
+            </conditions>
+            <locator>/</locator>
+          </findspec>
+        </selectionset> -->
+<!--         <selectionset name="Elect-CableTrayTransitions" guid="9758b0c4-2a54-4df9-ab1d-d133851e12d1">
+          <findspec mode="all" disjoint="0">
+            <conditions>
+              <condition test="contains" flags="10">
+                <property>
+                  <name internal="LcOaNodeSourceFile">Source File</name>
+                </property>
+                <value>
+                  <data type="wstring">Electrical</data>
+                </value>
+              </condition>
+              <condition test="equals" flags="10">
+                <category>
+                  <name internal="LcRevitData">Element</name>
+                </category>
+                <property>
+                  <name internal="revit_OmniClass Title">OmniClass Title</name>
+                </property>
+                <value>
+                  <data type="wstring">Cable Trays and Horizontal Racks</data>
+                </value>
+              </condition>
+            </conditions>
+            <locator>/</locator>
+          </findspec>
+        </selectionset> -->
+        <selectionset name="Elect-Equip,Tray,Conduit" guid="ae308db2-4384-4bce-8414-f8ed6586a06a">
+          <findspec mode="all" disjoint="0">
+            <conditions>
+              <condition test="contains" flags="10">
+                <property>
+                  <name internal="LcOaNodeSourceFile">Source File</name>
+                </property>
+                <value>
+                  <data type="wstring">Electrical</data>
+                </value>
+              </condition>
+              <condition test="contains" flags="10">
+                <property>
+                  <name internal="LcOaSceneBaseUserName">Name</name>
+                </property>
+                <value>
+                  <data type="wstring">Transformer|Panelboard|Ladder|Cable Tray|Conduit|Distribution Panel|Channel Horizontal Bend</data>
+                </value>
+              </condition>
+            </conditions>
+            <locator>/</locator>
+          </findspec>
+        </selectionset>
+        <selectionset name="Elect-Motors" guid="b4f23f01-84bc-4696-98c2-593419fa00d4">
+          <findspec mode="all" disjoint="0">
+            <conditions>
+              <condition test="contains" flags="10">
+                <property>
+                  <name internal="LcOaNodeSourceFile">Source File</name>
+                </property>
+                <value>
+                  <data type="wstring">Electrical</data>
+                </value>
+              </condition>
+              <condition test="regex" flags="10">
+                <property>
+                  <name internal="LcOaSceneBaseUserName">Name</name>
+                </property>
+                <value>
+                  <data type="wstring">Motor</data>
+                </value>
+              </condition>
+            </conditions>
+            <locator>/</locator>
+          </findspec>
+        </selectionset>
+      <!-- </viewfolder> -->
+      <selectionset name="Elect-Receptacles" guid="948bf0f7-87e5-40f4-9873-54766339b068">
+        <findspec mode="all" disjoint="0">
+          <conditions>
+            <condition test="contains" flags="10">
+              <property>
+                <name internal="LcOaNodeSourceFile">Source File</name>
+              </property>
+              <value>
+                <data type="wstring">Electrical</data>
+              </value>
+            </condition>
+            <condition test="contains" flags="10">
+              <property>
+                <name internal="LcOaSceneBaseUserName">Name</name>
+              </property>
+              <value>
+                <data type="wstring">Duplex Receptacle</data>
+              </value>
+            </condition>
+          </conditions>
+          <locator>/</locator>
+        </findspec>
+      </selectionset>
+      <!-- <viewfolder name="Receptacles (By Level)" guid="74a189e0-8391-4dc8-9af3-b4bc09cc31f8">
+        <selectionset name="Elect-Receptacle-L1" guid="5c48d1dc-a844-4743-9095-3aa906598587">
+          <findspec mode="all" disjoint="0">
+            <conditions>
+              <condition test="contains" flags="10">
+                <property>
+                  <name internal="LcOaNodeSourceFile">Source File</name>
+                </property>
+                <value>
+                  <data type="wstring">Electrical</data>
+                </value>
+              </condition>
+              <condition test="contains" flags="10">
+                <property>
+                  <name internal="LcOaSceneBaseUserName">Name</name>
+                </property>
+                <value>
+                  <data type="wstring">Duplex Receptacle</data>
+                </value>
+              </condition>
+              <condition test="contains" flags="10">
+                <property>
+                  <name internal="LcOaNodeLayer">Layer</name>
+                </property>
+                <value>
+                  <data type="wstring">Level 1</data>
+                </value>
+              </condition>
+            </conditions>
+            <locator>/</locator>
+          </findspec>
+        </selectionset>
+        <selectionset name="Elect-Receptacle-L2" guid="90cc7bce-ae75-4652-82dd-047484ed4c1f">
+          <findspec mode="all" disjoint="0">
+            <conditions>
+              <condition test="contains" flags="10">
+                <property>
+                  <name internal="LcOaNodeSourceFile">Source File</name>
+                </property>
+                <value>
+                  <data type="wstring">Electrical</data>
+                </value>
+              </condition>
+              <condition test="contains" flags="10">
+                <property>
+                  <name internal="LcOaSceneBaseUserName">Name</name>
+                </property>
+                <value>
+                  <data type="wstring">Duplex Receptacle</data>
+                </value>
+              </condition>
+              <condition test="contains" flags="10">
+                <property>
+                  <name internal="LcOaNodeLayer">Layer</name>
+                </property>
+                <value>
+                  <data type="wstring">Level 2</data>
+                </value>
+              </condition>
+            </conditions>
+            <locator>/</locator>
+          </findspec>
+        </selectionset>
+        <selectionset name="Elect-Receptacle-L3" guid="a61dfa7f-15dc-406f-abd1-122379367056">
+          <findspec mode="all" disjoint="0">
+            <conditions>
+              <condition test="contains" flags="10">
+                <property>
+                  <name internal="LcOaNodeSourceFile">Source File</name>
+                </property>
+                <value>
+                  <data type="wstring">Electrical</data>
+                </value>
+              </condition>
+              <condition test="contains" flags="10">
+                <property>
+                  <name internal="LcOaSceneBaseUserName">Name</name>
+                </property>
+                <value>
+                  <data type="wstring">Duplex Receptacle</data>
+                </value>
+              </condition>
+              <condition test="contains" flags="10">
+                <property>
+                  <name internal="LcOaNodeLayer">Layer</name>
+                </property>
+                <value>
+                  <data type="wstring">Level 3</data>
+                </value>
+              </condition>
+            </conditions>
+            <locator>/</locator>
+          </findspec>
+        </selectionset>
+        <selectionset name="Elect-Receptacle-L4" guid="d7521a6f-b7d7-4c5e-af88-f370776d3b9c">
+          <findspec mode="all" disjoint="0">
+            <conditions>
+              <condition test="contains" flags="10">
+                <property>
+                  <name internal="LcOaNodeSourceFile">Source File</name>
+                </property>
+                <value>
+                  <data type="wstring">Electrical</data>
+                </value>
+              </condition>
+              <condition test="contains" flags="10">
+                <property>
+                  <name internal="LcOaSceneBaseUserName">Name</name>
+                </property>
+                <value>
+                  <data type="wstring">Duplex Receptacle</data>
+                </value>
+              </condition>
+              <condition test="contains" flags="10">
+                <property>
+                  <name internal="LcOaNodeLayer">Layer</name>
+                </property>
+                <value>
+                  <data type="wstring">Level 4</data>
+                </value>
+              </condition>
+            </conditions>
+            <locator>/</locator>
+          </findspec>
+        </selectionset>
+        <selectionset name="Elect-Receptacle-L5" guid="aad13611-4e30-4408-aa4e-c89ccbf4f4e5">
+          <findspec mode="all" disjoint="0">
+            <conditions>
+              <condition test="contains" flags="10">
+                <property>
+                  <name internal="LcOaNodeSourceFile">Source File</name>
+                </property>
+                <value>
+                  <data type="wstring">Electrical</data>
+                </value>
+              </condition>
+              <condition test="contains" flags="10">
+                <property>
+                  <name internal="LcOaSceneBaseUserName">Name</name>
+                </property>
+                <value>
+                  <data type="wstring">Duplex Receptacle</data>
+                </value>
+              </condition>
+              <condition test="contains" flags="10">
+                <property>
+                  <name internal="LcOaNodeLayer">Layer</name>
+                </property>
+                <value>
+                  <data type="wstring">Level 5</data>
+                </value>
+              </condition>
+            </conditions>
+            <locator>/</locator>
+          </findspec>
+        </selectionset>
+        <selectionset name="Elect-Receptacle-L6" guid="2d28d1f5-c317-43cd-86dc-329467f301be">
+          <findspec mode="all" disjoint="0">
+            <conditions>
+              <condition test="contains" flags="10">
+                <property>
+                  <name internal="LcOaNodeSourceFile">Source File</name>
+                </property>
+                <value>
+                  <data type="wstring">Electrical</data>
+                </value>
+              </condition>
+              <condition test="contains" flags="10">
+                <property>
+                  <name internal="LcOaSceneBaseUserName">Name</name>
+                </property>
+                <value>
+                  <data type="wstring">Duplex Receptacle</data>
+                </value>
+              </condition>
+              <condition test="contains" flags="10">
+                <property>
+                  <name internal="LcOaNodeLayer">Layer</name>
+                </property>
+                <value>
+                  <data type="wstring">Level 6</data>
+                </value>
+              </condition>
+            </conditions>
+            <locator>/</locator>
+          </findspec>
+        </selectionset>
+      </viewfolder> -->
+      <selectionset name="Elect-LightFixtures" guid="93df5c1a-e7ab-4020-9785-d7ee5889b2e1">
+        <findspec mode="all" disjoint="0">
+          <conditions>
+            <condition test="contains" flags="10">
+              <property>
+                <name internal="LcOaNodeSourceFile">Source File</name>
+              </property>
+              <value>
+                <data type="wstring">Electrical</data>
+              </value>
+            </condition>
+            <condition test="regex" flags="10">
+              <property>
+                <name internal="LcOaSceneBaseUserName">Name</name>
+              </property>
+              <value>
+                <data type="wstring">Lighting Fixture|Exit Sign|Pendant Light</data>
+              </value>
+            </condition>
+          </conditions>
+          <locator>/</locator>
+        </findspec>
+      </selectionset>
+      <!-- <viewfolder name="Lighting Fixtures (By Level)" guid="5abef2a3-b18a-44a4-acf1-1ac0c5e267e8">
+        <selectionset name="Elect-LightFixt-L1" guid="07f0be5c-3e52-453b-be37-b0f58f869be5">
+          <findspec mode="all" disjoint="0">
+            <conditions>
+              <condition test="contains" flags="10">
+                <property>
+                  <name internal="LcOaNodeSourceFile">Source File</name>
+                </property>
+                <value>
+                  <data type="wstring">Electrical</data>
+                </value>
+              </condition>
+              <condition test="equals" flags="10">
+                <category>
+                  <name internal="LcRevitData">Element</name>
+                </category>
+                <property>
+                  <name internal="LcRevitPropertyElementCategory">Category</name>
+                </property>
+                <value>
+                  <data type="wstring">Lighting Fixtures</data>
+                </value>
+              </condition>
+              <condition test="contains" flags="10">
+                <property>
+                  <name internal="LcOaNodeLayer">Layer</name>
+                </property>
+                <value>
+                  <data type="wstring">Level 1</data>
+                </value>
+              </condition>
+            </conditions>
+            <locator>/</locator>
+          </findspec>
+        </selectionset>
+        <selectionset name="Elect-LightFixt-L2" guid="8395afb9-aa6a-4a62-985e-773225357d40">
+          <findspec mode="all" disjoint="0">
+            <conditions>
+              <condition test="contains" flags="10">
+                <property>
+                  <name internal="LcOaNodeSourceFile">Source File</name>
+                </property>
+                <value>
+                  <data type="wstring">Electrical</data>
+                </value>
+              </condition>
+              <condition test="equals" flags="10">
+                <category>
+                  <name internal="LcRevitData">Element</name>
+                </category>
+                <property>
+                  <name internal="LcRevitPropertyElementCategory">Category</name>
+                </property>
+                <value>
+                  <data type="wstring">Lighting Fixtures</data>
+                </value>
+              </condition>
+              <condition test="contains" flags="10">
+                <property>
+                  <name internal="LcOaNodeLayer">Layer</name>
+                </property>
+                <value>
+                  <data type="wstring">Level 2</data>
+                </value>
+              </condition>
+            </conditions>
+            <locator>/</locator>
+          </findspec>
+        </selectionset>
+        <selectionset name="Elect-LightFixt-L3" guid="b51f5fee-1ef6-4cea-be72-0fa46a917a0b">
+          <findspec mode="all" disjoint="0">
+            <conditions>
+              <condition test="contains" flags="10">
+                <property>
+                  <name internal="LcOaNodeSourceFile">Source File</name>
+                </property>
+                <value>
+                  <data type="wstring">Electrical</data>
+                </value>
+              </condition>
+              <condition test="equals" flags="10">
+                <category>
+                  <name internal="LcRevitData">Element</name>
+                </category>
+                <property>
+                  <name internal="LcRevitPropertyElementCategory">Category</name>
+                </property>
+                <value>
+                  <data type="wstring">Lighting Fixtures</data>
+                </value>
+              </condition>
+              <condition test="contains" flags="10">
+                <property>
+                  <name internal="LcOaNodeLayer">Layer</name>
+                </property>
+                <value>
+                  <data type="wstring">Level 3</data>
+                </value>
+              </condition>
+            </conditions>
+            <locator>/</locator>
+          </findspec>
+        </selectionset>
+        <selectionset name="Elect-LightFixt-L4" guid="1bae378a-f933-4fe5-a7d9-9d93155ba6f5">
+          <findspec mode="all" disjoint="0">
+            <conditions>
+              <condition test="contains" flags="10">
+                <property>
+                  <name internal="LcOaNodeSourceFile">Source File</name>
+                </property>
+                <value>
+                  <data type="wstring">Electrical</data>
+                </value>
+              </condition>
+              <condition test="equals" flags="10">
+                <category>
+                  <name internal="LcRevitData">Element</name>
+                </category>
+                <property>
+                  <name internal="LcRevitPropertyElementCategory">Category</name>
+                </property>
+                <value>
+                  <data type="wstring">Lighting Fixtures</data>
+                </value>
+              </condition>
+              <condition test="contains" flags="10">
+                <property>
+                  <name internal="LcOaNodeLayer">Layer</name>
+                </property>
+                <value>
+                  <data type="wstring">Level 4</data>
+                </value>
+              </condition>
+            </conditions>
+            <locator>/</locator>
+          </findspec>
+        </selectionset>
+        <selectionset name="Elect-LightFixt-L5" guid="4b93938c-5ce9-42cb-b01b-e07f716c83f4">
+          <findspec mode="all" disjoint="0">
+            <conditions>
+              <condition test="contains" flags="10">
+                <property>
+                  <name internal="LcOaNodeSourceFile">Source File</name>
+                </property>
+                <value>
+                  <data type="wstring">Electrical</data>
+                </value>
+              </condition>
+              <condition test="equals" flags="10">
+                <category>
+                  <name internal="LcRevitData">Element</name>
+                </category>
+                <property>
+                  <name internal="LcRevitPropertyElementCategory">Category</name>
+                </property>
+                <value>
+                  <data type="wstring">Lighting Fixtures</data>
+                </value>
+              </condition>
+              <condition test="contains" flags="10">
+                <property>
+                  <name internal="LcOaNodeLayer">Layer</name>
+                </property>
+                <value>
+                  <data type="wstring">Level 5</data>
+                </value>
+              </condition>
+            </conditions>
+            <locator>/</locator>
+          </findspec>
+        </selectionset>
+      </viewfolder> -->
+      <selectionset name="Elect-NurseCallDevices" guid="6b5bf6ef-eb77-4231-845b-1f8b3ccf2f55">
+        <findspec mode="all" disjoint="0">
+          <conditions>
+
+              <condition test="contains" flags="10">
+                <property>
+                  <name internal="LcOaNodeSourceFile">Source File</name>
+                </property>
+                <value>
+                  <data type="wstring">Electrical</data>
+                </value>
+              </condition>
+            <condition test="contains" flags="10">
+              <property>
+                <name internal="LcOaSceneBaseUserName">Name</name>
+              </property>
+              <value>
+                <data type="wstring">Nurse Station</data>
+              </value>
+            </condition>
+          </conditions>
+          <locator>/</locator>
+        </findspec>
+      </selectionset>
+      <selectionset name="Elect-DataOutlet" guid="e766abaf-d3ee-41b4-91c6-a39e990a1fe1">
+        <findspec mode="all" disjoint="0">
+          <conditions>
+            <condition test="contains" flags="10">
+              <property>
+                <name internal="LcOaNodeSourceFile">Source File</name>
+              </property>
+              <value>
+                <data type="wstring">Electrical</data>
+              </value>
+            </condition>
+            <condition test="regex" flags="10">
+              <property>
+                <name internal="LcOaSceneBaseUserName">Name</name>
+              </property>
+              <value>
+                <data type="wstring">Data Outlet</data>
+              </value>
+            </condition>
+          </conditions>
+          <locator>/</locator>
+        </findspec>
+      </selectionset>
+      <!-- <viewfolder name="Data Devices (By Level)" guid="ef2ac153-31cc-44a9-bdd1-79f7fc2a1340">
+        <selectionset name="Elect-DataOutlet-L1" guid="723b425d-0775-4454-b6fc-368f7f1b1eab">
+          <findspec mode="all" disjoint="0">
+            <conditions>
+              <condition test="contains" flags="10">
+                <property>
+                  <name internal="LcOaNodeSourceFile">Source File</name>
+                </property>
+                <value>
+                  <data type="wstring">Electrical</data>
+                </value>
+              </condition>
+              <condition test="equals" flags="10">
+                <category>
+                  <name internal="LcRevitData">Element</name>
+                </category>
+                <property>
+                  <name internal="LcRevitPropertyElementCategory">Category</name>
+                </property>
+                <value>
+                  <data type="wstring">Data Devices</data>
+                </value>
+              </condition>
+              <condition test="contains" flags="10">
+                <property>
+                  <name internal="LcOaNodeLayer">Layer</name>
+                </property>
+                <value>
+                  <data type="wstring">Level 1</data>
+                </value>
+              </condition>
+            </conditions>
+            <locator>/</locator>
+          </findspec>
+        </selectionset>
+        <selectionset name="Elect-DataOutlet-L2" guid="4f20a842-fb0d-47bd-9194-91e0ecff5547">
+          <findspec mode="all" disjoint="0">
+            <conditions>
+              <condition test="contains" flags="10">
+                <property>
+                  <name internal="LcOaNodeSourceFile">Source File</name>
+                </property>
+                <value>
+                  <data type="wstring">Electrical</data>
+                </value>
+              </condition>
+              <condition test="equals" flags="10">
+                <category>
+                  <name internal="LcRevitData">Element</name>
+                </category>
+                <property>
+                  <name internal="LcRevitPropertyElementCategory">Category</name>
+                </property>
+                <value>
+                  <data type="wstring">Data Devices</data>
+                </value>
+              </condition>
+              <condition test="contains" flags="10">
+                <property>
+                  <name internal="LcOaNodeLayer">Layer</name>
+                </property>
+                <value>
+                  <data type="wstring">Level 2</data>
+                </value>
+              </condition>
+            </conditions>
+            <locator>/</locator>
+          </findspec>
+        </selectionset>
+        <selectionset name="Elect-DataOutlet-L3" guid="fa90116d-9c37-4606-921d-2ad38301b0f7">
+          <findspec mode="all" disjoint="0">
+            <conditions>
+              <condition test="contains" flags="10">
+                <property>
+                  <name internal="LcOaNodeSourceFile">Source File</name>
+                </property>
+                <value>
+                  <data type="wstring">Electrical</data>
+                </value>
+              </condition>
+              <condition test="equals" flags="10">
+                <category>
+                  <name internal="LcRevitData">Element</name>
+                </category>
+                <property>
+                  <name internal="LcRevitPropertyElementCategory">Category</name>
+                </property>
+                <value>
+                  <data type="wstring">Data Devices</data>
+                </value>
+              </condition>
+              <condition test="contains" flags="10">
+                <property>
+                  <name internal="LcOaNodeLayer">Layer</name>
+                </property>
+                <value>
+                  <data type="wstring">Level 3</data>
+                </value>
+              </condition>
+            </conditions>
+            <locator>/</locator>
+          </findspec>
+        </selectionset>
+        <selectionset name="Elect-DataOutlet-L4" guid="2416aef8-f4da-4402-9063-2d3894a23b83">
+          <findspec mode="all" disjoint="0">
+            <conditions>
+              <condition test="contains" flags="10">
+                <property>
+                  <name internal="LcOaNodeSourceFile">Source File</name>
+                </property>
+                <value>
+                  <data type="wstring">Electrical</data>
+                </value>
+              </condition>
+              <condition test="equals" flags="10">
+                <category>
+                  <name internal="LcRevitData">Element</name>
+                </category>
+                <property>
+                  <name internal="LcRevitPropertyElementCategory">Category</name>
+                </property>
+                <value>
+                  <data type="wstring">Data Devices</data>
+                </value>
+              </condition>
+              <condition test="contains" flags="10">
+                <property>
+                  <name internal="LcOaNodeLayer">Layer</name>
+                </property>
+                <value>
+                  <data type="wstring">Level 4</data>
+                </value>
+              </condition>
+            </conditions>
+            <locator>/</locator>
+          </findspec>
+        </selectionset>
+        <selectionset name="Elect-DataOutlet-L5" guid="f8daad6f-bd5e-4e45-96a0-35455fa28d7c">
+          <findspec mode="all" disjoint="0">
+            <conditions>
+              <condition test="contains" flags="10">
+                <property>
+                  <name internal="LcOaNodeSourceFile">Source File</name>
+                </property>
+                <value>
+                  <data type="wstring">Electrical</data>
+                </value>
+              </condition>
+              <condition test="equals" flags="10">
+                <category>
+                  <name internal="LcRevitData">Element</name>
+                </category>
+                <property>
+                  <name internal="LcRevitPropertyElementCategory">Category</name>
+                </property>
+                <value>
+                  <data type="wstring">Data Devices</data>
+                </value>
+              </condition>
+              <condition test="contains" flags="10">
+                <property>
+                  <name internal="LcOaNodeLayer">Layer</name>
+                </property>
+                <value>
+                  <data type="wstring">Level 5</data>
+                </value>
+              </condition>
+            </conditions>
+            <locator>/</locator>
+          </findspec>
+        </selectionset>
+      </viewfolder> -->
+    </viewfolder>
+  </selectionsets>
+</exchange>

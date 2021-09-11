@@ -1,0 +1,284 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<exchange xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://download.autodesk.com/us/navisworks/schemas/nw-exchange-8.0.xsd" units="in">
+  <selectionsets>
+      <viewfolder name="HVAC" guid="86a3255b-6806-4fe7-81d6-1a3f38fb05aa">
+        <selectionset name="HVAC-Pipes_MedGasOutlet-L1-L5" guid="9a678ce7-791d-41a0-aa23-02dad815882c">
+          <findspec mode="all" disjoint="0">
+            <conditions>
+              <condition test="contains" flags="10">
+                <property>
+                  <name internal="LcOaNodeSourceFile">Source File</name>
+                </property>
+                <value>
+                  <data type="wstring">HVAC</data>
+                </value>
+              </condition>
+              <condition test="regex" flags="10">
+                <property>
+                  <name internal="LcOaSceneBaseUserName">Name</name>
+                </property>
+                <value>
+                  <data type="wstring">MedGasOutlet|Pipe|Elbow - Generic:Standard|Tee - Generic:Standard|Tee - Butt Welded - CS:Standard|M_Ball Valve - 50-150 mm|Transition - Generic:Standard</data>
+                </value>
+              </condition>
+              <condition test="regex" flags="10">
+                <category>
+                  <name internal="LcRevitData">Base Level</name>
+                </category>
+                <property>
+                  <name internal="LcRevitPropertyElementName">Name</name>
+                </property>
+                <value>
+                  <data type="wstring">Level 1|Level 2|Level 3|Level 4|Level 5</data>
+                </value>
+              </condition>
+            </conditions>
+            <locator>/</locator>
+          </findspec>
+        </selectionset>
+        <selectionset name="HVAC-Ducts-L5" guid="51037e0e-95f3-48ca-b84c-90e4747f4fb6">
+          <findspec mode="all" disjoint="0">
+            <conditions>
+              <condition test="contains" flags="10">
+                <property>
+                  <name internal="LcOaNodeSourceFile">Source File</name>
+                </property>
+                <value>
+                  <data type="wstring">HVAC</data>
+                </value>
+              </condition>
+              <condition test="equals" flags="10">
+                <category>
+                  <name internal="LcRevitData">Base Level</name>
+                </category>
+                <property>
+                  <name internal="LcRevitPropertyElementName">Name</name>
+                </property>
+                <value>
+                  <data type="wstring">Level 5</data>
+                </value>
+              </condition>
+              <condition test="regex" flags="10">
+                <property>
+                  <name internal="LcOaSceneBaseUserName">Name</name>
+                </property>
+                <value>
+                  <data type="wstring">Duct|Round|Rectangular|Coil|PValve|VAV Unit</data>
+                </value>
+              </condition>
+            </conditions>
+            <locator>/</locator>
+          </findspec>
+        </selectionset>
+        <selectionset name="HVAC-Ducts-L4" guid="7cad32f5-58c6-4016-b3fb-52a1330450db">
+          <findspec mode="all" disjoint="0">
+            <conditions>
+              <condition test="contains" flags="10">
+                <property>
+                  <name internal="LcOaNodeSourceFile">Source File</name>
+                </property>
+                <value>
+                  <data type="wstring">HVAC</data>
+                </value>
+              </condition>
+              <condition test="equals" flags="10">
+                <category>
+                  <name internal="LcRevitData">Base Level</name>
+                </category>
+                <property>
+                  <name internal="LcRevitPropertyElementName">Name</name>
+                </property>
+                <value>
+                  <data type="wstring">Level 4</data>
+                </value>
+              </condition>
+              <condition test="regex" flags="10">
+                <property>
+                  <name internal="LcOaSceneBaseUserName">Name</name>
+                </property>
+                <value>
+                  <data type="wstring">Duct|Round|Rectangular|Coil|PValve|VAV Unit</data>
+                </value>
+              </condition>
+            </conditions>
+            <locator>/</locator>
+          </findspec>
+        </selectionset>
+        <selectionset name="HVAC-Ducts-L3" guid="1ee3e230-53de-454c-aed4-ca8322b0364c">
+          <findspec mode="all" disjoint="0">
+            <conditions>
+              <condition test="contains" flags="10">
+                <property>
+                  <name internal="LcOaNodeSourceFile">Source File</name>
+                </property>
+                <value>
+                  <data type="wstring">HVAC</data>
+                </value>
+              </condition>
+              <condition test="equals" flags="10">
+                <category>
+                  <name internal="LcRevitData">Base Level</name>
+                </category>
+                <property>
+                  <name internal="LcRevitPropertyElementName">Name</name>
+                </property>
+                <value>
+                  <data type="wstring">Level 3</data>
+                </value>
+              </condition>
+              <condition test="regex" flags="10">
+                <property>
+                  <name internal="LcOaSceneBaseUserName">Name</name>
+                </property>
+                <value>
+                  <data type="wstring">Duct|Round|Rectangular|Coil|PValve|VAV Unit</data>
+                </value>
+              </condition>
+            </conditions>
+            <locator>/</locator>
+          </findspec>
+        </selectionset>
+        <selectionset name="HVAC-Ducts-L2" guid="585c47d9-f0b8-41d2-aedf-1af0ec524bec">
+          <findspec mode="all" disjoint="0">
+            <conditions>
+              <condition test="contains" flags="10">
+                <property>
+                  <name internal="LcOaNodeSourceFile">Source File</name>
+                </property>
+                <value>
+                  <data type="wstring">HVAC</data>
+                </value>
+              </condition>
+              <condition test="equals" flags="10">
+                <category>
+                  <name internal="LcRevitData">Base Level</name>
+                </category>
+                <property>
+                  <name internal="LcRevitPropertyElementName">Name</name>
+                </property>
+                <value>
+                  <data type="wstring">Level 2</data>
+                </value>
+              </condition>
+              <condition test="regex" flags="10">
+                <property>
+                  <name internal="LcOaSceneBaseUserName">Name</name>
+                </property>
+                <value>
+                  <data type="wstring">Duct|Round|Rectangular|Coil|PValve|VAV Unit</data>
+                </value>
+              </condition>
+            </conditions>
+            <locator>/</locator>
+          </findspec>
+        </selectionset>
+        <selectionset name="HVAC-Ducts-L1" guid="d4fa9047-84be-42f7-b56f-2ed7e3d4384b">
+          <findspec mode="all" disjoint="0">
+            <conditions>
+              <condition test="contains" flags="10">
+                <property>
+                  <name internal="LcOaNodeSourceFile">Source File</name>
+                </property>
+                <value>
+                  <data type="wstring">HVAC</data>
+                </value>
+              </condition>
+              <condition test="equals" flags="10">
+                <category>
+                  <name internal="LcRevitData">Base Level</name>
+                </category>
+                <property>
+                  <name internal="LcRevitPropertyElementName">Name</name>
+                </property>
+                <value>
+                  <data type="wstring">Level 1</data>
+                </value>
+              </condition>
+              <condition test="regex" flags="10">
+                <property>
+                  <name internal="LcOaSceneBaseUserName">Name</name>
+                </property>
+                <value>
+                  <data type="wstring">Duct|Round|Rectangular|Coil|PValve|VAV Unit</data>
+                </value>
+              </condition>
+            </conditions>
+            <locator>/</locator>
+          </findspec>
+        </selectionset>
+        <selectionset name="HVAC-Rooftop-Ducts+Pipes" guid="85340e52-58ca-4c1d-bc95-28f5522ebf1c">
+          <findspec mode="all" disjoint="0">
+            <conditions>
+              <condition test="contains" flags="10">
+                <property>
+                  <name internal="LcOaNodeSourceFile">Source File</name>
+                </property>
+                <value>
+                  <data type="wstring">HVAC</data>
+                </value>
+              </condition>
+              <condition test="regex" flags="10">
+                <category>
+                  <name internal="LcRevitData">Base Level</name>
+                </category>
+                <property>
+                  <name internal="LcRevitPropertyElementName">Name</name>
+                </property>
+                <value>
+                  <data type="wstring">Level 6|Level 7</data>
+                </value>
+              </condition>
+              <condition test="regex" flags="10">
+                <property>
+                  <name internal="LcOaSceneBaseUserName">Name</name>
+                </property>
+                <value>
+                  <data type="wstring">Centrifugal|Duct|Pipe|Rectangular|Elbow|Valve|Y Strainer|Tee|Circuit Setter|Reducer|Flange|Round Transition</data>
+                </value>
+              </condition>
+            </conditions>
+            <locator>/</locator>
+          </findspec>
+        </selectionset>
+        <selectionset name="HVAC-Diffusers" guid="120c3e74-7c5b-4628-8eba-1567af72a063">
+          <findspec mode="all" disjoint="0">
+            <conditions>
+              <condition test="contains" flags="10">
+                <property>
+                  <name internal="LcOaSceneBaseUserName">Name</name>
+                </property>
+                <value>
+                  <data type="wstring">Diffuser</data>
+                </value>
+              </condition>
+            </conditions>
+            <locator>/</locator>
+          </findspec>
+        </selectionset>
+        <selectionset name="HVAC-Rooftop-Equip" guid="ae6f0f0f-f7d3-40f6-9080-d37de9f45f3a">
+          <findspec mode="all" disjoint="0">
+            <conditions>
+              <condition test="contains" flags="10">
+                <property>
+                  <name internal="LcOaNodeSourceFile">Source File</name>
+                </property>
+                <value>
+                  <data type="wstring">HVAC</data>
+                </value>
+              </condition>
+              <condition test="regex" flags="10">
+                <property>
+                  <name internal="LcOaSceneBaseUserName">Name</name>
+                </property>
+                <value>
+                  <data type="wstring">AHU-2|Watertube Boiler|Pump - Base Mounted|Expansion Tank|Chiller|AirBox|Cooling Tower</data>
+                </value>
+              </condition>
+            </conditions>
+            <locator>/</locator>
+          </findspec>
+        </selectionset>
+      </viewfolder>
+  </selectionsets>
+</exchange>

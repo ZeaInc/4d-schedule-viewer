@@ -21,6 +21,11 @@
     <script src="https://cdn.jsdelivr.net/npm/@zeainc/zea-cad@3/dist/index.umd.js"></script>
     <script src="./src/zea-fps-display.js" type="module"></script>
     <script src="./src/scene-tree-view.js" type="module"></script>
+
+    <script src="./src/third-party/xlsx.js"></script>
+    <script src="./src/third-party/jszip.js"></script>
+    <script src="./src/third-party/moment.min.js"></script>
+    
   </head>
   <body class="overflow-hidden">
     <div class="layout grid h-screen">
@@ -101,6 +106,11 @@
       const envMap = new EnvMap();
       envMap.load("./data/StudioG.zenv");
       scene.setEnvMap(envMap);
+
+
+      import init from "./src/init.js";
+      init(scene)
+      
 /*
       const asset = new CADAsset();
       const zcad = urlParams.has("zcad")

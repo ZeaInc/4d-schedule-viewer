@@ -1,0 +1,1041 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<exchange xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://download.autodesk.com/us/navisworks/schemas/nw-exchange-8.0.xsd" units="ft">
+  <selectionsets>
+    <viewfolder name="Structural" guid="5ae6913c-f23f-44ec-931d-2b4edcb85474">
+      <selectionset name="Structural-All" guid="94ae045f-b97e-4dec-8ead-a9dd840e6d95">
+        <findspec mode="all" disjoint="0">
+          <conditions>
+            <condition test="contains" flags="10">
+              <property>
+                <name internal="LcOaNodeSourceFile">Source File</name>
+              </property>
+              <value>
+                <data type="wstring">Structural</data>
+              </value>
+            </condition>
+          </conditions>
+          <locator>/</locator>
+        </findspec>
+      </selectionset>
+      <viewfolder name="Foundation" guid="758dbd7c-2f4d-4165-9bf4-af0e5d087994">
+        <selectionset name="Struct-Fndn-Pile_Pipe" guid="ec5b2ce2-5294-4014-ad2e-ec58e879e08c">
+          <findspec mode="all" disjoint="0">
+            <conditions>
+              <condition test="regex" flags="10">
+                <property>
+                  <name internal="LcOaSceneBaseUserName">Name</name>
+                </property>
+                <value>
+                  <data type="wstring">Pile-Steel Pipe</data>
+                </value>
+              </condition>
+            </conditions>
+            <locator>/</locator>
+          </findspec>
+        </selectionset>
+        <selectionset name="Struct-Fndn-Pile_Cap" guid="b297a393-ef1c-4b55-86f3-7a22b5db12e6">
+          <findspec mode="all" disjoint="0">
+            <conditions>
+              <condition test="contains" flags="10">
+                <property>
+                  <name internal="LcOaSceneBaseUserName">Name</name>
+                </property>
+                <value>
+                  <data type="wstring">Pile Cap</data>
+                </value>
+              </condition>
+            </conditions>
+            <locator>/</locator>
+          </findspec>
+        </selectionset>
+        <selectionset name="Struct-Fndn-Footings" guid="aec4dd78-ff22-4b65-9574-eb1505e27201">
+          <findspec mode="all" disjoint="0">
+            <conditions>
+              <condition test="contains" flags="10">
+                <property>
+                  <name internal="LcOaSceneBaseUserName">Name</name>
+                </property>
+                <value>
+                  <data type="wstring">Footing</data>
+                </value>
+              </condition>
+            </conditions>
+            <locator>/</locator>
+          </findspec>
+        </selectionset>
+        <selectionset name="Struct-Fndn-Concrete Slabs, Walls, Columns" guid="a57647ce-9a73-45b7-a634-f31d55479a5d">
+          <findspec mode="all" disjoint="0">
+            <conditions>
+              <condition test="contains" flags="10">
+                <property>
+                  <name internal="LcOaSceneBaseUserName">Name</name>
+                </property>
+                <value>
+                  <data type="wstring">Foundation|Concrete-Rectangular-Column</data>
+                </value>
+              </condition>
+              <condition test="contains" flags="42" comment="NEGATE_CONDITION">
+                <property>
+                  <name internal="LcOaSceneBaseUserName">Name</name>
+                </property>
+                <value>
+                  <data type="wstring">Footing</data>
+                </value>
+              </condition>
+            </conditions>
+            <locator>/</locator>
+          </findspec>
+        </selectionset>
+      </viewfolder>
+      <viewfolder name="Columns" guid="fe6c6dd6-e8bc-4b67-9787-6dcaebb77dc2">
+        <selectionset name="Struct-All Columns" guid="eab8909e-bb01-4fd2-ad64-95d9595ebf1b">
+          <findspec mode="all" disjoint="0">
+            <conditions>
+              <condition test="contains" flags="138">
+                <property>
+                  <name internal="LcOaSceneBaseUserName">Name</name>
+                </property>
+                <value>
+                  <data type="wstring">W-Wide Flange-Column*|HSS-Hollow Structural Section-Column*</data>
+                </value>
+              </condition>
+            </conditions>
+            <locator>/</locator>
+          </findspec>
+        </selectionset>
+        <selectionset name="Struct-Col-BaseL1" guid="75164f02-ec0b-4c91-9d56-994d749eb153">
+          <findspec mode="all" disjoint="0">
+            <conditions>
+              <condition test="contains" flags="138">
+                <property>
+                  <name internal="LcOaSceneBaseUserName">Name</name>
+                </property>
+                <value>
+                  <data type="wstring">W-Wide Flange-Column*|HSS-Hollow Structural Section-Column*</data>
+                </value>
+              </condition>
+              <condition test="contains" flags="10">
+                <category>
+                  <name internal="LcRevitData">Base Level</name>
+                </category>
+                <property>
+                  <name internal="LcRevitPropertyElementName">Name</name>
+                </property>
+                <value>
+                  <data type="wstring">Level 1</data>
+                </value>
+              </condition>
+            </conditions>
+            <locator>/</locator>
+          </findspec>
+        </selectionset>
+        <selectionset name="Struct-Col-BaseL3" guid="318800bf-e017-48a0-8313-49f5d694e2d9">
+          <findspec mode="all" disjoint="0">
+            <conditions>
+              <condition test="contains" flags="10">
+                <category>
+                  <name internal="LcRevitData">Base Level</name>
+                </category>
+                <property>
+                  <name internal="LcRevitPropertyElementName">Name</name>
+                </property>
+                <value>
+                  <data type="wstring">Level 3</data>
+                </value>
+              </condition>
+              <condition test="contains" flags="138">
+                <property>
+                  <name internal="LcOaSceneBaseUserName">Name</name>
+                </property>
+                <value>
+                  <data type="wstring">W-Wide Flange-Column*|HSS-Hollow Structural Section-Column*</data>
+                </value>
+              </condition>
+            </conditions>
+            <locator>/</locator>
+          </findspec>
+        </selectionset>
+        <selectionset name="Struct-Col-BaseL4" guid="8ab327b6-7a60-4e60-82a4-dc96c39c7b67">
+          <findspec mode="all" disjoint="0">
+            <conditions>
+              <condition test="contains" flags="10">
+                <category>
+                  <name internal="LcRevitData">Base Level</name>
+                </category>
+                <property>
+                  <name internal="LcRevitPropertyElementName">Name</name>
+                </property>
+                <value>
+                  <data type="wstring">Level 4</data>
+                </value>
+              </condition>
+              <condition test="contains" flags="138">
+                <property>
+                  <name internal="LcOaSceneBaseUserName">Name</name>
+                </property>
+                <value>
+                  <data type="wstring">W-Wide Flange-Column*|HSS-Hollow Structural Section-Column*</data>
+                </value>
+              </condition>
+            </conditions>
+            <locator>/</locator>
+          </findspec>
+        </selectionset>
+        <selectionset name="Struct-Col-BaseL5" guid="ae2664bb-1867-4e70-8cbf-cb556278db0f">
+          <findspec mode="all" disjoint="0">
+            <conditions>
+              <condition test="contains" flags="10">
+                <category>
+                  <name internal="LcRevitData">Base Level</name>
+                </category>
+                <property>
+                  <name internal="LcRevitPropertyElementName">Name</name>
+                </property>
+                <value>
+                  <data type="wstring">Level 5</data>
+                </value>
+              </condition>
+              <condition test="contains" flags="138">
+                <property>
+                  <name internal="LcOaSceneBaseUserName">Name</name>
+                </property>
+                <value>
+                  <data type="wstring">W-Wide Flange-Column*|HSS-Hollow Structural Section-Column*</data>
+                </value>
+              </condition>
+            </conditions>
+            <locator>/</locator>
+          </findspec>
+        </selectionset>
+      </viewfolder>
+      <viewfolder name="Framing" guid="5aae22f6-e0a7-4f9c-a77e-17d28364b989">
+        <selectionset name="Struct-All Framing" guid="8aae01fd-88db-4d93-8ab0-fe91d91ba8c2">
+          <findspec mode="all" disjoint="0">
+            <conditions>
+              <condition test="contains" flags="10">
+                <property>
+                  <name internal="LcOaSceneBaseUserName">Name</name>
+                </property>
+                <value>
+                  <data type="wstring">W-Wide Flange</data>
+                </value>
+              </condition>
+              <condition test="contains" flags="42">
+                <property>
+                  <name internal="LcOaSceneBaseUserName">Name</name>
+                </property>
+                <value>
+                  <data type="wstring">Column</data>
+                </value>
+              </condition>
+            </conditions>
+            <locator>/</locator>
+          </findspec>
+        </selectionset>
+        <selectionset name="Struct-Framing-L2" guid="471d0c58-7efb-4b21-b019-75b3960e64fb">
+          <findspec mode="all" disjoint="0">
+            <conditions>
+              <condition test="contains" flags="10">
+                <category>
+                  <name internal="LcRevitData">Reference Level</name>
+                </category>
+                <property>
+                  <name internal="LcRevitPropertyElementName">Name</name>
+                </property>
+                <value>
+                  <data type="wstring">Level 2</data>
+                </value>
+              </condition>
+              <condition test="contains" flags="138">
+                <property>
+                  <name internal="LcOaSceneBaseUserName">Name</name>
+                </property>
+                <value>
+                  <data type="wstring">W-Wide Flange*|C-Channel*</data>
+                </value>
+              </condition>
+              <condition test="contains" flags="42">
+                <property>
+                  <name internal="LcOaSceneBaseUserName">Name</name>
+                </property>
+                <value>
+                  <data type="wstring">Column</data>
+                </value>
+              </condition>
+            </conditions>
+            <locator>/</locator>
+          </findspec>
+        </selectionset>
+        <selectionset name="Struct-Framing-L3" guid="c26fc547-0bc5-4566-85d3-80d9b3efd50e">
+          <findspec mode="all" disjoint="0">
+            <conditions>
+              <condition test="contains" flags="10">
+                <category>
+                  <name internal="LcRevitData">Reference Level</name>
+                </category>
+                <property>
+                  <name internal="LcRevitPropertyElementName">Name</name>
+                </property>
+                <value>
+                  <data type="wstring">Level 3</data>
+                </value>
+              </condition>
+              <condition test="contains" flags="138">
+                <property>
+                  <name internal="LcOaSceneBaseUserName">Name</name>
+                </property>
+                <value>
+                  <data type="wstring">W-Wide Flange*|C-Channel*</data>
+                </value>
+              </condition>
+              <condition test="contains" flags="42">
+                <property>
+                  <name internal="LcOaSceneBaseUserName">Name</name>
+                </property>
+                <value>
+                  <data type="wstring">Column</data>
+                </value>
+              </condition>
+            </conditions>
+            <locator>/</locator>
+          </findspec>
+        </selectionset>
+        <selectionset name="Struct-Framing-L4" guid="faca4264-e126-4c1a-b79f-9c3835432a9f">
+          <findspec mode="all" disjoint="0">
+            <conditions>
+              <condition test="contains" flags="10">
+                <category>
+                  <name internal="LcRevitData">Reference Level</name>
+                </category>
+                <property>
+                  <name internal="LcRevitPropertyElementName">Name</name>
+                </property>
+                <value>
+                  <data type="wstring">Level 4</data>
+                </value>
+              </condition>
+              <condition test="contains" flags="138">
+                <property>
+                  <name internal="LcOaSceneBaseUserName">Name</name>
+                </property>
+                <value>
+                  <data type="wstring">W-Wide Flange*|C-Channel*</data>
+                </value>
+              </condition>
+              <condition test="contains" flags="42">
+                <property>
+                  <name internal="LcOaSceneBaseUserName">Name</name>
+                </property>
+                <value>
+                  <data type="wstring">Column</data>
+                </value>
+              </condition>
+            </conditions>
+            <locator>/</locator>
+          </findspec>
+        </selectionset>
+        <selectionset name="Struct-Framing-L5" guid="bf923c53-83e8-4311-823b-ec6a4602a7e5">
+          <findspec mode="all" disjoint="0">
+            <conditions>
+              <condition test="contains" flags="10">
+                <category>
+                  <name internal="LcRevitData">Reference Level</name>
+                </category>
+                <property>
+                  <name internal="LcRevitPropertyElementName">Name</name>
+                </property>
+                <value>
+                  <data type="wstring">Level 5</data>
+                </value>
+              </condition>
+              <condition test="contains" flags="138">
+                <property>
+                  <name internal="LcOaSceneBaseUserName">Name</name>
+                </property>
+                <value>
+                  <data type="wstring">W-Wide Flange*|C-Channel*</data>
+                </value>
+              </condition>
+              <condition test="contains" flags="42">
+                <property>
+                  <name internal="LcOaSceneBaseUserName">Name</name>
+                </property>
+                <value>
+                  <data type="wstring">Column</data>
+                </value>
+              </condition>
+            </conditions>
+            <locator>/</locator>
+          </findspec>
+        </selectionset>
+        <selectionset name="Struct-Framing-L6" guid="09daa733-4d62-428c-94c8-5d52d096af5e">
+          <findspec mode="all" disjoint="0">
+            <conditions>
+              <condition test="contains" flags="10">
+                <category>
+                  <name internal="LcRevitData">Reference Level</name>
+                </category>
+                <property>
+                  <name internal="LcRevitPropertyElementName">Name</name>
+                </property>
+                <value>
+                  <data type="wstring">Level 6</data>
+                </value>
+              </condition>
+              <condition test="contains" flags="138">
+                <property>
+                  <name internal="LcOaSceneBaseUserName">Name</name>
+                </property>
+                <value>
+                  <data type="wstring">W-Wide Flange*|C-Channel*</data>
+                </value>
+              </condition>
+              <condition test="contains" flags="42">
+                <property>
+                  <name internal="LcOaSceneBaseUserName">Name</name>
+                </property>
+                <value>
+                  <data type="wstring">Column</data>
+                </value>
+              </condition>
+            </conditions>
+            <locator>/</locator>
+          </findspec>
+        </selectionset>
+        <selectionset name="Struct-Framing-L7" guid="5a0fe91a-576d-4c9d-9a4b-046345e13bb1">
+          <findspec mode="all" disjoint="0">
+            <conditions>
+              <condition test="contains" flags="10">
+                <category>
+                  <name internal="LcRevitData">Reference Level</name>
+                </category>
+                <property>
+                  <name internal="LcRevitPropertyElementName">Name</name>
+                </property>
+                <value>
+                  <data type="wstring">Level 7</data>
+                </value>
+              </condition>
+              <condition test="contains" flags="138">
+                <property>
+                  <name internal="LcOaSceneBaseUserName">Name</name>
+                </property>
+                <value>
+                  <data type="wstring">W-Wide Flange*|C-Channel*</data>
+                </value>
+              </condition>
+              <condition test="contains" flags="42">
+                <property>
+                  <name internal="LcOaSceneBaseUserName">Name</name>
+                </property>
+                <value>
+                  <data type="wstring">Column</data>
+                </value>
+              </condition>
+            </conditions>
+            <locator>/</locator>
+          </findspec>
+        </selectionset>
+      </viewfolder>
+      <viewfolder name="Floors" guid="3ac4e5ec-7bd1-467f-96de-6705bdc707b9">
+        <viewfolder name="Metal Decking (By Level)" guid="648ac036-c1e3-4950-8373-5cb86ec49095">
+          <selectionset name="Struct-Floor-MetalDeck-L2" guid="c21b9138-7998-4b37-9989-f8da76a3a3e7">
+            <findspec mode="all" disjoint="0">
+              <conditions>
+                <condition test="contains" flags="10">
+                  <property>
+                    <name internal="LcOaSceneBaseUserName">Name</name>
+                  </property>
+                  <value>
+                    <data type="wstring">Metal-Deck</data>
+                  </value>
+                </condition>
+                <condition test="contains" flags="10">
+                  <category>
+                    <name internal="LcRevitData">Reference Level</name>
+                  </category>
+                  <property>
+                    <name internal="LcRevitPropertyElementName">Name</name>
+                  </property>
+                  <value>
+                    <data type="wstring">Level 2</data>
+                  </value>
+                </condition>
+              </conditions>
+              <locator>/</locator>
+            </findspec>
+          </selectionset>
+          <selectionset name="Struct-Floor-MetalDeck-L3" guid="5f244787-7c70-420e-9aea-13dec30e0391">
+            <findspec mode="all" disjoint="0">
+              <conditions>
+                <condition test="contains" flags="10">
+                  <property>
+                    <name internal="LcOaSceneBaseUserName">Name</name>
+                  </property>
+                  <value>
+                    <data type="wstring">Metal-Deck</data>
+                  </value>
+                </condition>
+                <condition test="contains" flags="10">
+                  <category>
+                    <name internal="LcRevitData">Reference Level</name>
+                  </category>
+                  <property>
+                    <name internal="LcRevitPropertyElementName">Name</name>
+                  </property>
+                  <value>
+                    <data type="wstring">Level 3</data>
+                  </value>
+                </condition>
+              </conditions>
+              <locator>/</locator>
+            </findspec>
+          </selectionset>
+          <selectionset name="Struct-Floor-MetalDeck-L4" guid="08a23f14-c9f3-4dcc-909e-f0830c1a3c64">
+            <findspec mode="all" disjoint="0">
+              <conditions>
+                <condition test="contains" flags="10">
+                  <property>
+                    <name internal="LcOaSceneBaseUserName">Name</name>
+                  </property>
+                  <value>
+                    <data type="wstring">Metal-Deck</data>
+                  </value>
+                </condition>
+                <condition test="contains" flags="10">
+                  <category>
+                    <name internal="LcRevitData">Reference Level</name>
+                  </category>
+                  <property>
+                    <name internal="LcRevitPropertyElementName">Name</name>
+                  </property>
+                  <value>
+                    <data type="wstring">Level 4</data>
+                  </value>
+                </condition>
+              </conditions>
+              <locator>/</locator>
+            </findspec>
+          </selectionset>
+          <selectionset name="Struct-Floor-MetalDeck-L5" guid="1779a259-74d3-4d9a-9afb-baada210672c">
+            <findspec mode="all" disjoint="0">
+              <conditions>
+                <condition test="contains" flags="10">
+                  <property>
+                    <name internal="LcOaSceneBaseUserName">Name</name>
+                  </property>
+                  <value>
+                    <data type="wstring">Metal-Deck</data>
+                  </value>
+                </condition>
+                <condition test="contains" flags="10">
+                  <category>
+                    <name internal="LcRevitData">Reference Level</name>
+                  </category>
+                  <property>
+                    <name internal="LcRevitPropertyElementName">Name</name>
+                  </property>
+                  <value>
+                    <data type="wstring">Level 5</data>
+                  </value>
+                </condition>
+              </conditions>
+              <locator>/</locator>
+            </findspec>
+          </selectionset>
+          <selectionset name="Struct-Floor-MetalDeck-L6" guid="5c6adf64-749b-4ddd-bdce-b91a416251aa">
+            <findspec mode="all" disjoint="0">
+              <conditions>
+                <condition test="contains" flags="10">
+                  <property>
+                    <name internal="LcOaSceneBaseUserName">Name</name>
+                  </property>
+                  <value>
+                    <data type="wstring">Metal-Deck</data>
+                  </value>
+                </condition>
+                <condition test="contains" flags="10">
+                  <category>
+                    <name internal="LcRevitData">Reference Level</name>
+                  </category>
+                  <property>
+                    <name internal="LcRevitPropertyElementName">Name</name>
+                  </property>
+                  <value>
+                    <data type="wstring">Level 6</data>
+                  </value>
+                </condition>
+              </conditions>
+              <locator>/</locator>
+            </findspec>
+          </selectionset>
+          <selectionset name="Struct-Floor-MetalDeck-L7" guid="a6a3e15d-9f85-4685-84f2-cd1f362bccd3">
+            <findspec mode="all" disjoint="0">
+              <conditions>
+                <condition test="contains" flags="10">
+                  <property>
+                    <name internal="LcOaSceneBaseUserName">Name</name>
+                  </property>
+                  <value>
+                    <data type="wstring">Metal-Deck</data>
+                  </value>
+                </condition>
+                <condition test="contains" flags="10">
+                  <category>
+                    <name internal="LcRevitData">Reference Level</name>
+                  </category>
+                  <property>
+                    <name internal="LcRevitPropertyElementName">Name</name>
+                  </property>
+                  <value>
+                    <data type="wstring">Level 7</data>
+                  </value>
+                </condition>
+              </conditions>
+              <locator>/</locator>
+            </findspec>
+          </selectionset>
+        </viewfolder>
+        <viewfolder name="Concrete (By Level)" guid="532bee9e-cf5e-40bf-aeea-c4e9904c1e6e">
+          <selectionset name="Struct-Floor-Concrete-L2" guid="c23db012-1cde-4a7c-bd1c-7d58a5761ae9">
+            <findspec mode="all" disjoint="0">
+              <conditions>
+                <condition test="contains" flags="10">
+                  <property>
+                    <name internal="LcOaSceneBaseUserName">Name</name>
+                  </property>
+                  <value>
+                    <data type="wstring">Concrete on</data>
+                  </value>
+                </condition>
+                <condition test="contains" flags="10">
+                  <category>
+                    <name internal="LcRevitData">Reference Level</name>
+                  </category>
+                  <property>
+                    <name internal="LcRevitPropertyElementName">Name</name>
+                  </property>
+                  <value>
+                    <data type="wstring">Level 2</data>
+                  </value>
+                </condition>
+              </conditions>
+              <locator>/</locator>
+            </findspec>
+          </selectionset>
+          <selectionset name="Struct-Floor-Concrete-L3" guid="b6092d9f-0741-407d-8cb2-3d98d83762a7">
+            <findspec mode="all" disjoint="0">
+              <conditions>
+                <condition test="contains" flags="10">
+                  <property>
+                    <name internal="LcOaSceneBaseUserName">Name</name>
+                  </property>
+                  <value>
+                    <data type="wstring">Concrete on</data>
+                  </value>
+                </condition>
+                <condition test="contains" flags="10">
+                  <category>
+                    <name internal="LcRevitData">Reference Level</name>
+                  </category>
+                  <property>
+                    <name internal="LcRevitPropertyElementName">Name</name>
+                  </property>
+                  <value>
+                    <data type="wstring">Level 3</data>
+                  </value>
+                </condition>
+              </conditions>
+              <locator>/</locator>
+            </findspec>
+          </selectionset>
+          <selectionset name="Struct-Floor-Concrete-L4" guid="4b00d4b3-a16b-4735-ab18-fb972c838889">
+            <findspec mode="all" disjoint="0">
+              <conditions>
+                <condition test="contains" flags="10">
+                  <property>
+                    <name internal="LcOaSceneBaseUserName">Name</name>
+                  </property>
+                  <value>
+                    <data type="wstring">Concrete on</data>
+                  </value>
+                </condition>
+                <condition test="contains" flags="10">
+                  <category>
+                    <name internal="LcRevitData">Reference Level</name>
+                  </category>
+                  <property>
+                    <name internal="LcRevitPropertyElementName">Name</name>
+                  </property>
+                  <value>
+                    <data type="wstring">Level 4</data>
+                  </value>
+                </condition>
+              </conditions>
+              <locator>/</locator>
+            </findspec>
+          </selectionset>
+          <selectionset name="Struct-Floor-Concrete-L5" guid="7e91a290-aa2c-463a-87bb-25360f698eac">
+            <findspec mode="all" disjoint="0">
+              <conditions>
+                <condition test="contains" flags="10">
+                  <property>
+                    <name internal="LcOaSceneBaseUserName">Name</name>
+                  </property>
+                  <value>
+                    <data type="wstring">Concrete on</data>
+                  </value>
+                </condition>
+                <condition test="contains" flags="10">
+                  <category>
+                    <name internal="LcRevitData">Reference Level</name>
+                  </category>
+                  <property>
+                    <name internal="LcRevitPropertyElementName">Name</name>
+                  </property>
+                  <value>
+                    <data type="wstring">Level 5</data>
+                  </value>
+                </condition>
+              </conditions>
+              <locator>/</locator>
+            </findspec>
+          </selectionset>
+          <selectionset name="Struct-Floor-Concrete-L6" guid="e4fa612f-a753-4903-9d68-c1a229598a9d">
+            <findspec mode="all" disjoint="0">
+              <conditions>
+                <condition test="contains" flags="10">
+                  <property>
+                    <name internal="LcOaSceneBaseUserName">Name</name>
+                  </property>
+                  <value>
+                    <data type="wstring">Concrete on</data>
+                  </value>
+                </condition>
+                <condition test="contains" flags="10">
+                  <category>
+                    <name internal="LcRevitData">Reference Level</name>
+                  </category>
+                  <property>
+                    <name internal="LcRevitPropertyElementName">Name</name>
+                  </property>
+                  <value>
+                    <data type="wstring">Level 6</data>
+                  </value>
+                </condition>
+              </conditions>
+              <locator>/</locator>
+            </findspec>
+          </selectionset>
+          <selectionset name="Struct-Floor-Concrete-L7" guid="cfd20c95-8d4d-4d90-ba4d-9c2fd4206e3f">
+            <findspec mode="all" disjoint="0">
+              <conditions>
+                <condition test="contains" flags="10">
+                  <property>
+                    <name internal="LcOaSceneBaseUserName">Name</name>
+                  </property>
+                  <value>
+                    <data type="wstring">Concrete on</data>
+                  </value>
+                </condition>
+                <condition test="contains" flags="10">
+                  <category>
+                    <name internal="LcRevitData">Reference Level</name>
+                  </category>
+                  <property>
+                    <name internal="LcRevitPropertyElementName">Name</name>
+                  </property>
+                  <value>
+                    <data type="wstring">Level 7</data>
+                  </value>
+                </condition>
+              </conditions>
+              <locator>/</locator>
+            </findspec>
+          </selectionset>
+        </viewfolder>
+        <selectionset name="Struct-Floor-L1" guid="5ec8fd22-6f41-42be-a033-e666b0e1556a">
+          <findspec mode="all" disjoint="0">
+            <conditions>
+              <condition test="contains" flags="138">
+                <property>
+                  <name internal="LcOaSceneBaseUserName">Name</name>
+                </property>
+                <value>
+                  <data type="wstring">Floor*</data>
+                </value>
+              </condition>
+              <condition test="equals" flags="10">
+                <category>
+                  <name internal="Level">Level</name>
+                </category>
+                <property>
+                  <name internal="Name">Name</name>
+                </property>
+                <value>
+                  <data type="wstring">Level 1</data>
+                </value>
+              </condition>
+            </conditions>
+            <locator>/</locator>
+          </findspec>
+        </selectionset>
+        <selectionset name="Struct-Floor-L2" guid="0f2990c6-68ba-4894-841e-17b827168990">
+          <findspec mode="all" disjoint="0">
+            <conditions>
+              <condition test="contains" flags="10">
+                <property>
+                  <name internal="LcOaSceneBaseUserName">Name</name>
+                </property>
+                <value>
+                  <data type="wstring">Floor</data>
+                </value>
+              </condition>
+              <condition test="contains" flags="10">
+                <category>
+                  <name internal="Level">Level</name>
+                </category>
+                <property>
+                  <name internal="Name">Name</name>
+                </property>
+                <value>
+                  <data type="wstring">Level 2</data>
+                </value>
+              </condition>
+            </conditions>
+            <locator>/</locator>
+          </findspec>
+        </selectionset>
+        <selectionset name="Struct-Floor-L3" guid="356200e6-5696-4ba5-a920-b346b1589afd">
+          <findspec mode="all" disjoint="0">
+            <conditions>
+              <condition test="contains" flags="10">
+                <property>
+                  <name internal="LcOaSceneBaseUserName">Name</name>
+                </property>
+                <value>
+                  <data type="wstring">Floor</data>
+                </value>
+              </condition>
+              <condition test="contains" flags="10">
+                <category>
+                  <name internal="Level">Level</name>
+                </category>
+                <property>
+                  <name internal="Name">Name</name>
+                </property>
+                <value>
+                  <data type="wstring">Level 3</data>
+                </value>
+              </condition>
+            </conditions>
+            <locator>/</locator>
+          </findspec>
+        </selectionset>
+        <selectionset name="Struct-Floor-L4" guid="0aceaeba-638a-4c5b-a49d-472bd74728f6">
+          <findspec mode="all" disjoint="0">
+            <conditions>
+              <condition test="contains" flags="10">
+                <property>
+                  <name internal="LcOaSceneBaseUserName">Name</name>
+                </property>
+                <value>
+                  <data type="wstring">Floor</data>
+                </value>
+              </condition>
+              <condition test="contains" flags="10">
+                <category>
+                  <name internal="Level">Level</name>
+                </category>
+                <property>
+                  <name internal="Name">Name</name>
+                </property>
+                <value>
+                  <data type="wstring">Level 4</data>
+                </value>
+              </condition>
+            </conditions>
+            <locator>/</locator>
+          </findspec>
+        </selectionset>
+        <selectionset name="Struct-Floor-L5" guid="aae19aee-9fa3-4f92-a14e-862acf079472">
+          <findspec mode="all" disjoint="0">
+            <conditions>
+              <condition test="contains" flags="10">
+                <property>
+                  <name internal="LcOaSceneBaseUserName">Name</name>
+                </property>
+                <value>
+                  <data type="wstring">Floor</data>
+                </value>
+              </condition>
+              <condition test="contains" flags="10">
+                <category>
+                  <name internal="Level">Level</name>
+                </category>
+                <property>
+                  <name internal="Name">Name</name>
+                </property>
+                <value>
+                  <data type="wstring">Level 5</data>
+                </value>
+              </condition>
+            </conditions>
+            <locator>/</locator>
+          </findspec>
+        </selectionset>
+        <selectionset name="Struct-Floor-L6" guid="d46d2efc-3dfb-4cb9-81b8-23aa89510f2f">
+          <findspec mode="all" disjoint="0">
+            <conditions>
+              <condition test="contains" flags="10">
+                <property>
+                  <name internal="LcOaSceneBaseUserName">Name</name>
+                </property>
+                <value>
+                  <data type="wstring">Floor</data>
+                </value>
+              </condition>
+              <condition test="contains" flags="10">
+                <category>
+                  <name internal="Level">Level</name>
+                </category>
+                <property>
+                  <name internal="Name">Name</name>
+                </property>
+                <value>
+                  <data type="wstring">Level 6</data>
+                </value>
+              </condition>
+            </conditions>
+            <locator>/</locator>
+          </findspec>
+        </selectionset>
+        <selectionset name="Struct-Floor-L7" guid="68795bed-6354-4661-9e76-da530d590ab5">
+          <findspec mode="all" disjoint="0">
+            <conditions>
+              <condition test="contains" flags="10">
+                <property>
+                  <name internal="LcOaSceneBaseUserName">Name</name>
+                </property>
+                <value>
+                  <data type="wstring">Floor</data>
+                </value>
+              </condition>
+              <condition test="contains" flags="10">
+                <category>
+                  <name internal="Level">Level</name>
+                </category>
+                <property>
+                  <name internal="Name">Name</name>
+                </property>
+                <value>
+                  <data type="wstring">Level 7</data>
+                </value>
+              </condition>
+            </conditions>
+            <locator>/</locator>
+          </findspec>
+        </selectionset>
+      </viewfolder>
+      <viewfolder name="Dock Stairs" guid="b2032e2c-4e7e-44d1-a43b-408350fd81a7">
+        <selectionset name="Struct-Dock_StairSteps" guid="5ca09ffd-c69f-442b-b084-fc5fbeaeb286">
+          <findspec mode="all" disjoint="0">
+            <conditions>
+              <condition test="equals" flags="10">
+                <category>
+                  <name internal="LcRevitData">Base Level</name>
+                </category>
+                <property>
+                  <name internal="LcRevitPropertyElementName">Name</name>
+                </property>
+                <value>
+                  <data type="wstring">Level 1</data>
+                </value>
+              </condition>
+              <condition test="regex" flags="10">
+                <property>
+                  <name internal="LcOaSceneBaseUserName">Name</name>
+                </property>
+                <value>
+                  <data type="wstring">Stair</data>
+                </value>
+              </condition>
+            </conditions>
+            <locator>/</locator>
+          </findspec>
+        </selectionset>
+        <selectionset name="Struct-Dock_Railing" guid="bfa1f68c-7461-40c9-8a5a-dd65120c9358">
+          <findspec mode="all" disjoint="0">
+            <conditions>
+              <condition test="equals" flags="10">
+                <category>
+                  <name internal="LcRevitData">Base Level</name>
+                </category>
+                <property>
+                  <name internal="LcRevitPropertyElementName">Name</name>
+                </property>
+                <value>
+                  <data type="wstring">Level 1</data>
+                </value>
+              </condition>
+              <condition test="regex" flags="10">
+                <property>
+                  <name internal="LcOaSceneBaseUserName">Name</name>
+                </property>
+                <value>
+                  <data type="wstring">Railing</data>
+                </value>
+              </condition>
+            </conditions>
+            <locator>/</locator>
+          </findspec>
+        </selectionset>
+      </viewfolder>
+      <selectionset name="Category: Structural" guid="a0f425d7-00d8-4545-803c-dad7b847c0a8">
+        <findspec mode="all" disjoint="0">
+          <conditions>
+            <condition test="contains" flags="10">
+              <category>
+                <name internal="LcRevitData">Element</name>
+              </category>
+              <property>
+                <name internal="LcRevitPropertyElementCategory">Category</name>
+              </property>
+              <value>
+                <data type="wstring">Structural</data>
+              </value>
+            </condition>
+          </conditions>
+          <locator>/</locator>
+        </findspec>
+      </selectionset>
+      <selectionset name="Category: Floors" guid="935d4980-d797-414a-9890-bbdbd59d19e0">
+        <findspec mode="all" disjoint="0">
+          <conditions>
+            <condition test="equals" flags="10">
+              <category>
+                <name internal="LcRevitData">Element</name>
+              </category>
+              <property>
+                <name internal="LcRevitPropertyElementCategory">Category</name>
+              </property>
+              <value>
+                <data type="wstring">Floors</data>
+              </value>
+            </condition>
+            <condition test="contains" flags="10">
+              <property>
+                <name internal="LcOaNodeSourceFile">Source File</name>
+              </property>
+              <value>
+                <data type="wstring">Structural</data>
+              </value>
+            </condition>
+          </conditions>
+          <locator>/</locator>
+        </findspec>
+      </selectionset>
+    </viewfolder>
+  </selectionsets>
+</exchange>

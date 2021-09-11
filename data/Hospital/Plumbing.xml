@@ -1,0 +1,442 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<exchange xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://download.autodesk.com/us/navisworks/schemas/nw-exchange-8.0.xsd" units="ft">
+  <selectionsets>
+    <viewfolder name="Plumbing" guid="4a3ff10c-8d1a-48ad-b2ba-21e36bd8ee7d">
+      <selectionset name="Plumbing-All" guid="78bbc44b-1f3a-418a-bec9-cb97ff99f831">
+        <findspec mode="all" disjoint="0">
+          <conditions>
+            <condition test="contains" flags="10">
+              <property>
+                <name internal="LcOaNodeSourceFile">Source File</name>
+              </property>
+              <value>
+                <data type="wstring">Plumbing</data>
+              </value>
+            </condition>
+          </conditions>
+          <locator>/</locator>
+        </findspec>
+      </selectionset>
+      <selectionset name="Plumb-Domestic Hot Water" guid="deaacef6-cc8e-4ae1-9fa7-0fc77e7ae1c1">
+        <findspec mode="all" disjoint="0">
+          <conditions>
+            <condition test="equals" flags="26">
+              <category>
+                <name internal="LcRevitData">Element</name>
+              </category>
+              <property>
+                <name internal="revit_System Type">System Type</name>
+              </property>
+              <value>
+                <data type="name">
+                  <name internal="LcRevitElement">PipingSystemType &quot;Domestic Hot Water&quot;, #607135</name>
+                </data>
+              </value>
+            </condition>
+          </conditions>
+          <locator>/</locator>
+        </findspec>
+      </selectionset>
+      <selectionset name="Plumb-Domestic Cold Water" guid="131fb0f2-02f6-4d04-aed6-60be060cfcc6">
+        <findspec mode="all" disjoint="0">
+          <conditions>
+            <condition test="equals" flags="26">
+              <category>
+                <name internal="LcRevitData">Element</name>
+              </category>
+              <property>
+                <name internal="revit_System Type">System Type</name>
+              </property>
+              <value>
+                <data type="name">
+                  <name internal="LcRevitElement">PipingSystemType &quot;Domestic Cold Water&quot;, #607136</name>
+                </data>
+              </value>
+            </condition>
+          </conditions>
+          <locator>/</locator>
+        </findspec>
+      </selectionset>
+      <selectionset name="Plumb-Sanitary Water" guid="b37b71f4-5c0e-48aa-ad81-9182f7a084f2">
+        <findspec mode="all" disjoint="0">
+          <conditions>
+            <condition test="equals" flags="26">
+              <category>
+                <name internal="LcRevitData">Element</name>
+              </category>
+              <property>
+                <name internal="revit_System Type">System Type</name>
+              </property>
+              <value>
+                <data type="name">
+                  <name internal="LcRevitElement">PipingSystemType &quot;Sanitary&quot;, #607134</name>
+                </data>
+              </value>
+            </condition>
+          </conditions>
+          <locator>/</locator>
+        </findspec>
+      </selectionset>
+      <viewfolder name="Piping and Fittings" guid="74b2de34-5462-4910-b889-964537b7a700">
+        <selectionset name="Plumb-Pipe+Fittings-L1" guid="4506a407-02a9-4e42-9499-bdd537440a09">
+          <findspec mode="all" disjoint="0">
+            <conditions>
+              <condition test="contains" flags="10">
+                <property>
+                  <name internal="LcOaNodeSourceFile">Source File</name>
+                </property>
+                <value>
+                  <data type="wstring">Plumbing</data>
+                </value>
+              </condition>
+              <condition test="regex" flags="10">
+                <property>
+                  <name internal="LcOaSceneBaseUserName">Name</name>
+                </property>
+                <value>
+                  <data type="wstring">Pipe|Elbow|Tee|Wye|Bend|Trap|Reducer|Transition</data>
+                </value>
+              </condition>
+              <condition test="equals" flags="10">
+                <category>
+                  <name internal="LcRevitData">Base Level</name>
+                </category>
+                <property>
+                  <name internal="LcRevitPropertyElementName">Name</name>
+                </property>
+                <value>
+                  <data type="wstring">Level 1</data>
+                </value>
+              </condition>
+            </conditions>
+            <locator>/</locator>
+          </findspec>
+        </selectionset>
+        <selectionset name="Plumb-Pipe+Fittings-L2" guid="9c1af40e-4a7f-4e76-b7eb-e14d43827754">
+          <findspec mode="all" disjoint="0">
+            <conditions>
+              <condition test="contains" flags="10">
+                <property>
+                  <name internal="LcOaNodeSourceFile">Source File</name>
+                </property>
+                <value>
+                  <data type="wstring">Plumbing</data>
+                </value>
+              </condition>
+              <condition test="regex" flags="10">
+                <property>
+                  <name internal="LcOaSceneBaseUserName">Name</name>
+                </property>
+                <value>
+                  <data type="wstring">Pipe|Elbow|Tee|Wye|Bend|Trap|Reducer|Transition</data>
+                </value>
+              </condition>
+              <condition test="contains" flags="10">
+                <category>
+                  <name internal="LcRevitData">Base Level</name>
+                </category>
+                <property>
+                  <name internal="LcRevitPropertyElementName">Name</name>
+                </property>
+                <value>
+                  <data type="wstring">Level 2</data>
+                </value>
+              </condition>
+            </conditions>
+            <locator>/</locator>
+          </findspec>
+        </selectionset>
+        <selectionset name="Plumb-Pipe+Fittings-L3" guid="bdcce17b-f9dc-48c8-93d6-41b8cea462a7">
+          <findspec mode="all" disjoint="0">
+            <conditions>
+              <condition test="contains" flags="10">
+                <property>
+                  <name internal="LcOaNodeSourceFile">Source File</name>
+                </property>
+                <value>
+                  <data type="wstring">Plumbing</data>
+                </value>
+              </condition>
+              <condition test="regex" flags="10">
+                <property>
+                  <name internal="LcOaSceneBaseUserName">Name</name>
+                </property>
+                <value>
+                  <data type="wstring">Pipe|Elbow|Tee|Wye|Bend|Trap|Reducer|Transition</data>
+                </value>
+              </condition>
+              <condition test="contains" flags="10">
+                <category>
+                  <name internal="LcRevitData">Base Level</name>
+                </category>
+                <property>
+                  <name internal="LcRevitPropertyElementName">Name</name>
+                </property>
+                <value>
+                  <data type="wstring">Level 3</data>
+                </value>
+              </condition>
+            </conditions>
+            <locator>/</locator>
+          </findspec>
+        </selectionset>
+        <selectionset name="Plumb-Pipe+Fittings-L4" guid="f301b0f0-ab39-483a-b2e9-8e90144eb8af">
+          <findspec mode="all" disjoint="0">
+            <conditions>
+              <condition test="contains" flags="10">
+                <property>
+                  <name internal="LcOaNodeSourceFile">Source File</name>
+                </property>
+                <value>
+                  <data type="wstring">Plumbing</data>
+                </value>
+              </condition>
+              <condition test="regex" flags="10">
+                <property>
+                  <name internal="LcOaSceneBaseUserName">Name</name>
+                </property>
+                <value>
+                  <data type="wstring">Pipe|Elbow|Tee|Wye|Bend|Trap|Reducer|Transition</data>
+                </value>
+              </condition>
+              <condition test="contains" flags="10">
+                <category>
+                  <name internal="LcRevitData">Base Level</name>
+                </category>
+                <property>
+                  <name internal="LcRevitPropertyElementName">Name</name>
+                </property>
+                <value>
+                  <data type="wstring">Level 4</data>
+                </value>
+              </condition>
+            </conditions>
+            <locator>/</locator>
+          </findspec>
+        </selectionset>
+        <selectionset name="Plumb-Pipe+Fittings-L5" guid="61491db5-7e9b-4c83-b21d-fa521f661170">
+          <findspec mode="all" disjoint="0">
+            <conditions>
+              <condition test="contains" flags="10">
+                <property>
+                  <name internal="LcOaNodeSourceFile">Source File</name>
+                </property>
+                <value>
+                  <data type="wstring">Plumbing</data>
+                </value>
+              </condition>
+              <condition test="regex" flags="10">
+                <property>
+                  <name internal="LcOaSceneBaseUserName">Name</name>
+                </property>
+                <value>
+                  <data type="wstring">Pipe|Elbow|Tee|Wye|Bend|Trap|Reducer|Transition</data>
+                </value>
+              </condition>
+              <condition test="contains" flags="10">
+                <category>
+                  <name internal="LcRevitData">Base Level</name>
+                </category>
+                <property>
+                  <name internal="LcRevitPropertyElementName">Name</name>
+                </property>
+                <value>
+                  <data type="wstring">Level 5</data>
+                </value>
+              </condition>
+            </conditions>
+            <locator>/</locator>
+          </findspec>
+        </selectionset>
+      </viewfolder>
+      <viewfolder name="Fixtures" guid="d5064570-07c3-4cee-a022-46e9a35c423d">
+        <selectionset name="Plumb-All Fixtures" guid="b1765f43-a8bf-4861-81df-15e310b9dc5c">
+          <findspec mode="all" disjoint="0">
+            <conditions>
+              <condition test="regex" flags="10">
+                <property>
+                  <name internal="LcOaSceneBaseUserName">Name</name>
+                </property>
+                <value>
+                  <data type="wstring">Sink|Toilet|Urinal|Shower|Floor Drain</data>
+                </value>
+              </condition>
+            </conditions>
+            <locator>/</locator>
+          </findspec>
+        </selectionset>
+        <selectionset name="Plumb-Fixtures-L1" guid="49712698-b1ed-484d-9648-da3d539389ee">
+          <findspec mode="all" disjoint="0">
+            <conditions>
+              <condition test="contains" flags="10">
+                <property>
+                  <name internal="LcOaNodeSourceFile">Source File</name>
+                </property>
+                <value>
+                  <data type="wstring">Plumbing</data>
+                </value>
+              </condition>
+              <condition test="regex" flags="10">
+                <property>
+                  <name internal="LcOaSceneBaseUserName">Name</name>
+                </property>
+                <value>
+                  <data type="wstring">Sink|Toilet|Urinal|Shower|Floor Drain</data>
+                </value>
+              </condition>
+              <condition test="equals" flags="10">
+                <category>
+                  <name internal="LcRevitData">Base Level</name>
+                </category>
+                <property>
+                  <name internal="LcRevitPropertyElementName">Name</name>
+                </property>
+                <value>
+                  <data type="wstring">Level 1</data>
+                </value>
+              </condition>
+            </conditions>
+            <locator>/</locator>
+          </findspec>
+        </selectionset>
+        <selectionset name="Plumb-Fixtures-L2" guid="884dca8e-c08c-4a2d-bcfa-4f3133890c4a">
+          <findspec mode="all" disjoint="0">
+            <conditions>
+              <condition test="contains" flags="10">
+                <property>
+                  <name internal="LcOaNodeSourceFile">Source File</name>
+                </property>
+                <value>
+                  <data type="wstring">Plumbing</data>
+                </value>
+              </condition>
+              <condition test="regex" flags="10">
+                <property>
+                  <name internal="LcOaSceneBaseUserName">Name</name>
+                </property>
+                <value>
+                  <data type="wstring">Sink|Toilet|Urinal|Shower|Floor Drain</data>
+                </value>
+              </condition>
+              <condition test="equals" flags="10">
+                <category>
+                  <name internal="LcRevitData">Base Level</name>
+                </category>
+                <property>
+                  <name internal="LcRevitPropertyElementName">Name</name>
+                </property>
+                <value>
+                  <data type="wstring">Level 2</data>
+                </value>
+              </condition>
+            </conditions>
+            <locator>/</locator>
+          </findspec>
+        </selectionset>
+        <selectionset name="Plumb-Fixtures-L3" guid="5120bf3a-c734-4dd9-87e0-46c88e47f651">
+          <findspec mode="all" disjoint="0">
+            <conditions>
+              <condition test="contains" flags="10">
+                <property>
+                  <name internal="LcOaNodeSourceFile">Source File</name>
+                </property>
+                <value>
+                  <data type="wstring">Plumbing</data>
+                </value>
+              </condition>
+              <condition test="regex" flags="10">
+                <property>
+                  <name internal="LcOaSceneBaseUserName">Name</name>
+                </property>
+                <value>
+                  <data type="wstring">Sink|Toilet|Urinal|Shower|Floor Drain</data>
+                </value>
+              </condition>
+              <condition test="equals" flags="10">
+                <category>
+                  <name internal="LcRevitData">Base Level</name>
+                </category>
+                <property>
+                  <name internal="LcRevitPropertyElementName">Name</name>
+                </property>
+                <value>
+                  <data type="wstring">Level 3</data>
+                </value>
+              </condition>
+            </conditions>
+            <locator>/</locator>
+          </findspec>
+        </selectionset>
+        <selectionset name="Plumb-Fixtures-L4" guid="4cbf071d-edde-4199-805a-d69e69c814e9">
+          <findspec mode="all" disjoint="0">
+            <conditions>
+              <condition test="contains" flags="10">
+                <property>
+                  <name internal="LcOaNodeSourceFile">Source File</name>
+                </property>
+                <value>
+                  <data type="wstring">Plumbing</data>
+                </value>
+              </condition>
+              <condition test="regex" flags="10">
+                <property>
+                  <name internal="LcOaSceneBaseUserName">Name</name>
+                </property>
+                <value>
+                  <data type="wstring">Sink|Toilet|Urinal|Shower|Floor Drain</data>
+                </value>
+              </condition>
+              <condition test="equals" flags="10">
+                <category>
+                  <name internal="LcRevitData">Base Level</name>
+                </category>
+                <property>
+                  <name internal="LcRevitPropertyElementName">Name</name>
+                </property>
+                <value>
+                  <data type="wstring">Level 4</data>
+                </value>
+              </condition>
+            </conditions>
+            <locator>/</locator>
+          </findspec>
+        </selectionset>
+        <selectionset name="Plumb-Fixtures-L5" guid="dd9b8eb9-cce9-497d-8b9e-30573bd9bf96">
+          <findspec mode="all" disjoint="0">
+            <conditions>
+              <condition test="contains" flags="10">
+                <property>
+                  <name internal="LcOaNodeSourceFile">Source File</name>
+                </property>
+                <value>
+                  <data type="wstring">Plumbing</data>
+                </value>
+              </condition>
+              <condition test="regex" flags="10">
+                <property>
+                  <name internal="LcOaSceneBaseUserName">Name</name>
+                </property>
+                <value>
+                  <data type="wstring">Sink|Toilet|Urinal|Shower|Floor Drain</data>
+                </value>
+              </condition>
+              <condition test="equals" flags="10">
+                <category>
+                  <name internal="LcRevitData">Base Level</name>
+                </category>
+                <property>
+                  <name internal="LcRevitPropertyElementName">Name</name>
+                </property>
+                <value>
+                  <data type="wstring">Level 5</data>
+                </value>
+              </condition>
+            </conditions>
+            <locator>/</locator>
+          </findspec>
+        </selectionset>
+      </viewfolder>
+    </viewfolder>
+  </selectionsets>
+</exchange>

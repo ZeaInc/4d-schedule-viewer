@@ -1,0 +1,287 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<exchange xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://download.autodesk.com/us/navisworks/schemas/nw-exchange-8.0.xsd" units="ft">
+  <selectionsets>
+    <viewfolder name="Site" guid="a779c39f-0c89-4e86-80eb-b2a6dcab4f62">
+      <selectionset name="Site-All" guid="b64e0ee2-6643-43c1-97b9-68afdfa241f7">
+        <findspec mode="all" disjoint="0">
+          <conditions>
+            <condition test="contains" flags="10">
+              <property>
+                <name internal="LcOaNodeSourceFile">Source File</name>
+              </property>
+              <value>
+                <data type="wstring">Site Logistics</data>
+              </value>
+            </condition>
+          </conditions>
+          <locator>/</locator>
+        </findspec>
+      </selectionset>
+      <selectionset name="Scaffolding" guid="b28a46ec-b10d-492a-a0c7-b797dfa8757d">
+        <findspec mode="all" disjoint="0">
+          <conditions>
+            <!-- <condition test="contains" flags="10">
+              <property>
+                <name internal="LcOaNodeSourceFile">Source File</name>
+              </property>
+              <value>
+                <data type="wstring">Site Logistics</data>
+              </value>
+            </condition> -->
+            <condition test="contains" flags="10">
+              <property>
+                <name internal="LcOaSceneBaseUserName">Name</name>
+              </property>
+              <value>
+                <data type="wstring">Scaffolding</data>
+              </value>
+            </condition>
+          </conditions>
+        </findspec>
+      </selectionset>
+      <selectionset name="Concrete_Truck" guid="b28a46ec-b10d-492a-a0c7-b797dfa8757d">
+        <findspec mode="all" disjoint="0">
+          <conditions>
+            <!-- <condition test="contains" flags="10">
+              <property>
+                <name internal="LcOaNodeSourceFile">Source File</name>
+              </property>
+              <value>
+                <data type="wstring">Site Logistics</data>
+              </value>
+            </condition> -->
+            <condition test="contains" flags="10">
+              <property>
+                <name internal="LcOaSceneBaseUserName">Name</name>
+              </property>
+              <value>
+                <data type="wstring">Concrete Truck</data>
+              </value>
+            </condition>
+          </conditions>
+        </findspec>
+      </selectionset>
+      <selectionset name="Concrete Boom Pump Truck" guid="b28a46ec-b10d-492a-a0c7-b797dfa8757d">
+        <findspec mode="all" disjoint="0">
+          <conditions>
+            <!-- <condition test="contains" flags="10">
+              <property>
+                <name internal="LcOaNodeSourceFile">Source File</name>
+              </property>
+              <value>
+                <data type="wstring">Site Logistics</data>
+              </value>
+            </condition> -->
+            <condition test="contains" flags="10">
+              <property>
+                <name internal="LcOaSceneBaseUserName">Name</name>
+              </property>
+              <value>
+                <data type="wstring">Concrete Boom Pump Truck</data>
+              </value>
+            </condition>
+          </conditions>
+        </findspec>
+      </selectionset>
+      <selectionset name="Construction_Crane" guid="b28a46ec-b10d-492a-a0c7-b797dfa8757d">
+        <findspec mode="all" disjoint="0">
+          <conditions>
+            <!-- <condition test="contains" flags="10">
+              <property>
+                <name internal="LcOaNodeSourceFile">Source File</name>
+              </property>
+              <value>
+                <data type="wstring">Site Logistics</data>
+              </value>
+            </condition> -->
+            <condition test="contains" flags="10">
+              <property>
+                <name internal="LcOaSceneBaseUserName">Name</name>
+              </property>
+              <value>
+                <data type="wstring">Construction Crane</data>
+              </value>
+            </condition>
+          </conditions>
+        </findspec>
+      </selectionset>
+      <selectionset name="Pick-Up_Truck" guid="b28a46ec-b10d-492a-a0c7-b797dfa8757d">
+        <findspec mode="all" disjoint="0">
+          <conditions>
+            <!-- <condition test="contains" flags="10">
+              <property>
+                <name internal="LcOaNodeSourceFile">Source File</name>
+              </property>
+              <value>
+                <data type="wstring">Site Logistics</data>
+              </value>
+            </condition> -->
+            <condition test="contains" flags="10">
+              <property>
+                <name internal="LcOaSceneBaseUserName">Name</name>
+              </property>
+              <value>
+                <data type="wstring">Pick-Up Truck</data>
+              </value>
+            </condition>
+          </conditions>
+        </findspec>
+      </selectionset>
+      <selectionset name="Waste_Container" guid="b28a46ec-b10d-492a-a0c7-b797dfa8757d">
+        <findspec mode="all" disjoint="0">
+          <conditions>
+            <!-- <condition test="contains" flags="10">
+              <property>
+                <name internal="LcOaNodeSourceFile">Source File</name>
+              </property>
+              <value>
+                <data type="wstring">Site Logistics</data>
+              </value>
+            </condition> -->
+            <condition test="contains" flags="10">
+              <property>
+                <name internal="LcOaSceneBaseUserName">Name</name>
+              </property>
+              <value>
+                <data type="wstring">Waste Container</data>
+              </value>
+            </condition>
+          </conditions>
+        </findspec>
+      </selectionset>
+      <selectionset name="Porta-John" guid="b28a46ec-b10d-492a-a0c7-b797dfa8757d">
+        <findspec mode="all" disjoint="0">
+          <conditions>
+            <!-- <condition test="contains" flags="10">
+              <property>
+                <name internal="LcOaNodeSourceFile">Source File</name>
+              </property>
+              <value>
+                <data type="wstring">Site Logistics</data>
+              </value>
+            </condition> -->
+            <condition test="contains" flags="10">
+              <property>
+                <name internal="LcOaSceneBaseUserName">Name</name>
+              </property>
+              <value>
+                <data type="wstring">Porta-John</data>
+              </value>
+            </condition>
+          </conditions>
+        </findspec>
+      </selectionset>
+      <selectionset name="Lay-Down Pad" guid="b28a46ec-b10d-492a-a0c7-b797dfa8757d">
+        <findspec mode="all" disjoint="0">
+          <conditions>
+            <!-- <condition test="contains" flags="10">
+              <property>
+                <name internal="LcOaNodeSourceFile">Source File</name>
+              </property>
+              <value>
+                <data type="wstring">Logistics</data>
+              </value>
+            </condition> -->
+            <condition test="contains" flags="10">
+              <property>
+                <name internal="LcOaSceneBaseUserName">Name</name>
+              </property>
+              <value>
+                <data type="wstring">Lay-Down Pad</data>
+              </value>
+            </condition>
+          </conditions>
+        </findspec>
+      </selectionset>
+      <selectionset name="Storage Container" guid="b28a46ec-b10d-492a-a0c7-b797dfa8757d">
+        <findspec mode="all" disjoint="0">
+          <conditions>
+            <!-- <condition test="contains" flags="10">
+              <property>
+                <name internal="LcOaNodeSourceFile">Source File</name>
+              </property>
+              <value>
+                <data type="wstring">Logistics</data>
+              </value>
+            </condition> -->
+            <condition test="contains" flags="10">
+              <property>
+                <name internal="LcOaSceneBaseUserName">Name</name>
+              </property>
+              <value>
+                <data type="wstring">Storage Container</data>
+              </value>
+            </condition>
+          </conditions>
+        </findspec>
+      </selectionset>
+      <selectionset name="Construction Trailer" guid="b28a46ec-b10d-492a-a0c7-b797dfa8757d">
+        <findspec mode="all" disjoint="0">
+          <conditions>
+            <!-- <condition test="contains" flags="10">
+              <property>
+                <name internal="LcOaNodeSourceFile">Source File</name>
+              </property>
+              <value>
+                <data type="wstring">Logistics</data>
+              </value>
+            </condition> -->
+            <condition test="contains" flags="10">
+              <property>
+                <name internal="LcOaSceneBaseUserName">Name</name>
+              </property>
+              <value>
+                <data type="wstring">Construction Trailer</data>
+              </value>
+            </condition>
+          </conditions>
+        </findspec>
+      </selectionset>
+      <selectionset name="Fence_Chainlink_Reed" guid="b28a46ec-b10d-492a-a0c7-b797dfa8757d">
+        <findspec mode="all" disjoint="0">
+          <conditions>
+            <!-- <condition test="contains" flags="10">
+              <property>
+                <name internal="LcOaNodeSourceFile">Source File</name>
+              </property>
+              <value>
+                <data type="wstring">Logistics</data>
+              </value>
+            </condition> -->
+            <condition test="contains" flags="10">
+              <property>
+                <name internal="LcOaSceneBaseUserName">Name</name>
+              </property>
+              <value>
+                <data type="wstring">Fence_Chainlink_Reed</data>
+              </value>
+            </condition>
+          </conditions>
+        </findspec>
+      </selectionset>
+      <selectionset name="Tool Trailer" guid="b28a46ec-b10d-492a-a0c7-b797dfa8757d">
+        <findspec mode="all" disjoint="0">
+          <conditions>
+            <!-- <condition test="contains" flags="10">
+              <property>
+                <name internal="LcOaNodeSourceFile">Source File</name>
+              </property>
+              <value>
+                <data type="wstring">Logistics</data>
+              </value>
+            </condition> -->
+            <condition test="contains" flags="10">
+              <property>
+                <name internal="LcOaSceneBaseUserName">Name</name>
+              </property>
+              <value>
+                <data type="wstring">Tool Trailer</data>
+              </value>
+            </condition>
+          </conditions>
+        </findspec>
+      </selectionset>
+    </viewfolder>
+  </selectionsets>
+</exchange>
