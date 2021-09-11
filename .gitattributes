@@ -1,0 +1,9 @@
+*.vlh binary
+*.vla binary
+*.vlenv binary
+*.wasm binary
+*.zenv binary
+*.zcad binary
+*.zgeoms binary
+*.zmesh binary
+*.webp binary
