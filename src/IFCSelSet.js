@@ -1,4 +1,12 @@
 const { StringParameter, TreeItemParameter, SelectionSet } = zeaEngine;
+const { CADPart } = zeaCad;
+import QueryParameter from "./QueryParameter.js";
+// import {
+//   SelectionSet,
+//   SelectionRule,
+//   SelectionSetsRoot,
+//   SelectionSetFolder,
+// } from "./SelectionSet.js";
 
 import {
   QUERY_TYPES,
@@ -6,6 +14,23 @@ import {
   QUERY_LOGIC,
 } from "./QueryParameter.js";
 import { QuerySet } from "./QuerySetParameter.js";
+
+// Guessed based on the values of "Struct-Fndn-Concrete Slabs_Walls_Columns"
+// Structural Foundations == NEGATE
+// Concrete-Rectangular-Column == OR
+const NAVISWORKS_FLAGS = {
+  // IGNORE_STRING_VALUE_CASE: 1<<0,
+  // IGNORE_STRING_DIACRITICS: 1<<1,
+  // IGNORE_VALUE_CHARACTER_WIDTHS: 1<<2,
+  // IGNORE_CATEGORY_USER_NAME: 1<<3,
+  // IGNORE_CATEGORY_INTERNAL_NAME: 1<<4,
+  // IGNORE_PROPERTY_USER_NAME: 1<<5,
+  // IGNORE_PROPERTY_INTERNAL_NAME: 1<<6,
+
+  NEGATE_CONDITION: 32,
+  OR_CONDITION: 64,
+  REGEX_CONDITION: 128,
+};
 
 /** Class representing an advanced group in the scene tree.
  * @extends Group
@@ -67,8 +92,14 @@ export default class IFCSelSet extends SelectionSet {
 
         const negate = query.getNegate();
         const applyTest = (res, item) => {
-          if (negate && !res) set.push(item);
-          else if (!negate && res) set.push(item);
+          if (negate && !res) {
+            set.push(item);
+            return true;
+          } else if (!negate && res) {
+            set.push(item);
+            return true;
+          }
+          return false;
         };
         // If we hit an 'OR' query, we want the prevset
         // to the set generated before the previous query.
@@ -96,7 +127,12 @@ export default class IFCSelSet extends SelectionSet {
                 const searchRootPath = searchRoot.getPath();
                 searchRoot.traverse((item) => {
                   const itemPath = item.getPath().slice(searchRootPath.length);
-                  applyTest(regex.test(String(itemPath)), item);
+                  if (
+                    applyTest(regex.test(String(itemPath)), item) ||
+                    item instanceof CADPart
+                  ) {
+                    return false;
+                  }
                 }, false);
               }
               break;
@@ -104,7 +140,12 @@ export default class IFCSelSet extends SelectionSet {
             case QUERY_TYPES.NAME: {
               const regex = query.getRegex();
               searchRoot.traverse((item) => {
-                applyTest(regex.test(item.getName()), item);
+                if (
+                  applyTest(regex.test(item.getName()), item) ||
+                  item instanceof CADPart
+                ) {
+                  return false;
+                }
               }, false);
               break;
             }
@@ -120,7 +161,9 @@ export default class IFCSelSet extends SelectionSet {
                   )
                     res = true;
                 }
-                applyTest(res, item);
+                if (applyTest(res, item) || item instanceof CADPart) {
+                  return false;
+                }
               }, false);
               break;
             }
@@ -129,14 +172,28 @@ export default class IFCSelSet extends SelectionSet {
               const searchRootPath = searchRoot.getPath();
               searchRoot.traverse((item) => {
                 const itemPath = item.getPath().slice(searchRootPath.length);
-                applyTest(itemPath.length > 4 && regex.test(itemPath[3]), item);
+
+                if (
+                  applyTest(
+                    itemPath.length > 4 && regex.test(itemPath[3]),
+                    item
+                  ) ||
+                  item instanceof CADPart
+                ) {
+                  return false;
+                }
               }, false);
               break;
             }
             case QUERY_TYPES.LAYER: {
               const value = query.getValue();
               searchRoot.traverse((item) => {
-                applyTest(item.getLayers().indexOf(value) != -1, item);
+                if (
+                  applyTest(item.getLayers().indexOf(value) != -1, item) ||
+                  item instanceof CADPart
+                ) {
+                  return false;
+                }
               }, false);
               break;
             }
@@ -148,7 +205,9 @@ export default class IFCSelSet extends SelectionSet {
                   const material = item.getParameter("material").getValue();
                   if (regex.test(material.getName())) res = true;
                 }
-                applyTest(res, item);
+                if (applyTest(res, item) || item instanceof CADPart) {
+                  return false;
+                }
               }, false);
               break;
             }
@@ -264,25 +323,218 @@ export default class IFCSelSet extends SelectionSet {
   // ////////////////////////////////////////
   // Persistence
 
-  /**
-   * The toJSON method encodes this type as a json object for persistences.
-   * @param {object} context - The context value.
-   * @param {number} flags - The flags value.
-   * @return {object} - Returns the json object.
-   */
-  toJSON(context, flags) {
-    const j = super.toJSON(context, flags);
-    return j;
-  }
+  loadXML(xmlNode, assets, searchRoot) {
+    if (searchRoot) {
+      // TODO: EAch group should inherit off its parent.
+      this.getParameter("SearchRoot").setValue(searchRoot);
+    }
 
-  /**
-   * The fromJSON method decodes a json object for this type.
-   * @param {object} j - The json object this item must decode.
-   * @param {object} context - The context value.
-   * @param {number} flags - The flags value.
-   */
-  fromJSON(j, context, flags) {
-    super.fromJSON(j, context, flags);
+    const findSpec = xmlNode.children[0];
+    const mode = findSpec.getAttributeNode("mode").value;
+    if (mode == "all") {
+      // selectionSet.setRuleCombineMode(SelectionSet.RULES_COMBINE_MODE.AND);
+    } else if (mode == "some") {
+      // selectionSet.setRuleCombineMode(SelectionSet.RULES_COMBINE_MODE.OR);
+    }
+
+    const conditions = findSpec.children[0];
+    for (let i = 0; i < conditions.children.length; i++) {
+      const condition = conditions.children[i];
+      // const rule = new SelectionRule();
+
+      const query = new QueryParameter();
+      if (i == 0) {
+        query.setLocicalOperator(QueryParameter.QUERY_LOGIC.NEWSET);
+      }
+      // query.setMatchType(QueryParameter.QUERY_MATCH_TYPE.REGEX)
+
+      if (condition.getAttributeNode("test").value == "equals") {
+        query.setMatchType(QueryParameter.QUERY_MATCH_TYPE.EXACT);
+      } else if (condition.getAttributeNode("test").value == "contains") {
+        query.setMatchType(QueryParameter.QUERY_MATCH_TYPE.REGEX);
+      } else if (condition.getAttributeNode("test").value == "not_equals") {
+        query.setNegate(true);
+      }
+
+      ///////////////////
+      // Rule Type
+      const propElement = condition.getElementsByTagName("property");
+      const propType =
+        propElement[0].children[0].getAttributeNode("internal").value;
+      // const propType = propElement[0].children[0].textContent;
+      const propValue = propElement[0].children[0].textContent;
+      const getConditionValue = () => {
+        const valueElement = condition.getElementsByTagName("value");
+        return valueElement[0].children[0].textContent;
+      };
+
+      if (propType == "LcOaNodeSourceFile") {
+        // rule.setRuleType(SelectionSet.RULES_TYPE.SOURCEFILE);
+        // console.log(propType);
+        const value = getConditionValue();
+        if (value in assets) {
+          searchRoot = assets[value];
+          this.getParameter("SearchRoot").setValue(searchRoot);
+        } else {
+          console.warn(
+            "File not found:",
+            value,
+            " Amonst:",
+            Object.keys(assets)
+          );
+        }
+        //
+        // File is implicit inm the tree it is attached to.
+        continue;
+      } else if (propType == "LcOaSceneBaseUserName") {
+        // rule.setRuleType(SelectionSet.RULES_TYPE.NAME);
+        const value = getConditionValue();
+        // console.log(propType, ":", value);
+
+        query.setQueryType(QueryParameter.QUERY_TYPES.NAME);
+        query.setValue(value);
+      } else if (propType == "LcOaNodeLayer") {
+        // rule.setRuleType(SelectionSet.RULES_TYPE.LAYER);
+        const value = getConditionValue();
+        // console.log(propType, ":", value);
+
+        query.setQueryType(QueryParameter.QUERY_TYPES.LAYER);
+        query.setValue(value);
+      } else if (propType == "LcRevitPropertyElementCategory") {
+        // rule.setRuleType(SelectionSet.RULES_TYPE.CATEGORY);
+        // console.log(propType)
+        const value = getConditionValue();
+        // console.log(propType, ":", value);
+
+        query.setQueryType(QueryParameter.QUERY_TYPES.PROPERTY);
+        query.setPropertyName("Category");
+        query.setValue(value);
+      } else if (propType == "LcOaSceneBaseClassUserName") {
+        // rule.setRuleType(SelectionSet.RULES_TYPE.TYPE);
+        const value = getConditionValue();
+        // console.log(propType, ":", value);
+      } else if (propType == "LcOaNodeMaterial") {
+        // rule.setRuleType(SelectionSet.RULES_TYPE.MATERIAL);
+
+        const value = getConditionValue();
+        // console.log(propType, ":", value);
+        query.setQueryType(QueryParameter.QUERY_TYPES.MATERIAL);
+        query.setValue(value);
+      } else if (propType == "LcRevitPropertyElementName") {
+        const categoryElement = condition.getElementsByTagName("category");
+        const categoryValue = categoryElement[0].children[0].textContent;
+
+        const value = getConditionValue();
+        // console.log(propType, ":", value);
+        if (categoryValue == "Reference Level") {
+          // rule.setRuleType(SelectionSet.RULES_TYPE.LEVEL);
+          query.setQueryType(QueryParameter.QUERY_TYPES.LEVEL);
+          query.setValue(value);
+        } else if (categoryValue == "Base Level") {
+          // rule.setRuleType(SelectionSet.RULES_TYPE.LEVEL);
+          query.setQueryType(QueryParameter.QUERY_TYPES.LEVEL);
+          query.setValue(value);
+        } else if (propValue == "Name") {
+          // console.warn("Check me in Navisworks", name)
+          // rule.setRuleType(SelectionSet.RULES_TYPE.NAME);
+          query.setQueryType(QueryParameter.QUERY_TYPES.NAME);
+          query.setValue(value);
+        } else {
+          console.log("support me", xmlNode);
+          throw "stop";
+        }
+      } else if (propType == "revit_System Type") {
+        const value = getConditionValue();
+        // console.log(propType, ":", value);
+        // console.log("Check me in Navisworks", name)
+        // rule.setRuleType(SelectionSet.RULES_TYPE.TYPE);
+      } else if (propType == "revit_OmniClass Title") {
+        const value = getConditionValue();
+        // console.log(propType, ":", value);
+        // console.log("Check me in Navisworks", name)
+        // rule.setRuleType(SelectionSet.RULES_TYPE.TYPE);
+      } else if (propType == "revit_System Classification") {
+        const value = getConditionValue();
+        // console.log(propType, ":", value);
+        // console.log("Check me in Navisworks", name)
+        // rule.setRuleType(SelectionSet.RULES_TYPE.TYPE);
+      } else {
+        const categoryElement = condition.getElementsByTagName("category");
+        const categoryValue = categoryElement[0].children[0].textContent;
+        if (categoryValue == "Level") {
+          // rule.setRuleType(SelectionSet.RULES_TYPE.LEVEL);
+          const value = getConditionValue();
+          query.setQueryType(QueryParameter.QUERY_TYPES.LEVEL);
+          query.setValue(value);
+        } else {
+          console.log("support me", xmlNode);
+          throw "stop";
+        }
+      }
+      // else if(propType == "LcRevitData") {
+      //   // <name internal="LcRevitData">Base Level</name>
+      //   // <name internal="LcRevitData">Reference Level</name>
+      //   // <name internal="LcRevitData">Element</name>
+      //   // <name internal="LcRevitData">Rebar Cover</name><name internal="LcRevitPropertyElementName">Name</name><data type="wstring">Interior (slabs, walls, joists) - 10M to 36M</data>
+
+      //   // const propertyinternal = propElement[0].children[0].textContent;
+      //   // if(propertyinternal == "Base Level" || propertyinternal == "Reference Level") {
+      //   //   // rule.setRuleType(SelectionSet.RULES_TYPE.LEVEL);
+      //   //   const value = getConditionValue();
+      //   //   query.setQueryType(QueryParameter.QUERY_TYPES.LEVEL)
+      //   //   query.setValue(value)
+      //   // }
+      //   // propElement
+      //   // rule.setRuleType(SelectionSet.RULES_TYPE.PROPERTY);
+      //   // rule.setPropName(propertyName);
+      // }
+
+      // const conditionValue = condition.getElementsByTagName('value')[0].children[0].textContent;
+      // rule.setMatchValue(conditionValue);
+
+      // ///////////////////
+      // // Match Type
+      // const test = condition.getAttributeNode("test").value;
+      // if (test == "equals") {
+      //   rule.setMatchType(SelectionSet.MATCH_TYPE.EXACT);
+      // } else if (test == "not_equals") {
+      //   rule.setMatchType(SelectionSet.MATCH_TYPE.EXACT);
+      //   rule.setMatchFlag(SelectionSet.MATCH_FLAGS.NEGATE_CONDITION);
+      // } else if (test == "contains") {
+      //   rule.setMatchType(SelectionSet.MATCH_TYPE.CONTAINS);
+      // } else if (test == "regex") {
+      //   rule.setMatchType(SelectionSet.MATCH_TYPE.REGEX);
+      // }
+
+      ///////////////////
+      // Flags
+      const flags = condition.getAttributeNode("flags").value;
+      if (flags & NAVISWORKS_FLAGS.OR_CONDITION) {
+        // rule.setMatchFlag(SelectionSet.MATCH_FLAGS.OR_CONDITION);
+        query.setLocicalOperator(QueryParameter.QUERY_LOGIC.OR);
+      }
+      if (flags & NAVISWORKS_FLAGS.NEGATE_CONDITION) {
+        // rule.setMatchFlag(SelectionSet.MATCH_FLAGS.NEGATE_CONDITION);
+        query.setNegate(true);
+      }
+
+      if (flags & NAVISWORKS_FLAGS.REGEX_CONDITION) {
+        // rule.setMatchType(SelectionSet.MATCH_TYPE.REGEX);
+      }
+
+      // if (name == "Struct-Framing-L2") {
+      //   console.log(rule.toString())
+      // }
+      //
+      //selectionSet.addRule(rule, false);
+
+      this.getParameter("Queries").addItem(query, false);
+    }
+
+    // if (!this.getParameter("SearchRoot").getValue())
+    //   throw "File not bound.";
+    if (searchRoot) this.resolveQueries();
+    return searchRoot;
   }
 
   _setBoundingBoxDirty() {

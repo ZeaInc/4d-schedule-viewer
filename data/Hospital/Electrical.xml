@@ -409,12 +409,12 @@
                 <data type="wstring">Electrical</data>
               </value>
             </condition>
-            <condition test="regex" flags="10">
+            <condition test="contains" flags="10">
               <property>
                 <name internal="LcOaSceneBaseUserName">Name</name>
               </property>
               <value>
-                <data type="wstring">Lighting Fixture|Exit Sign|Pendant Light</data>
+                <data type="wstring">Lighting Fixture|Exit Sign|Pendant Light|Plain Recessed Lighting Fixture</data>
               </value>
             </condition>
           </conditions>

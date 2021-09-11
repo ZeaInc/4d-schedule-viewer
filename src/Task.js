@@ -84,7 +84,7 @@ export default class Task extends EventEmitter {
   loadMSProjectXLSX(row, sceneRoot) {
     this.id = row["Display ID"];
     this.name = row["Task Name"];
-    console.log("Task:", this.name);
+    // console.log("Task:", this.name);
     const taskType = row["Task Type"];
     if (taskType == "Temporary" || taskType == "Equipment")
       this.taskType = TASK_TYPES.Equipment;
@@ -97,6 +97,7 @@ export default class Task extends EventEmitter {
         try {
           this.group = sceneRoot.resolvePath(attachedTo.split("->"));
           if (this.group) {
+            console.log("Task bound to SelectionSet :", attachedTo);
             if (this.taskType == TASK_TYPES.Construction) {
               this.group
                 .getParameter("HighlightColor")
@@ -111,11 +112,7 @@ export default class Task extends EventEmitter {
             console.log(this.name, " Group not found:", attachedTo);
           }
         } catch (e) {
-          console.warn(
-            "Unable to resolve Task to SelectionSet :",
-            attachedTo,
-            e
-          );
+          // console.warn("Unable to resolve Task to SelectionSet :", attachedTo);
         }
       }
     }
@@ -182,6 +179,7 @@ export default class Task extends EventEmitter {
     if (currentDate < this.start) {
       if (this.state != 0) {
         if (this.group) {
+          console.log("Deactivate Before", this.name);
           if (
             this.state == STATE_TYPES.DURING &&
             this.taskType == TASK_TYPES.Construction
@@ -201,7 +199,7 @@ export default class Task extends EventEmitter {
     } else if (currentDate > this.end) {
       if (this.state != STATE_TYPES.AFTER) {
         if (this.group) {
-          // console.log(this.name, "Deactivate After")
+          console.log("Deactivate After", this.name);
 
           if (this.taskType == TASK_TYPES.Construction) {
             if (this.state == STATE_TYPES.BEFORE) this.group.setVisible(true);
@@ -223,7 +221,7 @@ export default class Task extends EventEmitter {
     } else {
       if (this.state != STATE_TYPES.DURING) {
         if (this.group) {
-          // console.log(this.name, "Activate")
+          console.log("Activate", this.name);
 
           if (this.taskType == TASK_TYPES.Construction) {
             if (this.state == STATE_TYPES.BEFORE) {
