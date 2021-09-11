@@ -1,0 +1,117 @@
+body {
+  height: 100vh;
+  overflow: hidden;
+  margin: 0em;
+  background-color: #2d2d2d;
+}
+.layout {
+  grid-template-areas:
+    "header"
+    "main";
+  grid-template-rows: 50px 1fr;
+}
+
+header {
+  grid-area: header;
+  overflow: hidden;
+}
+main {
+  grid-area: main;
+  position: relative;
+}
+#logo {
+  height: 30px;
+}
+
+.splitter {
+  width: 100%;
+  height: 100%;
+  display: flex;
+}
+.separator {
+  background-color: #aaa;
+  /* background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='10' height='30'><path d='M2 0 v30 M5 0 v30 M8 0 v30' fill='none' stroke='black'/></svg>"); */
+  background-repeat: no-repeat;
+  background-position: center;
+
+  /* Prevent the browser's built-in drag from interfering */
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+#separatorV {
+  cursor: col-resize;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='10' height='30'><path d='M2 0 v30 M5 0 v30 M8 0 v30' fill='none' stroke='black'/></svg>");
+  width: 10px;
+  height: 100%;
+}
+#separatorH {
+  cursor: row-resize;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='30' height='10'><path d='M0 2 h30 M0 5 h30 M0 8 h30' fill='none' stroke='black'/></svg>");
+  height: 10px;
+  width: 100%;
+}
+
+#leftPanel {
+  width: 20%;
+  height: 100%;
+  min-width: 10px;
+}
+#mainPanel {
+  position: relative;
+  width: 80%;
+  height: 100%;
+  min-width: 10px;
+  background-color: #eeeeee;
+}
+#canvas-holder {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+#canvas {
+  touch-action: none;
+}
+
+#topPanel {
+  width: 100%;
+  height: 60%;
+}
+#bottomPanel {
+  width: 100%;
+  height: 40%;
+  min-height: 10px;
+}
+
+.progress-display {
+  position: absolute;
+  left: 0px;
+  bottom: 0px;
+  width: 100%;
+  height: 5px;
+}
+.hidden {
+  visibility: hidden;
+}
+.xr-button {
+  position: absolute;
+  right: 10px;
+  bottom: 10px;
+
+  font-family: "arial";
+  background-color: #f9ce03; /* Green */
+  border: none;
+  color: black;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  user-select: none;
+}
+.button:hover {
+  background-color: #78b87a; /* Green */
+}
+.button:focus {
+  background-color: #78b87a;
+}

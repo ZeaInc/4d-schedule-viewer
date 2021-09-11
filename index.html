@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Zea CAD Viewer</title>
+    <link
+      rel="shortcut icon"
+      type="image/png"
+      href="./data/favicon-32x32.png"
+    />
+    <meta charset="UTF-8" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.9/tailwind.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="./src/styles.css"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/@zeainc/zea-engine@3/dist/index.umd.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@zeainc/zea-engine@3/dist/plugins.umd.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@zeainc/zea-cad@3/dist/index.umd.js"></script>
+    <script src="./src/zea-fps-display.js" type="module"></script>
+    <script src="./src/scene-tree-view.js" type="module"></script>
+  </head>
+  <body class="overflow-hidden">
+    <div class="layout grid h-screen">
+      <header class="border flex justify-left items-center m-2 border-none">
+        <img src="./data/logo-zea.svg" id="logo"></img>
+      </header>
+      <main class="splitter_">
+        <div id="topPanel">
+          <div class="splitter">
+            <div id="leftPanel">
+              <scene-tree-view
+                id="tree"
+                class="max-w-full max-h-full select-none"
+              ></scene-tree-view>
+            </div>
+            <div class="separator" id="separatorV"></div>
+            <div id="mainPanel">
+              <div id="canvas-holder">
+                <canvas id="canvas"> </canvas>
+              </div>
+              <div class="xr-button hidden" id="xr-button"></div>
+              <zea-fps-display id="fps"></zea-fps-display>
+              <progress class="progress-display" id="progress" value="0" max="100">
+                0%
+              </progress>
+            </div>
+          </div>
+        </div>
+        <div class="separator" id="separatorH"></div>
+        <div id="bottomPanel">
+        </div>
+      </main>
+    </div>
+    <script type="module">
+      import dragElement from './src/panels.js'
+      const separatorV = document.getElementById("separatorV");
+      const leftPanel = document.getElementById("leftPanel");
+      const mainPanel = document.getElementById("mainPanel");
+      dragElement(separatorV, leftPanel, mainPanel, "H");
+
+      const separatorH = document.getElementById("separatorH");
+      const topPanel = document.getElementById("topPanel");
+      const bottomPanel = document.getElementById("bottomPanel");
+      dragElement(separatorH, topPanel, bottomPanel, "V");
+    </script>
+
+    <script type="module">
+      const {
+        Color,
+        Vec3,
+        EulerAngles,
+        Xfo,
+        ObjAsset,
+        Scene,
+        GLRenderer,
+        EnvMap,
+        resourceLoader,
+        GeomItem,
+        MeshProxy,
+        LinesProxy,
+      } = zeaEngine;
+      const { CADAsset, CADBody } = zeaCad;
+
+      const urlParams = new URLSearchParams(window.location.search);
+      const scene = new Scene();
+      scene.setupGrid(10.0, 10);
+
+      const renderer = new GLRenderer(document.getElementById("canvas"), {
+        debugGeomIds: false,
+      });
+      // renderer.solidAngleLimit = 0.0;
+      renderer.setScene(scene);
+      renderer
+        .getViewport()
+        .getCamera()
+        .setPositionAndTarget(new Vec3(12, 12, 10), new Vec3(0, 0, 1.5));
+
+      const envMap = new EnvMap();
+      envMap.load("./data/StudioG.zenv");
+      scene.setEnvMap(envMap);
+/*
+      const asset = new CADAsset();
+      const zcad = urlParams.has("zcad")
+        ? urlParams.get("zcad")
+        : "./data/HC_SRO4.zcad";
+      if (zcad) {
+        asset.load(zcad).then(() => {
+          let count = 0;
+          asset.traverse((item) => {
+            if (item instanceof GeomItem) {
+              count++;
+            }
+          });
+          console.log("Done GeomItems:", count);
+          asset.getGeometryLibrary().on("loaded", () => {
+            let triangles = 0;
+            let lines = 0;
+            asset.traverse((item) => {
+              if (item instanceof GeomItem) {
+                const geom = item.getParameter("Geometry").getValue();
+                if (geom instanceof LinesProxy) {
+                  lines += geom.__buffers.indices.length / 2;
+                }
+                if (geom instanceof MeshProxy) {
+                  triangles += geom.__buffers.indices.length / 3;
+                }
+              }
+            });
+            console.log("lines: ", lines, " triangles: ", triangles);
+          });
+          renderer.frameAll();
+        });
+      }
+
+      scene.getRoot().addChild(asset);
+
+      const xfo = new Xfo();
+      xfo.ori.setFromEulerAngles(new EulerAngles(90 * (Math.PI / 180), 0, 0));
+      asset.getParameter("GlobalXfo").setValue(xfo);
+
+      */
+
+      // Setup FPS Display
+      const fpsElement = document.getElementById("fps");
+      fpsElement.renderer = renderer;
+
+      // Setup TreeView Display
+      const treeElement = document.getElementById("tree");
+      treeElement.setTreeItem(scene.getRoot());
+
+      let highlightedItem;
+      const highlightColor = new Color("#F9CE03");
+      highlightColor.a = 0.1;
+      const filterItem = (item) => {
+        while (item && !(item instanceof CADBody)) item = item.getOwner()
+        return item
+      }
+      renderer.getViewport().on("pointerOverGeom", (event) => {
+        highlightedItem = filterItem(event.intersectionData.geomItem);
+        highlightedItem.addHighlight(
+          "pointerOverGeom",
+          highlightColor,
+          true
+        );
+      });
+      renderer.getViewport().on("pointerLeaveGeom", (event) => {
+        highlightedItem.removeHighlight("pointerOverGeom", true);
+        highlightedItem = null;
+      });
+      renderer.getViewport().on("pointerDown", (event) => {
+        if (event.intersectionData) {
+          const  geomItem = filterItem(event.intersectionData.geomItem);
+          console.log(geomItem.getPath());
+        }
+      });
+
+      resourceLoader.on("progressIncremented", (event) => {
+        const pct = document.getElementById("progress");
+        pct.value = event.percent;
+        if (event.percent >= 100) {
+          setTimeout(() => pct.classList.add("hidden"), 1000);
+        }
+      });
+
+      renderer.getXRViewport().then((xrvp) => {
+        fpsElement.style.bottom = "70px";
+
+        const xrButton = document.getElementById("xr-button");
+        xrButton.textContent = "Launch VR";
+        xrButton.classList.remove("hidden");
+
+        xrvp.on("presentingChanged", (event) => {
+          const { state } = event;
+          if (state) {
+            xrButton.textContent = "Exit VR";
+          } else {
+            xrButton.textContent = "Launch VR";
+          }
+        });
+
+        xrButton.addEventListener("click", function (event) {
+          xrvp.togglePresenting();
+        });
+
+        document.addEventListener("keydown", (event) => {
+          if (event.key == " ") {
+            xrvp.togglePresenting();
+          }
+        });
+      });
+
+      if (urlParams.has("profile")) {
+        renderer.startContinuousDrawing();
+      }
+    </script>
+  </body>
+</html>
