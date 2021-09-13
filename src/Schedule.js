@@ -11,6 +11,8 @@ export default class Schedule extends EventEmitter {
     this.currentTime = 0;
     this.scene = scene;
     this.duration = 0;
+    this.playId = 0;
+    this.playing = false;
 
     // this.selectionSets = new SelectionSetsRoot(this.scene.getRoot());
     this.sets = new TreeItem("Sets");
@@ -43,6 +45,7 @@ export default class Schedule extends EventEmitter {
             "MM/DD/YYYY"
           ).toDate();
           this.projectEndDate = this.projectStartDate;
+          this.currentDate = this.projectStartDate;
 
           const path = [];
           rows.forEach((row, index) => {
@@ -80,7 +83,8 @@ export default class Schedule extends EventEmitter {
           });
           // console.log("Duration:", this.projectStartDate, this.duration)
 
-          this.emit("tasksAdded", { tasks: this.tasks });
+          // this.emit("tasksAdded", { tasks: this.tasks });
+          this.emit("loaded");
           resolve(this.tasks);
         },
         () => {
@@ -170,13 +174,32 @@ export default class Schedule extends EventEmitter {
     });
   }
 
+  getDateRange() {
+    return [this.projectStartDate, this.projectEndDate];
+  }
+
   setCurrentDate(currentDate) {
     this.currentDate = currentDate;
+    // console.log("setCurrentDate:", currentDate);
     this.emit("currentDateChanged", { currentDate });
 
     this.tasks.forEach((task) => {
       task.update(currentDate);
     });
+  }
+
+  play() {
+    this.playing = true;
+    this.playId = setInterval(() => {
+      // increment by a day
+      this.setCurrentDate(new Date(this.currentDate.getTime() + 8.64e7));
+      if (this.currentDate > this.projectEndDate) clearInterval(this.playId);
+    }, 60);
+  }
+
+  stop() {
+    clearInterval(this.playId);
+    this.playing = false;
   }
 }
 

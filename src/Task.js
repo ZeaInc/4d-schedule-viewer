@@ -34,6 +34,16 @@ const TASK_TYPES = {
   Demolition: 2,
 };
 
+const desaturate = (color, f) => {
+  // f = 0.2; // desaturate by 20%
+  const L = 0.3 * color.r + 0.6 * color.g + 0.1 * color.b;
+  return new Color(
+    color.r + f * (L - color.r),
+    color.g + f * (L - color.g),
+    color.b + f * (L - color.b)
+  );
+};
+
 export default class Task extends EventEmitter {
   constructor(scene) {
     super();
@@ -46,7 +56,7 @@ export default class Task extends EventEmitter {
     this.scene = scene;
 
     this.childTasks = [];
-    this.color = Color.random(0.25);
+    this.color = desaturate(Color.random(0.25), 0.4);
     this.progress = 0;
   }
 
@@ -179,7 +189,7 @@ export default class Task extends EventEmitter {
     if (currentDate < this.start) {
       if (this.state != 0) {
         if (this.group) {
-          console.log("Deactivate Before", this.name);
+          // console.log("Deactivate Before", this.name);
           if (
             this.state == STATE_TYPES.DURING &&
             this.taskType == TASK_TYPES.Construction
@@ -199,7 +209,7 @@ export default class Task extends EventEmitter {
     } else if (currentDate > this.end) {
       if (this.state != STATE_TYPES.AFTER) {
         if (this.group) {
-          console.log("Deactivate After", this.name);
+          // console.log("Deactivate After", this.name);
 
           if (this.taskType == TASK_TYPES.Construction) {
             if (this.state == STATE_TYPES.BEFORE) this.group.setVisible(true);
@@ -221,7 +231,7 @@ export default class Task extends EventEmitter {
     } else {
       if (this.state != STATE_TYPES.DURING) {
         if (this.group) {
-          console.log("Activate", this.name);
+          // console.log("Activate", this.name);
 
           if (this.taskType == TASK_TYPES.Construction) {
             if (this.state == STATE_TYPES.BEFORE) {

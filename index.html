@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Zea CAD Viewer</title>
+    <title>Zea 4D Schedule Viewer</title>
     <link
       rel="shortcut icon"
       type="image/png"
@@ -21,6 +21,7 @@
     <script src="https://cdn.jsdelivr.net/npm/@zeainc/zea-cad@3/dist/index.umd.js"></script>
     <script src="./src/zea-fps-display.js" type="module"></script>
     <script src="./src/scene-tree-view.js" type="module"></script>
+    <script src="./src/schedule-view.js" type="module"></script>
 
     <script src="./src/third-party/xlsx.js"></script>
     <script src="./src/third-party/jszip.js"></script>
@@ -56,6 +57,7 @@
         </div>
         <div class="separator" id="separatorH"></div>
         <div id="bottomPanel">
+          <schedule-view  id="schedule"></schedule-view>
         </div>
       </main>
     </div>
@@ -110,22 +112,28 @@
       scene.setEnvMap(envMap);
 
 
+      scene.getSettings().getParameter('BackgroundColor').setValue(new Color('#87CEEB'))
+      // .getViewport().setBackgroundColor(new Color('#87CEEB'))
       renderer
       .getViewport()
       .getCamera()
       .setPositionAndTarget(new Vec3(-80, -40, 20), new Vec3(40, 80, 10))
       
       import init from "./src/init.js";
-      init(scene)
+      const schedule = init(scene)
       
+      // Setup TreeView Display
+      const treeElement = document.getElementById("tree");
+      treeElement.setTreeItem(scene.getRoot());
+
+      // Setup Schedule view
+      const scheduleViewer = document.getElementById("schedule");
+      scheduleViewer.schedule = schedule
       
       // Setup FPS Display
       const fpsElement = document.getElementById("fps");
       fpsElement.renderer = renderer;
 
-      // Setup TreeView Display
-      const treeElement = document.getElementById("tree");
-      treeElement.setTreeItem(scene.getRoot());
 
       const filterItem = (item) => item
 

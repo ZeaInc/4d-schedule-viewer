@@ -5,6 +5,9 @@ const { CADAsset, CADBody } = zeaCad;
 
 export default function init(scene) {
   const schedule = new Schedule(scene);
+  // schedule.loadMSProjectXLSX(
+  //   "./data/Hospital/TimeLiner-MasterList(Dynamic Dates).xlsx"
+  // );
 
   const selectionSetPromises = [];
   const selectionSetFiles = [];
@@ -21,17 +24,7 @@ export default function init(scene) {
         .loadMSProjectXLSX(
           "./data/Hospital/TimeLiner-MasterList(Dynamic Dates).xlsx"
         )
-        .then(() => {
-          let date = schedule.projectStartDate;
-          schedule.setCurrentDate(date);
-          // const id = setInterval(() => {
-          //   // increment by a day
-          //   date = new Date(date.getTime() + 8.64e7);
-          //   console.log(date.toString());
-          //   schedule.setCurrentDate(date);
-          //   if (date > schedule.projectEndDate) clearInterval(id);
-          // }, 60);
-        });
+        .then(() => {});
     });
   };
 
@@ -89,19 +82,20 @@ export default function init(scene) {
     (asset) => {
       const materials = asset.getMaterialLibrary().getMaterials();
       materials.forEach((material) => {
+        const BaseColor = material.getParameter("BaseColor");
+        if (BaseColor) BaseColor.setValue(BaseColor.getValue().toGamma());
         const Reflectance = material.getParameter("Reflectance");
-        if (Reflectance) Reflectance.setValue(0.004);
+        if (Reflectance) Reflectance.setValue(0.01);
         const Metallic = material.getParameter("Metallic");
         if (Metallic) Metallic.setValue(0);
         const Roughness = material.getParameter("Roughness");
-        if (Roughness) Roughness.setValue(0.9);
+        if (Roughness) Roughness.setValue(0.95);
       });
       // asset.getParameter('CutPlaneNormal').setValue(cutNormal);
       // op.addOutput(asset.getParameter('CutPlaneDist'))
       // cutAwayGroup.addItem(asset)
     }
   );
-  /*
   loadAssetFile(
     "data/Hospital/Autodesk_Hospital_Site Logistics.zcad",
     "data/Hospital/Site.xml",
@@ -109,10 +103,12 @@ export default function init(scene) {
     (asset) => {
       const materials = asset.getMaterialLibrary().getMaterials();
       materials.forEach((material) => {
+        const BaseColor = material.getParameter("BaseColor");
+        if (BaseColor) BaseColor.setValue(BaseColor.getValue().toGamma());
         const Reflectance = material.getParameter("Reflectance");
         if (Reflectance) Reflectance.setValue(0.01);
         const Metallic = material.getParameter("Metallic");
-        if (Metallic) Metallic.setValue(1);
+        if (Metallic) Metallic.setValue(0.9);
         const Roughness = material.getParameter("Roughness");
         if (Roughness) Roughness.setValue(0.9);
       });
@@ -120,8 +116,23 @@ export default function init(scene) {
   );
   loadAssetFile(
     "data/Hospital/Autodesk_Hospital_Structural.zcad",
-    "data/Hospital/Structural.xml"
+    "data/Hospital/Structural.xml",
+    null,
+    (asset) => {
+      const materials = asset.getMaterialLibrary().getMaterials();
+      materials.forEach((material) => {
+        const BaseColor = material.getParameter("BaseColor");
+        if (BaseColor) BaseColor.setValue(BaseColor.getValue().toGamma());
+        const Reflectance = material.getParameter("Reflectance");
+        if (Reflectance) Reflectance.setValue(0.01);
+        const Metallic = material.getParameter("Metallic");
+        if (Metallic) Metallic.setValue(0.9);
+        const Roughness = material.getParameter("Roughness");
+        if (Roughness) Roughness.setValue(0.9);
+      });
+    }
   );
+  /*
   loadAssetFile(
     "data/Hospital/Autodesk_Hospital_Architectural.zcad",
     "data/Hospital/Architectural.xml",
@@ -137,6 +148,32 @@ export default function init(scene) {
       ]);
       ribs.setVisible(false);
 
+      const materials = asset.getMaterialLibrary().getMaterials();
+      materials.forEach((material) => {
+        if (material.getName() == "Body_0002") {
+          const windows = material;
+          var color = windows.getParameter("BaseColor").getValue();
+          color.a = 0.3;
+          windows.getParameter("BaseColor").setValue(color.toGamma());
+          return;
+        }
+        if (material.getName() == "Body_0007") {
+          const greyWindows = material;
+          var color = greyWindows.getParameter("BaseColor").getValue();
+          color.a = 0.5;
+          greyWindows.getParameter("BaseColor").setValue(color.toGamma());
+          return;
+        }
+        const BaseColor = material.getParameter("BaseColor");
+        if (BaseColor) BaseColor.setValue(BaseColor.getValue().toGamma());
+        const Reflectance = material.getParameter("Reflectance");
+        if (Reflectance) Reflectance.setValue(0.01);
+        const Metallic = material.getParameter("Metallic");
+        if (Metallic) Metallic.setValue(0);
+        const Roughness = material.getParameter("Roughness");
+        if (Roughness) Roughness.setValue(0.9);
+      });
+
       // asset.getParameter("CutPlaneNormal").setValue(cutNormal);
       // op.addOutput(asset.getParameter("CutPlaneDist"));
       // cutAwayGroup.addItem(asset);
@@ -144,34 +181,95 @@ export default function init(scene) {
   );
   loadAssetFile(
     "data/Hospital/Autodesk_Hospital_Plumbing.zcad",
-    "data/Hospital/Plumbing.xml"
+    "data/Hospital/Plumbing.xml",
+    null,
+    (asset) => {
+      const materials = asset.getMaterialLibrary().getMaterials();
+      materials.forEach((material) => {
+        const BaseColor = material.getParameter("BaseColor");
+        if (BaseColor) BaseColor.setValue(BaseColor.getValue().toGamma());
+        const Reflectance = material.getParameter("Reflectance");
+        if (Reflectance) Reflectance.setValue(0.01);
+        const Metallic = material.getParameter("Metallic");
+        if (Metallic) Metallic.setValue(0.9);
+        const Roughness = material.getParameter("Roughness");
+        if (Roughness) Roughness.setValue(0.9);
+      });
+    }
   );
 
-  */
   loadAssetFile(
     "data/Hospital/Autodesk_Hospital_Electrical.zcad",
-    "data/Hospital/Electrical.xml"
+    "data/Hospital/Electrical.xml",
+    null,
+    (asset) => {
+      const materials = asset.getMaterialLibrary().getMaterials();
+      materials.forEach((material) => {
+        const BaseColor = material.getParameter("BaseColor");
+        if (BaseColor) BaseColor.setValue(BaseColor.getValue().toGamma());
+        const Reflectance = material.getParameter("Reflectance");
+        if (Reflectance) Reflectance.setValue(0.01);
+        const Metallic = material.getParameter("Metallic");
+        if (Metallic) Metallic.setValue(0.9);
+        const Roughness = material.getParameter("Roughness");
+        if (Roughness) Roughness.setValue(0.9);
+      });
+    }
+  );
+  */
+  loadAssetFile(
+    "data/Hospital/Autodesk_Hospital_HVAC.zcad",
+    "data/Hospital/HVAC.xml",
+    null,
+    (asset) => {
+      const materials = asset.getMaterialLibrary().getMaterials();
+      materials.forEach((material) => {
+        const BaseColor = material.getParameter("BaseColor");
+        if (BaseColor) BaseColor.setValue(BaseColor.getValue().toGamma());
+        const Reflectance = material.getParameter("Reflectance");
+        if (Reflectance) Reflectance.setValue(0.1);
+        const Metallic = material.getParameter("Metallic");
+        if (Metallic) Metallic.setValue(0.9);
+        const Roughness = material.getParameter("Roughness");
+        if (Roughness) Roughness.setValue(0.4);
+      });
+    }
   );
   /*
   loadAssetFile(
-    "data/Hospital/Autodesk_Hospital_HVAC.zcad",
-    "data/Hospital/HVAC.xml"
-  );
-  loadAssetFile(
     "data/Hospital/Autodesk_Hospital_FireAlarm.zcad",
-    "data/Hospital/Fire Alarm.xml"
+    "data/Hospital/Fire Alarm.xml",
+    null,
+    (asset) => {
+      const materials = asset.getMaterialLibrary().getMaterials();
+      materials.forEach((material) => {
+        const Reflectance = material.getParameter("Reflectance");
+        if (Reflectance) Reflectance.setValue(0.1);
+        const Metallic = material.getParameter("Metallic");
+        if (Metallic) Metallic.setValue(0.9);
+        const Roughness = material.getParameter("Roughness");
+        if (Roughness) Roughness.setValue(0.4);
+      });
+    }
   );
   loadAssetFile(
     "data/Hospital/Autodesk_Hospital_Sprinkler.zcad",
-    "data/Hospital/Sprinkler.xml"
+    "data/Hospital/Sprinkler.xml",
+    null,
+    (asset) => {
+      const materials = asset.getMaterialLibrary().getMaterials();
+      materials.forEach((material) => {
+        const Reflectance = material.getParameter("Reflectance");
+        if (Reflectance) Reflectance.setValue(0.1);
+        const Metallic = material.getParameter("Metallic");
+        if (Metallic) Metallic.setValue(0.9);
+        const Roughness = material.getParameter("Roughness");
+        if (Roughness) Roughness.setValue(0.4);
+      });
+    }
   );
-  */
+*/
+  // loadAssetFile("data/Hospital/Autodesk_Hospital_Parking Garage.zcad", offset);
 
-  // loadAssetFile("data/Hospital/Autodesk_Hospital_Parking Garage.zcad", new ZeaEngine.Vec3(0, 0, -166));
-
-  // loadAssetFile("data/Hospital/ColumnsAll.zcad");
-  // loadAssetFile("data/Hospital/Autodesk_Hospital_HVAC_WingA.zcad");
-  // loadAssetFile("data/Hospital/Autodesk_Hospital_Architectural_Stairs.zcad");
-  // loadAssetFile("data/Hospital/Autodesk_Hospital_Architectural_brokenRoofGrass.zcad");
-  // loadAssetFile("data/Hospital/Autodesk_Hospital_Architectural_3D_Walls_Exterior_Podium_Export.zcad");
+  return schedule;
 }

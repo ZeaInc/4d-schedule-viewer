@@ -82,6 +82,10 @@ main {
   height: 40%;
   min-height: 10px;
 }
+#schedule-view {
+  width: 100%;
+  height: 100%;
+}
 
 .progress-display {
   position: absolute;

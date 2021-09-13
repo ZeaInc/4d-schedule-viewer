@@ -42,7 +42,6 @@ function dragElement(element, leftPanel, mainPanel, direction) {
       leftPanel.style.width = md.leftPanelWidth + delta.x + "px";
       mainPanel.style.width = md.mainPanelWidth - delta.x + "px";
     } else if (direction === "V") {
-      console.log(delta.y, md.mainPanelHeight, md.leftPanelHeight);
       // Vertical
       // Prevent negative-sized elements
       delta.y = Math.min(
