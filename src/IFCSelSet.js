@@ -576,7 +576,8 @@ export default class IFCSelSet extends SelectionSet {
     this.__name = json.name;
     const items = new Set();
     json.items.forEach((itemPath) => {
-      items.add(context.resolvePath(itemPath));
+      const item = context.resolvePath(itemPath);
+      if (item) items.add(item);
     });
     this.setItems(items);
   }

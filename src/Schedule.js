@@ -241,7 +241,12 @@ export default class Schedule extends EventEmitter {
    */
   fromJSON(json, context = {}, flags = 0) {
     context.resolvePath = (path, cb) => {
-      return this.scene.getRoot().resolvePath(path);
+      try {
+        return this.scene.getRoot().resolvePath(path);
+      } catch (e) {
+        console.log("Unable to bind :", path);
+        return null;
+      }
     };
     this.sets.fromJSON(json, context);
   }
