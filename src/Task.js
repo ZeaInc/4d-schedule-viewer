@@ -107,7 +107,7 @@ export default class Task extends EventEmitter {
         try {
           this.group = sceneRoot.resolvePath(attachedTo.split("->"));
           if (this.group) {
-            console.log("Task bound to SelectionSet :", attachedTo);
+            // console.log("Task bound to SelectionSet :", attachedTo);
             if (this.taskType == TASK_TYPES.Construction) {
               this.group
                 .getParameter("HighlightColor")
