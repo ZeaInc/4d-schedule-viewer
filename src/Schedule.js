@@ -244,7 +244,7 @@ export default class Schedule extends EventEmitter {
       try {
         return this.scene.getRoot().resolvePath(path);
       } catch (e) {
-        console.log("Unable to bind :", path);
+        // console.log("Unable to bind :", path);
         return null;
       }
     };
