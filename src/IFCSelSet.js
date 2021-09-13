@@ -1,4 +1,10 @@
-const { StringParameter, TreeItemParameter, SelectionSet } = zeaEngine;
+const {
+  Registry,
+  StringParameter,
+  TreeItemParameter,
+  SelectionSet,
+  BaseGeomItem,
+} = zeaEngine;
 const { CADPart } = zeaCad;
 import QueryParameter from "./QueryParameter.js";
 // import {
@@ -189,7 +195,8 @@ export default class IFCSelSet extends SelectionSet {
               const value = query.getValue();
               searchRoot.traverse((item) => {
                 if (
-                  applyTest(item.getLayers().indexOf(value) != -1, item) ||
+                  (item instanceof BaseGeomItem &&
+                    applyTest(item.getLayers().indexOf(value) != -1, item)) ||
                   item instanceof CADPart
                 ) {
                   return false;
@@ -537,6 +544,39 @@ export default class IFCSelSet extends SelectionSet {
     return searchRoot;
   }
 
+  // ////////////////////////////////////////
+  // Persistence
+
+  /**
+   * The toJSON method encodes this type as a json object for persistences.
+   * @param {object} context - The context value.
+   * @param {number} flags - The flags value.
+   * @return {any} - The return value.
+   */
+  toJSON(context, flags) {
+    const json = { name: this.getName(), type: "IFCSelSet", items: [] };
+    const items = this.getItems();
+    items.forEach((item) => {
+      json.items.push(item.getPath());
+    });
+    return json;
+  }
+
+  /**
+   * The fromJSON method decodes a json object for this type.
+   * @param {object} j - The json object this item must decode.
+   * @param {object} context - The context value.
+   * @param {number} flags - The flags value.
+   */
+  fromJSON(json, context, flags) {
+    this.__name = json.name;
+    const items = new Set();
+    json.items.forEach((itemPath) => {
+      items.add(context.resolvePath(itemPath));
+    });
+    this.setItems(items);
+  }
+
   _setBoundingBoxDirty() {
     if (this.__boundingBoxParam) {
       // Will cause boundingChanged to emit
@@ -559,3 +599,5 @@ export default class IFCSelSet extends SelectionSet {
     return cloned;
   }
 }
+
+Registry.register("IFCSelSet", IFCSelSet);

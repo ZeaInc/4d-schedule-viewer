@@ -1,4 +1,4 @@
-const { TreeItem, EventEmitter, loadBinfile, loadXMLfile, SelectionSet } =
+const { TreeItem, EventEmitter, loadBinfile, loadXMLfile, Registry } =
   zeaEngine;
 
 import Task from "./Task.js";
@@ -200,6 +200,50 @@ export default class Schedule extends EventEmitter {
   stop() {
     clearInterval(this.playId);
     this.playing = false;
+  }
+
+  // ////////////////////////////////////////
+  // Persistence
+
+  /**
+   * The toJSON method encodes this type as a json object for persistences.
+   * @param {object} context - The context value.
+   * @param {number} flags - The flags value.
+   * @return {any} - The return value.
+   */
+  toJSON(context = {}, flags) {
+    context.assetItem = this;
+
+    const toJSON = (treeItem) => {
+      if (treeItem instanceof IFCSelSet) {
+        return treeItem.toJSON(context);
+      } else {
+        const children = treeItem.getChildren();
+        const json = {
+          name: treeItem.getName(),
+          type: Registry.getBlueprintName(treeItem),
+          children: [],
+        };
+        for (const childItem of children) {
+          if (childItem) json.children.push(toJSON(childItem));
+        }
+        return json;
+      }
+    };
+    return toJSON(this.sets);
+  }
+
+  /**
+   * The fromJSON method decodes a json object for this type.
+   * @param {object} j - The json object this item must decode.
+   * @param {object} context - The context value.
+   * @param {number} flags - The flags value.
+   */
+  fromJSON(json, context = {}, flags = 0) {
+    context.resolvePath = (path, cb) => {
+      return this.scene.getRoot().resolvePath(path);
+    };
+    this.sets.fromJSON(json, context);
   }
 }
 

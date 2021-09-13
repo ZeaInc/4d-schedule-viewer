@@ -3,6 +3,18 @@ import Schedule from "./Schedule.js";
 const { Vec3, Xfo } = zeaEngine;
 const { CADAsset, CADBody } = zeaCad;
 
+function download(filename, textInput) {
+  var element = document.createElement("a");
+  element.setAttribute(
+    "href",
+    "data:text/text;charset=utf-8, " + encodeURIComponent(textInput)
+  );
+  element.setAttribute("download", filename);
+  document.body.appendChild(element);
+  element.click();
+  //document.body.removeChild(element);
+}
+
 export default function init(scene) {
   const schedule = new Schedule(scene);
   // schedule.loadMSProjectXLSX(
@@ -13,19 +25,38 @@ export default function init(scene) {
   const selectionSetFiles = [];
   const assets = {};
   const loadSelectionSetsAndBind = () => {
-    selectionSetFiles.forEach((selSetFile) => {
-      selectionSetPromises.push(schedule.loadSelectionSet(selSetFile, assets));
-    });
-    Promise.all(selectionSetPromises).then(() => {
-      // from https://github.com/ZeaInc/schedule-viewer
-      // schedule.bindTasksToSelectionSets();
+    if (true) {
+      fetch(new Request("./data/bindings.json"))
+        .then((response) => response.json())
+        .then((json) => {
+          schedule.fromJSON(json);
+          schedule
+            .loadMSProjectXLSX(
+              "./data/Hospital/TimeLiner-MasterList(Dynamic Dates).xlsx"
+            )
+            .then(() => {});
+        })
+        .catch(console.error);
+    } else {
+      selectionSetFiles.forEach((selSetFile) => {
+        selectionSetPromises.push(
+          schedule.loadSelectionSet(selSetFile, assets)
+        );
+      });
+      Promise.all(selectionSetPromises).then(() => {
+        const json = schedule.toJSON();
+        console.log(json);
+        download("bindings.json", JSON.stringify(json, null, 2));
 
-      schedule
-        .loadMSProjectXLSX(
-          "./data/Hospital/TimeLiner-MasterList(Dynamic Dates).xlsx"
-        )
-        .then(() => {});
-    });
+        // from https://github.com/ZeaInc/schedule-viewer
+        // schedule.bindTasksToSelectionSets();
+        // schedule
+        //   .loadMSProjectXLSX(
+        //     "./data/Hospital/TimeLiner-MasterList(Dynamic Dates).xlsx"
+        //   )
+        //   .then(() => {});
+      });
+    }
   };
 
   // selectionSetFiles.push("data/Hospital/Site.xml");
@@ -216,7 +247,7 @@ export default function init(scene) {
       });
     }
   );
-  */
+  * /
   loadAssetFile(
     "data/Hospital/Autodesk_Hospital_HVAC.zcad",
     "data/Hospital/HVAC.xml",
