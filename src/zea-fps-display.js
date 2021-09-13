@@ -12,9 +12,6 @@ class FPSDisplay extends HTMLElement {
       document.createTextNode(`
 
     .fps-display {
-      position: fixed;
-      bottom: 15px;
-      right: 80px;
       color: black;
     }
 `)

@@ -20,7 +20,7 @@ main {
   position: relative;
 }
 #logo {
-  height: 30px;
+  height: 20px;
 }
 
 .splitter {
@@ -95,7 +95,15 @@ main {
   bottom: 0px;
   width: 100%;
   height: 5px;
+  background-color: #f9ce03;
 }
+
+.fps-display {
+  position: absolute;
+  bottom: 15px;
+  right: 10px;
+}
+
 .hidden {
   visibility: hidden;
 }
