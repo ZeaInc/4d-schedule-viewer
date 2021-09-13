@@ -48,13 +48,11 @@ export default function init(scene) {
         console.log(json);
         download("bindings.json", JSON.stringify(json, null, 2));
 
-        // from https://github.com/ZeaInc/schedule-viewer
-        // schedule.bindTasksToSelectionSets();
-        // schedule
-        //   .loadMSProjectXLSX(
-        //     "./data/Hospital/TimeLiner-MasterList(Dynamic Dates).xlsx"
-        //   )
-        //   .then(() => {});
+        schedule
+          .loadMSProjectXLSX(
+            "./data/Hospital/TimeLiner-MasterList(Dynamic Dates).xlsx"
+          )
+          .then(() => {});
       });
     }
   };
@@ -163,6 +161,7 @@ export default function init(scene) {
       });
     }
   );
+
   /*
   loadAssetFile(
     "data/Hospital/Autodesk_Hospital_Architectural.zcad",
@@ -210,6 +209,7 @@ export default function init(scene) {
       // cutAwayGroup.addItem(asset);
     }
   );
+
   loadAssetFile(
     "data/Hospital/Autodesk_Hospital_Plumbing.zcad",
     "data/Hospital/Plumbing.xml",
@@ -247,7 +247,7 @@ export default function init(scene) {
       });
     }
   );
-  * /
+
   loadAssetFile(
     "data/Hospital/Autodesk_Hospital_HVAC.zcad",
     "data/Hospital/HVAC.xml",
@@ -266,7 +266,6 @@ export default function init(scene) {
       });
     }
   );
-  /*
   loadAssetFile(
     "data/Hospital/Autodesk_Hospital_FireAlarm.zcad",
     "data/Hospital/Fire Alarm.xml",
@@ -299,8 +298,8 @@ export default function init(scene) {
       });
     }
   );
-*/
-  // loadAssetFile("data/Hospital/Autodesk_Hospital_Parking Garage.zcad", offset);
 
+  // loadAssetFile("data/Hospital/Autodesk_Hospital_Parking Garage.zcad", offset);
+*/
   return schedule;
 }

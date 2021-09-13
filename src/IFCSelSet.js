@@ -287,7 +287,11 @@ export default class IFCSelSet extends SelectionSet {
               const value = query.getValue();
               const f = (item) => {
                 let res = false;
-                if (item.getLayers().indexOf(value) != -1) res = true;
+                if (
+                  item instanceof BaseGeomItem &&
+                  item.getLayers().indexOf(value) != -1
+                )
+                  res = true;
                 return negate ? !res : res;
               };
               if (query.getLocicalOperator() == QUERY_LOGIC.AND)
