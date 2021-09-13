@@ -24,6 +24,7 @@ class TreeItemView extends HTMLElement {
 
     // Create container tags
     this.itemContainer = document.createElement("div");
+    this.itemContainer.className = "ItemContainer";
 
     this.itemHeader = document.createElement("div");
     this.itemHeader.className = "TreeNodeHeader";
@@ -356,6 +357,10 @@ TreeItemView.css = `
     outline: none;
   }
 
+  .ItemContainer {
+    min-width: max-content;
+  }
+
   .TreeNodeHeader {
     display: flex;
     margin: 0 auto;
@@ -413,8 +418,7 @@ class SceneTreeView extends HTMLElement {
     styleTag.appendChild(
       document.createTextNode(`
     .TreeView {
-      overflow:auto;
-      overflow-x:hidden;
+      height: 100%;
     }`)
     );
     shadowRoot.appendChild(styleTag);

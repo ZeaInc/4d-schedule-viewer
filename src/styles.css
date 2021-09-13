@@ -53,10 +53,12 @@ main {
 }
 
 #leftPanel {
+  overflow: auto;
   width: 20%;
   height: 100%;
   min-width: 10px;
 }
+
 #mainPanel {
   position: relative;
   width: 80%;

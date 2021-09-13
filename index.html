@@ -26,7 +26,7 @@
     <script src="./src/third-party/xlsx.js"></script>
     <script src="./src/third-party/jszip.js"></script>
     <script src="./src/third-party/moment.min.js"></script>
-    
+
   </head>
   <body class="overflow-hidden">
     <div class="layout grid h-screen">
@@ -39,7 +39,7 @@
             <div id="leftPanel">
               <scene-tree-view
                 id="tree"
-                class="max-w-full max-h-full select-none"
+                class="select-none"
               ></scene-tree-view>
             </div>
             <div class="separator" id="separatorV"></div>
@@ -118,10 +118,10 @@
       .getViewport()
       .getCamera()
       .setPositionAndTarget(new Vec3(-80, -40, 20), new Vec3(40, 80, 10))
-      
+
       import init from "./src/init.js";
       const schedule = init(scene)
-      
+
       // Setup TreeView Display
       const treeElement = document.getElementById("tree");
       treeElement.setTreeItem(scene.getRoot());
@@ -129,7 +129,7 @@
       // Setup Schedule view
       const scheduleViewer = document.getElementById("schedule");
       scheduleViewer.schedule = schedule
-      
+
       // Setup FPS Display
       const fpsElement = document.getElementById("fps");
       fpsElement.renderer = renderer;
