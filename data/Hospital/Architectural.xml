@@ -163,7 +163,7 @@
                   <data type="wstring">Architectural</data>
                 </value>
               </condition>
-              <condition test="contains" flags="10">
+              <!-- <condition test="contains" flags="10">
                 <category>
                   <name internal="LcRevitData">Element</name>
                 </category>
@@ -173,7 +173,7 @@
                 <value>
                   <data type="wstring">Stairs</data>
                 </value>
-              </condition>
+              </condition> -->
               <condition test="regex" flags="74">
                 <property>
                   <name internal="LcOaSceneBaseUserName">Name</name>
@@ -226,7 +226,7 @@
                 </property>
                 <value>
                   <!-- <data type="wstring">HAS – 42”- Series 200 cable railing – fascia mounted w/ 100 top rail</data> -->
-                  <data type="wstring">Railing:</data>
+                  <data type="wstring">Railing:HAS</data>
                 </value>
               </condition>
             </conditions>
@@ -1140,7 +1140,7 @@
                     <name internal="LcOaSceneBaseUserName">Name</name>
                   </property>
                   <value>
-                    <data type="wstring">Basic Wall:Exterior|Instance</data>
+                    <data type="wstring">Basic Wall:Exterior|Instance_</data>
                   </value>
                 </condition>
                 <condition test="contains" flags="10">

@@ -14,6 +14,16 @@ import QueryParameter from "./QueryParameter.js";
 //   SelectionSetFolder,
 // } from "./SelectionSet.js";
 
+let logging = true;
+
+const traverse = (treeItem, callback) => {
+  if (!callback(treeItem) == false) return;
+  const children = treeItem.getChildren();
+  for (const childItem of children) {
+    if (childItem) traverse(childItem, callback);
+  }
+};
+
 import {
   QUERY_TYPES,
   QUERY_MATCH_TYPE,
@@ -93,7 +103,8 @@ export default class IFCSelSet extends SelectionSet {
     let first = true;
     // Filter it down, and then merge into result.
     queries.forEach((query, index) => {
-      try {
+      // try
+      {
         if (!query.getEnabled() || query.getValue() == "") return;
 
         const negate = query.getNegate();
@@ -131,7 +142,7 @@ export default class IFCSelSet extends SelectionSet {
               } else if (query.getMatchType() == QUERY_MATCH_TYPE.REGEX) {
                 const regex = query.getRegex();
                 const searchRootPath = searchRoot.getPath();
-                searchRoot.traverse((item) => {
+                traverse(searchRoot, (item) => {
                   const itemPath = item.getPath().slice(searchRootPath.length);
                   if (
                     applyTest(regex.test(String(itemPath)), item) ||
@@ -139,25 +150,25 @@ export default class IFCSelSet extends SelectionSet {
                   ) {
                     return false;
                   }
-                }, false);
+                });
               }
               break;
             }
             case QUERY_TYPES.NAME: {
               const regex = query.getRegex();
-              searchRoot.traverse((item) => {
+              traverse(searchRoot, (item) => {
                 if (
                   applyTest(regex.test(item.getName()), item) ||
                   item instanceof CADPart
                 ) {
                   return false;
                 }
-              }, false);
+              });
               break;
             }
             case QUERY_TYPES.PROPERTY: {
               const regex = query.getRegex();
-              searchRoot.traverse((item) => {
+              traverse(searchRoot, (item) => {
                 let res = false;
                 if (item.hasParameter(query.getPropertyName())) {
                   const prop = item.getParameter(query.getPropertyName());
@@ -170,13 +181,13 @@ export default class IFCSelSet extends SelectionSet {
                 if (applyTest(res, item) || item instanceof CADPart) {
                   return false;
                 }
-              }, false);
+              });
               break;
             }
             case QUERY_TYPES.LEVEL: {
               const regex = query.getRegex();
               const searchRootPath = searchRoot.getPath();
-              searchRoot.traverse((item) => {
+              traverse(searchRoot, (item) => {
                 const itemPath = item.getPath().slice(searchRootPath.length);
 
                 if (
@@ -188,12 +199,12 @@ export default class IFCSelSet extends SelectionSet {
                 ) {
                   return false;
                 }
-              }, false);
+              });
               break;
             }
             case QUERY_TYPES.LAYER: {
               const value = query.getValue();
-              searchRoot.traverse((item) => {
+              traverse(searchRoot, (item) => {
                 if (
                   (item instanceof BaseGeomItem &&
                     applyTest(item.getLayers().indexOf(value) != -1, item)) ||
@@ -201,12 +212,12 @@ export default class IFCSelSet extends SelectionSet {
                 ) {
                   return false;
                 }
-              }, false);
+              });
               break;
             }
             case QUERY_TYPES.MATERIAL: {
               const regex = query.getRegex();
-              searchRoot.traverse((item) => {
+              traverse(searchRoot, (item) => {
                 let res = false;
                 if (item.hasParameter("material")) {
                   const material = item.getParameter("material").getValue();
@@ -215,7 +226,7 @@ export default class IFCSelSet extends SelectionSet {
                 if (applyTest(res, item) || item instanceof CADPart) {
                   return false;
                 }
-              }, false);
+              });
               break;
             }
           }
@@ -318,10 +329,11 @@ export default class IFCSelSet extends SelectionSet {
             }
           }
         }
-      } catch (e) {
-        // continue...
-        console.warn(e.message);
       }
+      // catch (e) {
+      //   // continue...
+      //   console.warn(e.message);
+      // }
     });
     result = result.concat(set);
     // result.forEach((item) => {
@@ -361,7 +373,10 @@ export default class IFCSelSet extends SelectionSet {
 
       if (condition.getAttributeNode("test").value == "equals") {
         query.setMatchType(QueryParameter.QUERY_MATCH_TYPE.EXACT);
-      } else if (condition.getAttributeNode("test").value == "contains") {
+      } else if (
+        condition.getAttributeNode("test").value == "contains" ||
+        condition.getAttributeNode("test").value == "regex"
+      ) {
         query.setMatchType(QueryParameter.QUERY_MATCH_TYPE.REGEX);
       } else if (condition.getAttributeNode("test").value == "not_equals") {
         query.setNegate(true);
@@ -409,7 +424,7 @@ export default class IFCSelSet extends SelectionSet {
         const value = getConditionValue();
         // console.log(propType, ":", value);
 
-        query.setQueryType(QueryParameter.QUERY_TYPES.LAYER);
+        query.setQueryType(QueryParameter.QUERY_TYPES.LEVEL);
         query.setValue(value);
       } else if (propType == "LcRevitPropertyElementCategory") {
         // rule.setRuleType(SelectionSet.RULES_TYPE.CATEGORY);

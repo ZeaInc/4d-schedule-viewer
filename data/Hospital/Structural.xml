@@ -958,7 +958,7 @@
                   <name internal="LcOaSceneBaseUserName">Name</name>
                 </property>
                 <value>
-                  <data type="wstring">Stair</data>
+                  <data type="wstring">^Stair</data>
                 </value>
               </condition>
             </conditions>
@@ -984,7 +984,7 @@
                   <name internal="LcOaSceneBaseUserName">Name</name>
                 </property>
                 <value>
-                  <data type="wstring">Railing</data>
+                  <data type="wstring">^Railing</data>
                 </value>
               </condition>
             </conditions>

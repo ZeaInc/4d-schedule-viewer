@@ -13,6 +13,7 @@ const QUERY_TYPES = {
 const QUERY_MATCH_TYPE = {
   EXACT: 0,
   REGEX: 1,
+  CONTAINS: 2,
 };
 
 const QUERY_LOGIC = {

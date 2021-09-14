@@ -1,4 +1,5 @@
 const { Color, EventEmitter } = zeaEngine;
+import IFCSelSet from "./IFCSelSet.js";
 
 function msToDays(ms) {
   return Math.round(ms / (1000 * 60 * 60 * 24));
@@ -105,9 +106,10 @@ export default class Task extends EventEmitter {
       const attachedTo = row["Attached"];
       if (attachedTo != "Explicit Selection") {
         try {
-          this.group = sceneRoot.resolvePath(attachedTo.split("->"));
-          if (this.group) {
+          const group = sceneRoot.resolvePath(attachedTo.split("->"));
+          if (group && group instanceof IFCSelSet) {
             // console.log("Task bound to SelectionSet :", attachedTo);
+            this.group = group;
             if (this.taskType == TASK_TYPES.Construction) {
               this.group
                 .getParameter("HighlightColor")
@@ -119,7 +121,7 @@ export default class Task extends EventEmitter {
             }
             this.group.getParameter("HighlightFill").setValue(0.25);
           } else {
-            console.log(this.name, " Group not found:", attachedTo);
+            console.log(this.name, " IFCSelSet not found:", attachedTo);
           }
         } catch (e) {
           // console.warn("Unable to resolve Task to SelectionSet :", attachedTo);

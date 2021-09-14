@@ -84,6 +84,7 @@ export default class Schedule extends EventEmitter {
           // console.log("Duration:", this.projectStartDate, this.duration)
 
           // this.emit("tasksAdded", { tasks: this.tasks });
+          this.setCurrentDate(this.projectStartDate);
           this.emit("loaded");
           resolve(this.tasks);
         },

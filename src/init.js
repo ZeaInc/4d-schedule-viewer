@@ -21,11 +21,13 @@ export default function init(scene) {
   //   "./data/Hospital/TimeLiner-MasterList(Dynamic Dates).xlsx"
   // );
 
+  const loadBindingsCache = false;
+  const writeBindingsCache = false;
   const selectionSetPromises = [];
   const selectionSetFiles = [];
   const assets = {};
   const loadSelectionSetsAndBind = () => {
-    if (true) {
+    if (loadBindingsCache) {
       fetch(new Request("./data/bindings.json"))
         .then((response) => response.json())
         .then((json) => {
@@ -44,9 +46,11 @@ export default function init(scene) {
         );
       });
       Promise.all(selectionSetPromises).then(() => {
-        const json = schedule.toJSON();
-        console.log(json);
-        download("bindings.json", JSON.stringify(json, null, 2));
+        if (writeBindingsCache) {
+          const json = schedule.toJSON();
+          console.log(json);
+          download("bindings.json", JSON.stringify(json, null, 2));
+        }
 
         schedule
           .loadMSProjectXLSX(
@@ -103,6 +107,7 @@ export default function init(scene) {
     });
   };
 
+  /*
   const offset = new Vec3(0, 0, -166.85);
   loadAssetFile(
     "data/Hospital/Autodesk_Hospital_Site.zcad",
@@ -162,7 +167,6 @@ export default function init(scene) {
     }
   );
 
-  /*
   loadAssetFile(
     "data/Hospital/Autodesk_Hospital_Architectural.zcad",
     "data/Hospital/Architectural.xml",
@@ -228,7 +232,6 @@ export default function init(scene) {
       });
     }
   );
-
   loadAssetFile(
     "data/Hospital/Autodesk_Hospital_Electrical.zcad",
     "data/Hospital/Electrical.xml",
@@ -247,7 +250,6 @@ export default function init(scene) {
       });
     }
   );
-
   loadAssetFile(
     "data/Hospital/Autodesk_Hospital_HVAC.zcad",
     "data/Hospital/HVAC.xml",
@@ -282,6 +284,8 @@ export default function init(scene) {
       });
     }
   );
+
+  */
   loadAssetFile(
     "data/Hospital/Autodesk_Hospital_Sprinkler.zcad",
     "data/Hospital/Sprinkler.xml",
@@ -300,6 +304,6 @@ export default function init(scene) {
   );
 
   // loadAssetFile("data/Hospital/Autodesk_Hospital_Parking Garage.zcad", offset);
-*/
+
   return schedule;
 }
