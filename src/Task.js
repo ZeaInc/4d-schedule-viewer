@@ -12,7 +12,7 @@ function dateToString(date) {
 // From Synchro Software: (https://www.youtube.com/watch?v=sX0NUKDJ3b4)
 const TASK_COLORS = {
   EQUIPMENT: new Color(0, 0.8, 0, 0.25),
-  NEW_CONSTRUCTION: new Color("#4682B4"),
+  NEW_CONSTRUCTION: new Color("#F9CE03"),
   DEMOLITION: new Color("#B22222"),
   MEP: new Color(
     0.8,

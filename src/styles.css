@@ -20,7 +20,7 @@ main {
   position: relative;
 }
 #logo {
-  height: 20px;
+  height: 25px;
 }
 
 .splitter {
@@ -77,11 +77,11 @@ main {
 
 #topPanel {
   width: 100%;
-  height: 60%;
+  height: 70%;
 }
 #bottomPanel {
   width: 100%;
-  height: 40%;
+  height: 30%;
   min-height: 10px;
 }
 #schedule-view {
@@ -95,7 +95,12 @@ main {
   bottom: 0px;
   width: 100%;
   height: 5px;
-  background-color: #f9ce03;
+}
+progress::-webkit-progress-value {
+  background: #f9ce03;
+}
+progress {
+  color: #f9ce03;
 }
 
 .fps-display {

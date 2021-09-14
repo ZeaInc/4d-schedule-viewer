@@ -325,7 +325,7 @@ TreeItemView.css = `
     width: max-content;
   }
 
-  .TreeNodesListItem{
+  .TreeNodesListItem {
     display: flex;
   }
 

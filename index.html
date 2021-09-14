@@ -111,6 +111,13 @@
       envMap.load("./data/StudioG.zenv");
       scene.setEnvMap(envMap);
 
+      // renderer.on("resized", (event) => {
+      //   console.log("resized:", event)
+      // });
+
+      //   renderer.on("redrawOccurred", () => {
+      //   console.log("redrawOccurred")
+      // });
 
       scene.getSettings().getParameter('BackgroundColor').setValue(new Color('#87CEEB'))
       // .getViewport().setBackgroundColor(new Color('#87CEEB'))

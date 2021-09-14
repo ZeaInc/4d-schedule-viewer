@@ -20,9 +20,10 @@ export default function init(scene) {
   // schedule.loadMSProjectXLSX(
   //   "./data/Hospital/TimeLiner-MasterList(Dynamic Dates).xlsx"
   // );
+  // return schedule;
 
-  const loadBindingsCache = false;
-  const writeBindingsCache = false;
+  const loadBindingsCache = true;
+  const writeBindingsCache = true;
   const selectionSetPromises = [];
   const selectionSetFiles = [];
   const assets = {};
@@ -107,7 +108,6 @@ export default function init(scene) {
     });
   };
 
-  /*
   const offset = new Vec3(0, 0, -166.85);
   loadAssetFile(
     "data/Hospital/Autodesk_Hospital_Site.zcad",
@@ -285,7 +285,6 @@ export default function init(scene) {
     }
   );
 
-  */
   loadAssetFile(
     "data/Hospital/Autodesk_Hospital_Sprinkler.zcad",
     "data/Hospital/Sprinkler.xml",
