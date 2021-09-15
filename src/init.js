@@ -17,9 +17,9 @@ function download(filename, textInput) {
 
 export default function init(scene) {
   const schedule = new Schedule(scene);
-  // schedule.loadMSProjectXLSX(
-  //   "./data/Hospital/TimeLiner-MasterList(Dynamic Dates).xlsx"
-  // );
+  schedule.loadMSProjectXLSX(
+    "./data/Hospital/TimeLiner-MasterList(Dynamic Dates).xlsx"
+  );
   // return schedule;
 
   const loadBindingsCache = true;
@@ -33,11 +33,7 @@ export default function init(scene) {
         .then((response) => response.json())
         .then((json) => {
           schedule.fromJSON(json);
-          schedule
-            .loadMSProjectXLSX(
-              "./data/Hospital/TimeLiner-MasterList(Dynamic Dates).xlsx"
-            )
-            .then(() => {});
+          schedule.bindTasksToSelSets();
         })
         .catch(console.error);
     } else {
@@ -52,12 +48,7 @@ export default function init(scene) {
           console.log(json);
           download("bindings.json", JSON.stringify(json, null, 2));
         }
-
-        schedule
-          .loadMSProjectXLSX(
-            "./data/Hospital/TimeLiner-MasterList(Dynamic Dates).xlsx"
-          )
-          .then(() => {});
+        schedule.bindTasksToSelSets();
       });
     }
   };
@@ -166,7 +157,7 @@ export default function init(scene) {
       });
     }
   );
-
+  /**/
   loadAssetFile(
     "data/Hospital/Autodesk_Hospital_Architectural.zcad",
     "data/Hospital/Architectural.xml",
@@ -303,6 +294,7 @@ export default function init(scene) {
   );
 
   // loadAssetFile("data/Hospital/Autodesk_Hospital_Parking Garage.zcad", offset);
+  /****/
 
   return schedule;
 }

@@ -103,30 +103,30 @@ export default class Task extends EventEmitter {
     // this.active = row['Active'] == '1';
 
     if ("Attached" in row) {
-      const attachedTo = row["Attached"];
-      if (attachedTo != "Explicit Selection") {
-        try {
-          const group = sceneRoot.resolvePath(attachedTo.split("->"));
-          if (group && group instanceof IFCSelSet) {
-            // console.log("Task bound to SelectionSet :", attachedTo);
-            this.group = group;
-            if (this.taskType == TASK_TYPES.Construction) {
-              this.group
-                .getParameter("HighlightColor")
-                .setValue(TASK_COLORS.NEW_CONSTRUCTION);
-            } else if (this.taskType == TASK_TYPES.Equipment) {
-              this.group
-                .getParameter("HighlightColor")
-                .setValue(TASK_COLORS.EQUIPMENT);
-            }
-            this.group.getParameter("HighlightFill").setValue(0.25);
-          } else {
-            console.log(this.name, " IFCSelSet not found:", attachedTo);
-          }
-        } catch (e) {
-          // console.warn("Unable to resolve Task to SelectionSet :", attachedTo);
-        }
-      }
+      this.attachedTo = row["Attached"];
+      // if (attachedTo != "Explicit Selection") {
+      //   try {
+      //     const group = sceneRoot.resolvePath(attachedTo.split("->"));
+      //     if (group && group instanceof IFCSelSet) {
+      //       // console.log("Task bound to SelectionSet :", attachedTo);
+      //       this.group = group;
+      //       if (this.taskType == TASK_TYPES.Construction) {
+      //         this.group
+      //           .getParameter("HighlightColor")
+      //           .setValue(TASK_COLORS.NEW_CONSTRUCTION);
+      //       } else if (this.taskType == TASK_TYPES.Equipment) {
+      //         this.group
+      //           .getParameter("HighlightColor")
+      //           .setValue(TASK_COLORS.EQUIPMENT);
+      //       }
+      //       this.group.getParameter("HighlightFill").setValue(0.25);
+      //     } else {
+      //       console.log(this.name, " IFCSelSet not found:", attachedTo);
+      //     }
+      //   } catch (e) {
+      //     // console.warn("Unable to resolve Task to SelectionSet :", attachedTo);
+      //   }
+      // }
     }
 
     let rangeChanged = false;
@@ -149,39 +149,34 @@ export default class Task extends EventEmitter {
     this.animationBehaviour = row["Animation Behaviour"];
   }
 
-  // bindToSelectionSet(sceneRoot, selectionSets) {
-  //   if (this.attachedTo && this.attachedTo != "Explicit Selection") {
-  //     const path = this.attachedTo.split("->");
-  //     let item = sceneRoot.resolvePath(path);
-  //     if (item && !(item instanceof ZeaEngine.Group)) {
-  //       // Some tasks need to append the name to the path to get the
-  //       // target group. This just seems to be a quirk of the schedule we have.
-  //       item = item.getChildByName(this.name);
-  //     }
-  //     if (!item && path[1] == "Architectural") {
-  //       item = sceneRoot.resolvePath(path);
-  //     }
-  //     if (item && item instanceof ZeaEngine.Group) {
-  //       this.group = item;
-  //       if (this.taskType == TASK_TYPES.Construction) {
-  //         this.group
-  //           .getParameter("HighlightColor")
-  //           .setValue(TASK_COLORS.NEW_CONSTRUCTION);
-  //       } else if (this.taskType == TASK_TYPES.Equipment) {
-  //         this.group
-  //           .getParameter("HighlightColor")
-  //           .setValue(TASK_COLORS.EQUIPMENT);
-  //       }
-  //       this.group.getParameter("HighlightFill").setValue(0.25);
-  //     } else {
-  //       if (item) console.log(this.name, " Group found:", this.attachedTo);
-  //       console.log(this.name, " Group not found:", this.attachedTo);
-  //     }
-  //   }
-  //   this.childTasks.forEach((task) => {
-  //     task.bindToSelectionSet(sceneRoot, selectionSets);
-  //   });
-  // }
+  bindToSelectionSet(sceneRoot) {
+    if (this.attachedTo && this.attachedTo != "Explicit Selection") {
+      try {
+        const group = sceneRoot.resolvePath(this.attachedTo.split("->"));
+        if (group && group instanceof IFCSelSet) {
+          // console.log("Task bound to SelectionSet :", this.attachedTo);
+          this.group = group;
+          if (this.taskType == TASK_TYPES.Construction) {
+            this.group
+              .getParameter("HighlightColor")
+              .setValue(TASK_COLORS.NEW_CONSTRUCTION);
+          } else if (this.taskType == TASK_TYPES.Equipment) {
+            this.group
+              .getParameter("HighlightColor")
+              .setValue(TASK_COLORS.EQUIPMENT);
+          }
+          this.group.getParameter("HighlightFill").setValue(0.25);
+        } else {
+          console.log(this.name, " IFCSelSet not found:", this.attachedTo);
+        }
+      } catch (e) {
+        // console.warn("Unable to resolve Task to SelectionSet :", this.attachedTo);
+      }
+    }
+    this.childTasks.forEach((task) => {
+      task.bindToSelectionSet(sceneRoot);
+    });
+  }
 
   activate() {
     // All states get inialized to the Before state.

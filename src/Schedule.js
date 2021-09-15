@@ -84,7 +84,6 @@ export default class Schedule extends EventEmitter {
           // console.log("Duration:", this.projectStartDate, this.duration)
 
           // this.emit("tasksAdded", { tasks: this.tasks });
-          this.setCurrentDate(this.projectStartDate);
           this.emit("loaded");
           resolve(this.tasks);
         },
@@ -163,9 +162,6 @@ export default class Schedule extends EventEmitter {
             //   }
             // }
           }
-
-          // this.selectionSets.recomputeAll();
-          // resolve(this.selectionSets);
           resolve();
         },
         () => {
@@ -173,6 +169,13 @@ export default class Schedule extends EventEmitter {
         }
       );
     });
+  }
+
+  bindTasksToSelSets() {
+    this.tasks.forEach((task) => {
+      task.bindToSelectionSet(this.scene.getRoot());
+    });
+    this.setCurrentDate(this.projectStartDate);
   }
 
   getDateRange() {
