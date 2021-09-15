@@ -118,15 +118,32 @@ export class scheduleView extends HTMLElement {
       }
       
       .task {
-        height: 20px;
         background-color: #F9CE03;
         border: var(--color-grey-3);
         border-width: 2px;
         border-style: solid;
-        display: flex;
+        display: block;
         align-items: center;
-        justify-content: center;
+        justify-content: left;
         font-size: 15px;
+      }
+      .taskHeader {
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+      .taskExpandBtn {
+        border: none;
+        height: 24px;
+        width: 20px;
+        padding: 0;
+        background-color: #0000;
+        color: azure;
+        outline: none;
+        margin: 2px 0 0 0;
+      }
+      .taskChildList {
+        display: block;
       }
       
       #playBtn {
@@ -157,49 +174,77 @@ export class scheduleView extends HTMLElement {
   set schedule(schedule) {
     this._schedule = schedule;
     this._schedule.on("loaded", () => {
-      console.log("Loaded");
-      let lastMarginLeft = 0;
-
       const range = this._schedule.getDateRange();
       const duration = range[1] - range[0];
       let row = 0;
-      const displayTask = (task) => {
+      const displayTask = (task, taskParent, offset) => {
         const taskDiv = document.createElement("div");
         taskDiv.classList.add("task");
 
         const left =
-          ((task.start - range[0]) / duration) * this.timeline.offsetWidth;
-        const taskWidth = (task.duration / duration) * 100;
+          ((task.start - range[0]) / duration) * this.timeline.offsetWidth -
+          offset;
+        const taskWidth =
+          (task.duration / duration) * this.timeline.offsetWidth;
 
         console.log("displayTask", task.name, row, left, taskWidth);
 
         // I subtract 0.2em because of the gap in the container
         taskDiv.style["margin-left"] = `${left}px`;
         taskDiv.style.top = `${10 + row * 24}px`;
-        taskDiv.style.width = `${taskWidth}%`;
+        taskDiv.style.width = `${taskWidth}px`;
         taskDiv.style.backgroundColor = task.color.toHex();
+        taskParent.appendChild(taskDiv);
 
-        this.tasksContainer.appendChild(taskDiv);
+        const taskHeader = document.createElement("div");
+        taskHeader.className = "taskHeader";
+        taskDiv.appendChild(taskHeader);
+
+        // ///////////////////////////////////////
+        // Expand/Collapse
+
+        const expandBtn = document.createElement("button");
+        expandBtn.className = "taskExpandBtn";
+        taskHeader.appendChild(expandBtn);
+        expandBtn.innerHTML = "+";
+        let expanded = false;
+
+        const itemChildren = document.createElement("div");
+        itemChildren.className = "taskChildList";
+        taskDiv.appendChild(itemChildren);
+        expandBtn.addEventListener("click", () => {
+          if (!expanded) {
+            expandBtn.innerHTML = "-";
+            task.childTasks.forEach((childTask) => {
+              displayTask(childTask, itemChildren, left);
+            });
+            expanded = true;
+          } else if (expanded) {
+            while (itemChildren.firstChild) {
+              itemChildren.removeChild(itemChildren.lastChild);
+            }
+            expandBtn.innerHTML = "+";
+            expanded = false;
+          }
+        });
+        expandBtn.addEventListener("mousedown", (event) => {
+          event.stopPropagation();
+          event.preventDefault();
+        });
+
+        // ///////////////////////
+        // Label
 
         const taskLabelSpan = document.createElement("span");
         taskLabelSpan.classList.add("task-label");
         const taskLabel = document.createTextNode(task.name);
-        taskDiv.appendChild(taskLabelSpan);
+        taskHeader.appendChild(taskLabelSpan);
         taskLabelSpan.appendChild(taskLabel);
 
         row++;
-
-        let expanded = false;
-        const expand = () => {
-          let height = 15;
-          // task.childTasks.forEach((childTask) => {
-          //   displayTask(childTask);
-          // });
-          taskDiv.style.height = `${height}%`;
-        };
       };
       this._schedule.tasks.forEach((task) => {
-        displayTask(task);
+        displayTask(task, this.tasksContainer, 0);
       });
     });
 
