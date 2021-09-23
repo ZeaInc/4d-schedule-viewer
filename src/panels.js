@@ -45,12 +45,12 @@ function dragElement(element, leftPanel, mainPanel, direction) {
       // Vertical
       // Prevent negative-sized elements
       delta.y = Math.min(
-        Math.max(delta.y, -md.leftPanelHeight),
-        md.mainPanelHeight - 20
+        Math.max(delta.y, -md.mainPanelHeight),
+        md.leftPanelHeight - 20
       );
 
       // element.style.top = md.offsetLeft + delta.y + "px";
-      leftPanel.style.height = md.leftPanelHeight + delta.y + "px";
+      mainPanel.style.height = md.mainPanelHeight - delta.y + "px";
       // mainPanel.style.height = md.mainPanelHeight - delta.y + "px";
     }
   }

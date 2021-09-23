@@ -4,12 +4,6 @@ body {
   margin: 0em;
   background-color: #2d2d2d;
 }
-.layout {
-  grid-template-areas:
-    "header"
-    "main";
-  grid-template-rows: 50px 1fr;
-}
 
 header {
   grid-area: header;

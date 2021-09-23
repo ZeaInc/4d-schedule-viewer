@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html class="h-full">
   <head>
     <title>Zea 4D Schedule Viewer</title>
     <link
@@ -23,15 +23,15 @@
     <script src="./src/third-party/xlsx.js"></script>
     <script src="./src/third-party/jszip.js"></script>
     <script src="./src/third-party/moment.min.js"></script>
-
   </head>
-  <body class="overflow-hidden">
-    <div class="layout grid h-screen">
-      <header class="border flex justify-left items-center m-2 border-none">
+
+  <body class="overflow-hidden h-full">
+    <div class="h-full flex flex-col">
+      <header class="p-2">
         <img src="./data/logo-zea.svg" id="logo"></img>
       </header>
-      <main class="flex flex-col">
-        <div id="topPanel">
+      <main class="flex flex-col flex-1">
+        <div class="flex-1" id="topPanel">
           <div class="splitter">
             <div id="leftPanel">
               <scene-tree-view
@@ -53,7 +53,7 @@
           </div>
         </div>
         <div class="separator" id="separatorH"></div>
-        <div class="flex-1" id="bottomPanel">
+        <div id="bottomPanel">
           <schedule-view id="schedule-viewer" class="w-full"></schedule-view>
         </div>
       </main>
