@@ -54,7 +54,7 @@
         </div>
         <div class="separator" id="separatorH"></div>
         <div class="flex-1" id="bottomPanel">
-          <schedule-view id="schedule" class="w-full"></schedule-view>
+          <schedule-view id="schedule-viewer" class="w-full"></schedule-view>
         </div>
       </main>
     </div>
@@ -167,7 +167,7 @@
       treeElement.setTreeItem(scene.getRoot());
 
       // Setup Schedule view
-      const scheduleViewer = document.getElementById("schedule");
+      const scheduleViewer = document.getElementById("schedule-viewer");
       scheduleViewer.schedule = schedule
 
       // Setup FPS Display

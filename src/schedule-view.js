@@ -3,6 +3,7 @@ const { MathFunctions } = window.zeaEngine;
 export class scheduleView extends HTMLElement {
   constructor() {
     super();
+
     const shadowRoot = this.attachShadow({ mode: "open" });
 
     this.container = document.createElement("div");
@@ -13,16 +14,17 @@ export class scheduleView extends HTMLElement {
     this.timeline.id = "timeline";
     this.container.appendChild(this.timeline);
 
+    this.timebarWidth = 10;
     this.timebar = document.createElement("div");
     this.timebar.id = "timebar";
     this.timeline.appendChild(this.timebar);
 
-    this.tasksContainer = document.createElement("div");
-    this.tasksContainer.id = "tasks";
-    this.timeline.appendChild(this.tasksContainer);
+    this.tasksWrapper = document.createElement("div");
+    this.tasksWrapper.id = "tasks-wrapper";
+    this.timeline.appendChild(this.tasksWrapper);
     this.tasks = [];
 
-    const playBtn = document.createElement("i");
+    const playBtn = document.createElement("button");
     playBtn.id = "playBtn";
     playBtn.textContent = "Play";
     this.container.appendChild(playBtn);
@@ -85,14 +87,11 @@ export class scheduleView extends HTMLElement {
       .container {
         position: relative;
         display: flex;
-        width: 100%;
         height: 100%;
-        gap: 0.2em;
-        align-items: top;
         user-select: none;
       }
+
       #timeline {
-        height: calc(100% - 14px);
         display: flex;
         flex: auto;
         border: var(--color-grey-1);
@@ -101,22 +100,22 @@ export class scheduleView extends HTMLElement {
         align-items: center;
         overflow: auto
       }
+
       #timebar {
         position: relative;
         height: 100%;
-        width: 10px;
+        width: ${this.timebarWidth}px;
         background-color: rgb(255,0,0,0.7);
         cursor: col-resize;
         z-index: 100
       }
 
-      
-      #tasks {
+      #tasks-wrapper {
         height: 100%;
         display: block;
         flex: auto;
       }
-      
+
       .task {
         background-color: #F9CE03;
         border: var(--color-grey-3);
@@ -127,11 +126,13 @@ export class scheduleView extends HTMLElement {
         justify-content: left;
         font-size: 15px;
       }
+
       .taskHeader {
         white-space: nowrap;
         overflow: hidden;
         text-overflow: ellipsis;
       }
+
       .taskExpandBtn {
         border: none;
         height: 24px;
@@ -142,25 +143,21 @@ export class scheduleView extends HTMLElement {
         outline: none;
         margin: 2px 0 0 0;
       }
+
       .taskChildList {
         display: block;
       }
-      
+
       #playBtn {
-        height: 100%;
-        width: 60px;
-        background-color: #F9CE03; 
+        background-color: #F9CE03;
         border: var(--color-grey-3);
         border-style: solid;
         border-width: 1px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        cursor: pointer;
+        padding: 0 20px;
       }
 
       #playBtn:hover {
-        background-color: #F1D600; 
+        background-color: #F1D600;
       }
 
       .task-label {
@@ -173,11 +170,13 @@ export class scheduleView extends HTMLElement {
 
   set schedule(schedule) {
     this._schedule = schedule;
+
     this._schedule.on("loaded", () => {
       const range = this._schedule.getDateRange();
       const duration = range[1] - range[0];
       let row = 0;
-      const displayTask = (task, taskParent, offset) => {
+
+      const displayTask = (task, tasksWrapper, offset) => {
         const taskDiv = document.createElement("div");
         taskDiv.classList.add("task");
 
@@ -189,12 +188,11 @@ export class scheduleView extends HTMLElement {
 
         console.log("displayTask", task.name, row, left, taskWidth);
 
-        // I subtract 0.2em because of the gap in the container
         taskDiv.style["margin-left"] = `${left}px`;
         taskDiv.style.top = `${10 + row * 24}px`;
-        taskDiv.style.width = `${taskWidth}px`;
+        taskDiv.style.width = `${taskWidth - this.timebarWidth}px`;
         taskDiv.style.backgroundColor = task.color.toHex();
-        taskParent.appendChild(taskDiv);
+        tasksWrapper.appendChild(taskDiv);
 
         const taskHeader = document.createElement("div");
         taskHeader.className = "taskHeader";
@@ -243,8 +241,9 @@ export class scheduleView extends HTMLElement {
 
         row++;
       };
+
       this._schedule.tasks.forEach((task) => {
-        displayTask(task, this.tasksContainer, 0);
+        displayTask(task, this.tasksWrapper, 0);
       });
     });
 
@@ -261,9 +260,8 @@ export class scheduleView extends HTMLElement {
           (range[1].getTime() - range[0].getTime())) *
         this.timeline.offsetWidth;
 
-      const timeBarWidth = this.timebar.offsetWidth * 0.5;
       if (pixels >= 0 && pixels <= this.timeline.offsetWidth)
-        this.timebar.style.left = `${pixels - timeBarWidth}px`;
+        this.timebar.style.left = `${pixels - this.timebarWidth}px`;
     });
   }
 }
