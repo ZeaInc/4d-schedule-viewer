@@ -173,6 +173,38 @@ export default function init(scene) {
       ]);
       ribs.setVisible(false);
 
+      [
+        ["Level 3", 'Stair:7" max riser 11" tread:187507:2'],
+        ["Level 4", 'Stair:7" max riser 11" tread:187507:3'],
+        ["Level 3", 'Stair:7" max riser 11" tread:189108:2'],
+        ["Level 4", 'Stair:7" max riser 11" tread:189108:3'],
+        ["Level 3", 'Stair:7" max riser 11" tread:190846:2'],
+        ["Level 3", 'Stair:7" max riser 11" tread:195889:2'],
+        ["Level 4", 'Stair:7" max riser 11" tread:195889:3'],
+        ["Level 5", 'Stair:7" max riser 11" tread:195889:4'],
+        ["Level 3", 'Stair:7" max riser 11" tread:190278:2'],
+        ["Level 4", 'Stair:7" max riser 11" tread:190278:3'],
+        ["Level 3", 'Stair:7" max riser 11" tread:189710:2'],
+        ["Level 4", 'Stair:7" max riser 11" tread:189710:3'],
+        ["Level 5", 'Stair:7" max riser 11" tread:189710:4'],
+        ["Level 1", 'Stair:7" max riser 11" tread - no stringer:196518'],
+      ].forEach((subpath) => {
+        const path = [
+          "Architectural",
+          "Assembly_0",
+          "Default",
+          "Instance_0",
+          subpath[0],
+          subpath[1],
+        ];
+        const treeItem = asset.resolvePath(path);
+        if (treeItem) {
+          const parentItem = treeItem.getOwner();
+          parentItem.removeChildByHandle(treeItem);
+          // treeItem.setVisible(false);
+        }
+      });
+
       const materials = asset.getMaterialLibrary().getMaterials();
       materials.forEach((material) => {
         if (material.getName() == "Body_0002") {
