@@ -30,8 +30,8 @@
       <header class="border flex justify-left items-center m-2 border-none">
         <img src="./data/logo-zea.svg" id="logo"></img>
       </header>
-      <main>
-        <div id="topPanel" class="flex-1">
+      <main class="flex flex-col">
+        <div id="topPanel">
           <div class="splitter">
             <div id="leftPanel">
               <scene-tree-view
@@ -53,8 +53,8 @@
           </div>
         </div>
         <div class="separator" id="separatorH"></div>
-        <div id="bottomPanel">
-          <schedule-view  id="schedule" class="flex-1"></schedule-view>
+        <div class="flex-1" id="bottomPanel">
+          <schedule-view id="schedule" class="w-full"></schedule-view>
         </div>
       </main>
     </div>
@@ -95,7 +95,7 @@
       const renderer = new GLRenderer(document.getElementById("canvas"), {
         debugGeomIds: false,
       });
-  
+
       // //////////////////////////////////////////////////////
       // Temporary fix till the next point release comes out.
       // This code will be part of 3.11.2
