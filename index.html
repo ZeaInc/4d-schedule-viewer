@@ -30,7 +30,7 @@
         <img src="./data/logo-zea.svg" id="logo"></img>
       </header>
       <main>
-        <div id="topPanel">
+        <div id="topPanel" class="flex-1">
           <div class="splitter">
             <div id="leftPanel">
               <scene-tree-view
@@ -39,9 +39,9 @@
               ></scene-tree-view>
             </div>
             <div class="separator" id="separatorV"></div>
-            <div id="mainPanel">
+            <div id="mainPanel" class="flex-1">
               <div id="canvas-holder">
-                <canvas id="canvas" style="position: absolute;"> </canvas>
+                <canvas id="canvas" > </canvas>
               </div>
               <div class="xr-button hidden" id="xr-button"></div>
               <zea-fps-display class="fps-display" id="fps"></zea-fps-display>
@@ -53,7 +53,7 @@
         </div>
         <div class="separator" id="separatorH"></div>
         <div id="bottomPanel">
-          <schedule-view  id="schedule"></schedule-view>
+          <schedule-view  id="schedule" class="flex-1"></schedule-view>
         </div>
       </main>
     </div>
@@ -89,11 +89,47 @@
 
       const urlParams = new URLSearchParams(window.location.search);
       const scene = new Scene();
-      // scene.setupGrid(10.0, 10);
+      scene.setupGrid(100.0, 10);
 
       const renderer = new GLRenderer(document.getElementById("canvas"), {
         debugGeomIds: false,
       });
+  
+      // //////////////////////////////////////////////////////
+      // Temporary fix till the next point release comes out.
+      // This code will be part of 3.11.2
+      let lastResize = performance.now();
+      let timoutId = 0;
+      const handleResize = renderer.handleResize.bind(renderer);
+      renderer.handleResize = (width, height) => {
+        // Note: Rapid resize events would cause WebGL to render black.
+        // There appeared nothing to indicate why we get black, but throttling
+        // the resizing of our canvas and buffers seems to work.
+        const now = performance.now();
+        if (now - lastResize > 100) {
+          lastResize = now;
+          // If a delayed resize is scheduled, cancel it.
+          if (timoutId) {
+            clearTimeout(timoutId);
+            timoutId = 0;
+          }
+          handleResize(width, height);
+        } else {
+          // Set a timer to see if we can delay this resize by a few ms.
+          // If a resize happens in the meantime that succeeds, then skip this one.
+          // This ensures that after a drag to resize, the final resize event
+          // should always eventually apply.
+          timoutId = setTimeout(() => {
+            const now = performance.now();
+            if (now - lastResize > 100) {
+              lastResize = now;
+              handleResize(width, height);
+            }
+          }, 100);
+        }
+      };
+      // //////////////////////////////////////////////////////
+
       // renderer.outlineThickness = 0.75
       // renderer.outlineSensitivity = 5
       // renderer.solidAngleLimit = 0.0;
