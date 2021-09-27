@@ -14,15 +14,15 @@ export class scheduleView extends HTMLElement {
     this.timeline.id = "timeline";
     this.container.appendChild(this.timeline);
 
-    this.timebarWidth = 10;
-    this.timebar = document.createElement("div");
-    this.timebar.id = "timebar";
-    this.timeline.appendChild(this.timebar);
-
     this.tasksWrapper = document.createElement("div");
     this.tasksWrapper.id = "tasks-wrapper";
     this.timeline.appendChild(this.tasksWrapper);
     this.tasks = [];
+
+    this.timeBarWidth = 10;
+    this.timeBar = document.createElement("div");
+    this.timeBar.id = "time-bar";
+    this.tasksWrapper.appendChild(this.timeBar);
 
     const playBtn = document.createElement("button");
     playBtn.id = "playBtn";
@@ -32,10 +32,11 @@ export class scheduleView extends HTMLElement {
       if (this._schedule.playing) {
         this._schedule.stop();
         playBtn.textContent = "Play";
-      } else {
-        this._schedule.play();
-        playBtn.textContent = "Stop";
+        return;
       }
+
+      this._schedule.play();
+      playBtn.textContent = "Stop";
     });
 
     let mouseIsOver = false;
@@ -76,7 +77,7 @@ export class scheduleView extends HTMLElement {
       event.preventDefault();
     };
 
-    const endDragTimeBar = (event) => {
+    const endDragTimeBar = () => {
       document.removeEventListener("mousemove", dragTimeBar);
       document.removeEventListener("mouseup", endDragTimeBar);
     };
@@ -93,37 +94,32 @@ export class scheduleView extends HTMLElement {
 
       #timeline {
         display: flex;
-        flex: auto;
+        flex: 1 1 0%;
         border: var(--color-grey-1);
         border-style: solid;
         border-width: 1px;
-        align-items: center;
+        align-items: stretch;
         overflow: auto
       }
 
-      #timebar {
-        position: relative;
+      #time-bar {
+        position: absolute;
         height: 100%;
-        width: ${this.timebarWidth}px;
+        width: ${this.timeBarWidth}px;
         background-color: rgb(255,0,0,0.7);
         cursor: col-resize;
         z-index: 100
       }
 
       #tasks-wrapper {
-        height: 100%;
-        display: block;
-        flex: auto;
+        position: relative;
       }
 
       .task {
-        background-color: #F9CE03;
         border: var(--color-grey-3);
         border-width: 2px;
         border-style: solid;
-        display: block;
-        align-items: center;
-        justify-content: left;
+        border-radius: 2px;
         font-size: 15px;
       }
 
@@ -163,7 +159,7 @@ export class scheduleView extends HTMLElement {
       .task-label {
         color: black;
       }
-`)
+      `)
     );
     shadowRoot.appendChild(styleTag);
   }
@@ -190,7 +186,7 @@ export class scheduleView extends HTMLElement {
 
         taskDiv.style["margin-left"] = `${left}px`;
         taskDiv.style.top = `${10 + row * 24}px`;
-        taskDiv.style.width = `${taskWidth - this.timebarWidth}px`;
+        taskDiv.style.width = `${taskWidth - this.timeBarWidth}px`;
         taskDiv.style.backgroundColor = task.color.toHex();
         tasksWrapper.appendChild(taskDiv);
 
@@ -261,7 +257,7 @@ export class scheduleView extends HTMLElement {
         this.timeline.offsetWidth;
 
       if (pixels >= 0 && pixels <= this.timeline.offsetWidth)
-        this.timebar.style.left = `${pixels - this.timebarWidth}px`;
+        this.timeBar.style.left = `${pixels - this.timeBarWidth}px`;
     });
   }
 }
