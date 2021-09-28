@@ -71,7 +71,9 @@ main {
 #topPanel {
   height: 70%;
 }
+
 #bottomPanel {
+  height: 30%;
   min-height: 10px;
   display: flex;
 }
