@@ -417,9 +417,8 @@ class SceneTreeView extends HTMLElement {
     const styleTag = document.createElement("style");
     styleTag.appendChild(
       document.createTextNode(`
-    .TreeView {
-      height: 100%;
-    }`)
+        .TreeView {
+        }`)
     );
     shadowRoot.appendChild(styleTag);
 

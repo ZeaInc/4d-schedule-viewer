@@ -30,36 +30,37 @@
       <header class="p-2">
         <img src="./data/logo-zea.svg" id="logo"></img>
       </header>
-      <main class="flex flex-col flex-1">
-        <div class="flex-1" id="topPanel">
-          <div class="splitter">
-            <div id="leftPanel">
-              <scene-tree-view
-                id="tree"
-                class="select-none"
-              ></scene-tree-view>
-            </div>
-            <div class="separator" id="separatorV"></div>
-            <div id="mainPanel" class="flex-1">
-              <div id="canvas-holder">
-                <canvas id="canvas" > </canvas>
-              </div>
-              <div class="xr-button hidden" id="xr-button"></div>
-              <zea-fps-display class="fps-display" id="fps"></zea-fps-display>
-              <progress class="progress-display" id="progress" value="0" max="100">
-                0%
-              </progress>
-            </div>
+
+      <div class="flex" id="topPanel">
+        <div id="leftPanel">
+          <scene-tree-view
+            id="tree"
+            class="select-none"
+            ></scene-tree-view>
+        </div>
+        <div class="separator" id="separatorV"></div>
+        <div id="mainPanel" class="flex-1">
+          <div id="canvas-holder">
+            <canvas id="canvas" > </canvas>
           </div>
+          <div class="xr-button hidden" id="xr-button"></div>
+          <zea-fps-display class="fps-display" id="fps"></zea-fps-display>
+          <progress class="progress-display" id="progress" value="0" max="100">
+            0%
+          </progress>
         </div>
-        <div class="separator" id="separatorH"></div>
-        <div id="bottomPanel">
-          <schedule-view id="schedule-viewer" class="w-full"></schedule-view>
-        </div>
-      </main>
+      </div>
+
+      <div class="separator" id="separatorH"></div>
+
+      <div id="bottomPanel">
+        <schedule-view id="schedule-viewer" class="w-full"></schedule-view>
+      </div>
     </div>
+
     <script type="module">
-      import dragElement from './src/panels.js'
+      import { dragElement } from './src/panels.js'
+
       const separatorV = document.getElementById("separatorV");
       const leftPanel = document.getElementById("leftPanel");
       const mainPanel = document.getElementById("mainPanel");
