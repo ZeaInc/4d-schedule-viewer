@@ -104,29 +104,6 @@ export default class Task extends EventEmitter {
 
     if ("Attached" in row) {
       this.attachedTo = row["Attached"];
-      // if (attachedTo != "Explicit Selection") {
-      //   try {
-      //     const group = sceneRoot.resolvePath(attachedTo.split("->"));
-      //     if (group && group instanceof IFCSelSet) {
-      //       // console.log("Task bound to SelectionSet :", attachedTo);
-      //       this.group = group;
-      //       if (this.taskType == TASK_TYPES.Construction) {
-      //         this.group
-      //           .getParameter("HighlightColor")
-      //           .setValue(TASK_COLORS.NEW_CONSTRUCTION);
-      //       } else if (this.taskType == TASK_TYPES.Equipment) {
-      //         this.group
-      //           .getParameter("HighlightColor")
-      //           .setValue(TASK_COLORS.EQUIPMENT);
-      //       }
-      //       this.group.getParameter("HighlightFill").setValue(0.25);
-      //     } else {
-      //       console.log(this.name, " IFCSelSet not found:", attachedTo);
-      //     }
-      //   } catch (e) {
-      //     // console.warn("Unable to resolve Task to SelectionSet :", attachedTo);
-      //   }
-      // }
     }
 
     let rangeChanged = false;

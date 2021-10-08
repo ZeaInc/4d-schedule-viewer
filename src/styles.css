@@ -2,7 +2,7 @@ body {
   height: 100vh;
   overflow: hidden;
   margin: 0em;
-  background-color: #2d2d2d;
+  background-color: lightgrey;
 }
 
 header {

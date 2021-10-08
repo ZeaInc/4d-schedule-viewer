@@ -1,5 +1,7 @@
 const { MathFunctions } = window.zeaEngine;
 
+const timelineScale = 2000;
+
 export class scheduleView extends HTMLElement {
   constructor() {
     super();
@@ -56,7 +58,7 @@ export class scheduleView extends HTMLElement {
       }
     });
 
-    this.timeline.addEventListener("mousedown", (event) => {
+    this.timeBar.addEventListener("mousedown", (event) => {
       if (this._schedule.playing) this._schedule.stop();
       dragTimeBar(event);
       document.addEventListener("mousemove", dragTimeBar);
@@ -69,7 +71,7 @@ export class scheduleView extends HTMLElement {
       const range = this._schedule.getDateRange();
       const time = Math.round(
         range[0].getTime() +
-          (event.clientX / this.timeline.offsetWidth) *
+          (event.clientX / timelineScale) *
             (range[1].getTime() - range[0].getTime())
       );
       this._schedule.setCurrentDate(new Date(time));
@@ -90,6 +92,7 @@ export class scheduleView extends HTMLElement {
         display: flex;
         height: 100%;
         user-select: none;
+        background-color: lightgrey;
       }
 
       #timeline {
@@ -117,9 +120,9 @@ export class scheduleView extends HTMLElement {
 
       .task {
         border: var(--color-grey-3);
-        border-width: 2px;
+        border-width: 1px;
         border-style: solid;
-        border-radius: 2px;
+        border-radius: 4px;
         font-size: 15px;
       }
 
@@ -177,10 +180,8 @@ export class scheduleView extends HTMLElement {
         taskDiv.classList.add("task");
 
         const left =
-          ((task.start - range[0]) / duration) * this.timeline.offsetWidth -
-          offset;
-        const taskWidth =
-          (task.duration / duration) * this.timeline.offsetWidth;
+          ((task.start - range[0]) / duration) * timelineScale - offset;
+        const taskWidth = (task.duration / duration) * timelineScale;
 
         console.log("displayTask", task.name, row, left, taskWidth);
 
@@ -197,34 +198,36 @@ export class scheduleView extends HTMLElement {
         // ///////////////////////////////////////
         // Expand/Collapse
 
-        const expandBtn = document.createElement("button");
-        expandBtn.className = "taskExpandBtn";
-        taskHeader.appendChild(expandBtn);
-        expandBtn.innerHTML = "+";
-        let expanded = false;
+        if (task.childTasks.length > 0) {
+          const expandBtn = document.createElement("button");
+          expandBtn.className = "taskExpandBtn";
+          taskHeader.appendChild(expandBtn);
+          expandBtn.innerHTML = "+";
+          let expanded = false;
 
-        const itemChildren = document.createElement("div");
-        itemChildren.className = "taskChildList";
-        taskDiv.appendChild(itemChildren);
-        expandBtn.addEventListener("click", () => {
-          if (!expanded) {
-            expandBtn.innerHTML = "-";
-            task.childTasks.forEach((childTask) => {
-              displayTask(childTask, itemChildren, left);
-            });
-            expanded = true;
-          } else if (expanded) {
-            while (itemChildren.firstChild) {
-              itemChildren.removeChild(itemChildren.lastChild);
+          const itemChildren = document.createElement("div");
+          itemChildren.className = "taskChildList";
+          taskDiv.appendChild(itemChildren);
+          expandBtn.addEventListener("click", () => {
+            if (!expanded) {
+              expandBtn.innerHTML = "-";
+              task.childTasks.forEach((childTask) => {
+                displayTask(childTask, itemChildren, left);
+              });
+              expanded = true;
+            } else if (expanded) {
+              while (itemChildren.firstChild) {
+                itemChildren.removeChild(itemChildren.lastChild);
+              }
+              expandBtn.innerHTML = "+";
+              expanded = false;
             }
-            expandBtn.innerHTML = "+";
-            expanded = false;
-          }
-        });
-        expandBtn.addEventListener("mousedown", (event) => {
-          event.stopPropagation();
-          event.preventDefault();
-        });
+          });
+          expandBtn.addEventListener("mousedown", (event) => {
+            event.stopPropagation();
+            event.preventDefault();
+          });
+        }
 
         // ///////////////////////
         // Label
@@ -254,10 +257,10 @@ export class scheduleView extends HTMLElement {
       const pixels =
         ((time - range[0].getTime()) /
           (range[1].getTime() - range[0].getTime())) *
-        this.timeline.offsetWidth;
+        timelineScale;
 
-      if (pixels >= 0 && pixels <= this.timeline.offsetWidth)
-        this.timeBar.style.left = `${pixels - this.timeBarWidth}px`;
+      if (pixels >= 0 && pixels <= timelineScale)
+        this.timeBar.style.left = `${pixels}px`;
     });
   }
 }
