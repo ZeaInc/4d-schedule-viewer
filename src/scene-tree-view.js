@@ -57,7 +57,7 @@ class TreeItemView extends HTMLElement {
     this.titleElement.className = "TreeNodesListItem__Title";
     this.titleElement.addEventListener("click", (e) => {
       if (!this.appData || !this.appData.selectionManager) {
-        if (!this.treeItem.getSelected()) {
+        if (!this.treeItem.isSelected()) {
           this.treeItem.setSelected(true);
           this.treeItem.addHighlight("selected", highlightColor, true);
         } else {
@@ -174,7 +174,7 @@ class TreeItemView extends HTMLElement {
    *
    */
   updateSelected() {
-    const selected = this.treeItem.getSelected();
+    const selected = this.treeItem.isSelected();
     if (selected)
       this.itemContainer.classList.add("TreeNodesListItem--isSelected");
     else this.itemContainer.classList.remove("TreeNodesListItem--isSelected");
@@ -209,7 +209,7 @@ class TreeItemView extends HTMLElement {
     children.forEach((childItem, index) => {
       if (
         childItem instanceof TreeItem &&
-        childItem.getSelectable() &&
+        childItem.isSelectable() &&
         !(childItem instanceof CADBody)
       ) {
         count++;
@@ -231,7 +231,7 @@ class TreeItemView extends HTMLElement {
       children.forEach((childItem, index) => {
         if (
           childItem instanceof TreeItem &&
-          childItem.getSelectable() &&
+          childItem.isSelectable() &&
           !(childItem instanceof CADBody)
         ) {
           this.addChild(childItem, index);

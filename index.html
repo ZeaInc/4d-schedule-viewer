@@ -13,9 +13,8 @@
       href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.9/tailwind.min.css"
     />
     <link rel="stylesheet" href="./src/styles.css"/>
-    <script src="./libs/zea-engine/index.umd.js"></script>
-    <!-- <script src="https://cdn.jsdelivr.net/npm/@zeainc/zea-engine@3/dist/index.umd.js"></script> -->
-    <script src="https://cdn.jsdelivr.net/npm/@zeainc/zea-cad@3/dist/index.umd.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@zeainc/zea-engine@4.0.1/dist/index.umd.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@zeainc/zea-cad@4.0.0/dist/index.umd.js"></script>
     <script src="./src/zea-fps-display.js" type="module"></script>
     <script src="./src/scene-tree-view.js" type="module"></script>
     <script src="./src/schedule-view.js" type="module"></script>
@@ -153,7 +152,7 @@
       //   console.log("redrawOccurred")
       // });
 
-      scene.getSettings().getParameter('BackgroundColor').setValue(new Color('#87CEEB'))
+      renderer.getViewport().backgroundColorParam.value = new Color('#87CEEB')
       // .getViewport().setBackgroundColor(new Color('#87CEEB'))
       renderer
       .getViewport()
