@@ -4,8 +4,8 @@ const {
   TreeItemParameter,
   SelectionSet,
   BaseGeomItem,
+  CADPart,
 } = zeaEngine;
-const { CADPart } = zeaCad;
 import QueryParameter from "./QueryParameter.js";
 // import {
 //   SelectionSet,

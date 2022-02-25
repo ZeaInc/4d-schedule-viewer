@@ -1,7 +1,6 @@
 // Setup Schedule
 import Schedule from "./Schedule.js";
-const { Vec3, Xfo } = zeaEngine;
-const { CADAsset, CADBody } = zeaCad;
+const { Vec3, Xfo, CADAsset, CADBody } = zeaEngine;
 
 function download(filename, textInput) {
   var element = document.createElement("a");
@@ -101,14 +100,14 @@ export default function init(scene) {
 
   const offset = new Vec3(0, 0, -166.85);
   loadAssetFile(
-    "data/Hospital/Autodesk_Hospital_Site.zcad",
+    "data/Hospital/Autodesk_Hospital_Site.ifc.zcad",
     null,
     offset,
     (asset) => {
       const materials = asset.getMaterialLibrary().getMaterials();
       materials.forEach((material) => {
-        const BaseColor = material.getParameter("BaseColor");
-        if (BaseColor) BaseColor.setValue(BaseColor.getValue().toGamma());
+        // const BaseColor = material.getParameter("BaseColor");
+        // if (BaseColor) BaseColor.setValue(BaseColor.getValue().toGamma());
         const Reflectance = material.getParameter("Reflectance");
         if (Reflectance) Reflectance.setValue(0.01);
         const Metallic = material.getParameter("Metallic");
@@ -122,14 +121,14 @@ export default function init(scene) {
     }
   );
   loadAssetFile(
-    "data/Hospital/Autodesk_Hospital_Site Logistics.zcad",
+    "data/Hospital/Autodesk_Hospital_Site Logistics.ifc.zcad",
     "data/Hospital/Site.xml",
     offset,
     (asset) => {
       const materials = asset.getMaterialLibrary().getMaterials();
       materials.forEach((material) => {
-        const BaseColor = material.getParameter("BaseColor");
-        if (BaseColor) BaseColor.setValue(BaseColor.getValue().toGamma());
+        // const BaseColor = material.getParameter("BaseColor");
+        // if (BaseColor) BaseColor.setValue(BaseColor.getValue().toGamma());
         const Reflectance = material.getParameter("Reflectance");
         if (Reflectance) Reflectance.setValue(0.01);
         const Metallic = material.getParameter("Metallic");
@@ -140,14 +139,14 @@ export default function init(scene) {
     }
   );
   loadAssetFile(
-    "data/Hospital/Autodesk_Hospital_Structural.zcad",
+    "data/Hospital/Autodesk_Hospital_Structural.ifc.zcad",
     "data/Hospital/Structural.xml",
     null,
     (asset) => {
       const materials = asset.getMaterialLibrary().getMaterials();
       materials.forEach((material) => {
-        const BaseColor = material.getParameter("BaseColor");
-        if (BaseColor) BaseColor.setValue(BaseColor.getValue().toGamma());
+        // const BaseColor = material.getParameter("BaseColor");
+        // if (BaseColor) BaseColor.setValue(BaseColor.getValue().toGamma());
         const Reflectance = material.getParameter("Reflectance");
         if (Reflectance) Reflectance.setValue(0.01);
         const Metallic = material.getParameter("Metallic");
@@ -159,7 +158,7 @@ export default function init(scene) {
   );
   /**/
   loadAssetFile(
-    "data/Hospital/Autodesk_Hospital_Architectural.zcad",
+    "data/Hospital/Autodesk_Hospital_Architectural.ifc.zcad",
     "data/Hospital/Architectural.xml",
     null,
     (asset) => {
@@ -221,8 +220,8 @@ export default function init(scene) {
           greyWindows.getParameter("BaseColor").setValue(color.toGamma());
           return;
         }
-        const BaseColor = material.getParameter("BaseColor");
-        if (BaseColor) BaseColor.setValue(BaseColor.getValue().toGamma());
+        // const BaseColor = material.getParameter("BaseColor");
+        // if (BaseColor) BaseColor.setValue(BaseColor.getValue().toGamma());
         const Reflectance = material.getParameter("Reflectance");
         if (Reflectance) Reflectance.setValue(0.01);
         const Metallic = material.getParameter("Metallic");
@@ -238,14 +237,14 @@ export default function init(scene) {
   );
 
   loadAssetFile(
-    "data/Hospital/Autodesk_Hospital_Plumbing.zcad",
+    "data/Hospital/Autodesk_Hospital_Plumbing.ifc.zcad",
     "data/Hospital/Plumbing.xml",
     null,
     (asset) => {
       const materials = asset.getMaterialLibrary().getMaterials();
       materials.forEach((material) => {
-        const BaseColor = material.getParameter("BaseColor");
-        if (BaseColor) BaseColor.setValue(BaseColor.getValue().toGamma());
+        // const BaseColor = material.getParameter("BaseColor");
+        // if (BaseColor) BaseColor.setValue(BaseColor.getValue().toGamma());
         const Reflectance = material.getParameter("Reflectance");
         if (Reflectance) Reflectance.setValue(0.01);
         const Metallic = material.getParameter("Metallic");
@@ -256,14 +255,14 @@ export default function init(scene) {
     }
   );
   loadAssetFile(
-    "data/Hospital/Autodesk_Hospital_Electrical.zcad",
+    "data/Hospital/Autodesk_Hospital_Electrical.ifc.zcad",
     "data/Hospital/Electrical.xml",
     null,
     (asset) => {
       const materials = asset.getMaterialLibrary().getMaterials();
       materials.forEach((material) => {
-        const BaseColor = material.getParameter("BaseColor");
-        if (BaseColor) BaseColor.setValue(BaseColor.getValue().toGamma());
+        // const BaseColor = material.getParameter("BaseColor");
+        // if (BaseColor) BaseColor.setValue(BaseColor.getValue().toGamma());
         const Reflectance = material.getParameter("Reflectance");
         if (Reflectance) Reflectance.setValue(0.01);
         const Metallic = material.getParameter("Metallic");
@@ -274,14 +273,14 @@ export default function init(scene) {
     }
   );
   loadAssetFile(
-    "data/Hospital/Autodesk_Hospital_HVAC.zcad",
+    "data/Hospital/Autodesk_Hospital_HVAC.ifc.zcad",
     "data/Hospital/HVAC.xml",
     null,
     (asset) => {
       const materials = asset.getMaterialLibrary().getMaterials();
       materials.forEach((material) => {
-        const BaseColor = material.getParameter("BaseColor");
-        if (BaseColor) BaseColor.setValue(BaseColor.getValue().toGamma());
+        // const BaseColor = material.getParameter("BaseColor");
+        // if (BaseColor) BaseColor.setValue(BaseColor.getValue().toGamma());
         const Reflectance = material.getParameter("Reflectance");
         if (Reflectance) Reflectance.setValue(0.1);
         const Metallic = material.getParameter("Metallic");
@@ -292,7 +291,7 @@ export default function init(scene) {
     }
   );
   loadAssetFile(
-    "data/Hospital/Autodesk_Hospital_FireAlarm.zcad",
+    "data/Hospital/Autodesk_Hospital_FireAlarm.ifc.zcad",
     "data/Hospital/Fire Alarm.xml",
     null,
     (asset) => {
@@ -309,7 +308,7 @@ export default function init(scene) {
   );
 
   loadAssetFile(
-    "data/Hospital/Autodesk_Hospital_Sprinkler.zcad",
+    "data/Hospital/Autodesk_Hospital_Sprinkler.ifc.zcad",
     "data/Hospital/Sprinkler.xml",
     null,
     (asset) => {
@@ -325,7 +324,7 @@ export default function init(scene) {
     }
   );
 
-  // loadAssetFile("data/Hospital/Autodesk_Hospital_Parking Garage.zcad", offset);
+  // loadAssetFile("data/Hospital/Autodesk_Hospital_Parking Garage.ifc.zcad", offset);
   /****/
 
   return schedule;

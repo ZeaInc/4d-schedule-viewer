@@ -225,7 +225,7 @@ export default class Schedule extends EventEmitter {
         const children = treeItem.getChildren();
         const json = {
           name: treeItem.getName(),
-          type: Registry.getBlueprintName(treeItem),
+          type: treeItem.getClassName(),
           children: [],
         };
         for (const childItem of children) {
