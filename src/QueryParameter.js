@@ -1,4 +1,4 @@
-const { StringParameter, ValueSetMode } = zeaEngine;
+const { StringParameter, ValueSetMode } = zeaEngine
 
 const QUERY_TYPES = {
   NAME: 0,
@@ -8,20 +8,20 @@ const QUERY_TYPES = {
   LEVEL: 4,
   LAYER: 5,
   VOLUME: 6,
-};
+}
 
 const QUERY_MATCH_TYPE = {
   EXACT: 0,
   REGEX: 1,
   CONTAINS: 2,
-};
+}
 
 const QUERY_LOGIC = {
   AND: 0,
   OR: 1,
   NOT: 3,
   NEWSET: 4,
-};
+}
 
 /** Class representing a query parameter.
  * @extends StringParameter
@@ -40,13 +40,13 @@ export default class QueryParameter extends StringParameter {
     matchType = QUERY_MATCH_TYPE.EXACT,
     locicalOperator = QUERY_LOGIC.AND
   ) {
-    super(name, "", "String");
-    this.__enabled = true;
-    this.__queryType = queryType;
-    this.__matchType = matchType;
-    this.__locicalOperator = locicalOperator;
-    this.__negate = false;
-    this.__propName = "";
+    super(name, '', 'String')
+    this.__enabled = true
+    this.__queryType = queryType
+    this.__matchType = matchType
+    this.__locicalOperator = locicalOperator
+    this.__negate = false
+    this.__propName = ''
   }
 
   /**
@@ -54,14 +54,14 @@ export default class QueryParameter extends StringParameter {
    * @return {any} - The return value.
    */
   static get QUERY_TYPES() {
-    return QUERY_TYPES;
+    return QUERY_TYPES
   }
   /**
    * Getter for QUERY_MATCH_TYPE.
    * @return {any} - The return value.
    */
   static get QUERY_MATCH_TYPE() {
-    return QUERY_MATCH_TYPE;
+    return QUERY_MATCH_TYPE
   }
 
   /**
@@ -69,7 +69,7 @@ export default class QueryParameter extends StringParameter {
    * @return {any} - The return value.
    */
   static get QUERY_LOGIC() {
-    return QUERY_LOGIC;
+    return QUERY_LOGIC
   }
 
   /**
@@ -77,7 +77,7 @@ export default class QueryParameter extends StringParameter {
    * @return {any} - The return value.
    */
   getEnabled() {
-    return this.__enabled;
+    return this.__enabled
   }
 
   /**
@@ -85,8 +85,8 @@ export default class QueryParameter extends StringParameter {
    * @param {any} ngate - The ngate value.
    */
   setEnabled(ngate) {
-    this.__enabled = ngate;
-    this.emit("valueChanged", {});
+    this.__enabled = ngate
+    this.emit('valueChanged', {})
   }
 
   /**
@@ -94,7 +94,7 @@ export default class QueryParameter extends StringParameter {
    * @return {any} - The return value.
    */
   getQueryType() {
-    return this.__queryType;
+    return this.__queryType
   }
 
   /**
@@ -102,8 +102,8 @@ export default class QueryParameter extends StringParameter {
    * @param {any} queryType - The queryType value.
    */
   setQueryType(queryType) {
-    this.__queryType = queryType;
-    this.emit("valueChanged", {});
+    this.__queryType = queryType
+    this.emit('valueChanged', {})
   }
 
   /**
@@ -111,7 +111,7 @@ export default class QueryParameter extends StringParameter {
    * @return {any} - The return value.
    */
   getMatchType() {
-    return this.__matchType;
+    return this.__matchType
   }
 
   /**
@@ -119,8 +119,8 @@ export default class QueryParameter extends StringParameter {
    * @param {any} matchType - The matchType value.
    */
   setMatchType(matchType) {
-    this.__matchType = matchType;
-    this.emit("valueChanged", {});
+    this.__matchType = matchType
+    this.emit('valueChanged', {})
   }
 
   /**
@@ -128,7 +128,7 @@ export default class QueryParameter extends StringParameter {
    * @return {any} - The return value.
    */
   getLocicalOperator() {
-    return this.__locicalOperator;
+    return this.__locicalOperator
   }
 
   /**
@@ -136,8 +136,8 @@ export default class QueryParameter extends StringParameter {
    * @param {any} locicalOperator - The locicalOperator value.
    */
   setLocicalOperator(locicalOperator) {
-    this.__locicalOperator = locicalOperator;
-    this.emit("valueChanged", {});
+    this.__locicalOperator = locicalOperator
+    this.emit('valueChanged', {})
   }
 
   /**
@@ -145,7 +145,7 @@ export default class QueryParameter extends StringParameter {
    * @return {any} - The return value.
    */
   getNegate() {
-    return this.__negate;
+    return this.__negate
   }
 
   /**
@@ -153,8 +153,8 @@ export default class QueryParameter extends StringParameter {
    * @param {any} ngate - The ngate value.
    */
   setNegate(ngate) {
-    this.__negate = ngate;
-    this.emit("valueChanged", {});
+    this.__negate = ngate
+    this.emit('valueChanged', {})
   }
 
   /**
@@ -162,7 +162,7 @@ export default class QueryParameter extends StringParameter {
    * @return {any} - The return value.
    */
   getPropertyName() {
-    return this.__propName;
+    return this.__propName
   }
 
   /**
@@ -170,8 +170,8 @@ export default class QueryParameter extends StringParameter {
    * @param {any} val - The val value.
    */
   setPropertyName(val) {
-    this.__propName = val;
-    this.emit("valueChanged", {});
+    this.__propName = val
+    this.emit('valueChanged', {})
   }
 
   /**
@@ -180,25 +180,25 @@ export default class QueryParameter extends StringParameter {
    */
   getRegex() {
     // https://regex101.com/
-    const value = this.getValue();
+    const value = this.getValue()
     switch (this.__matchType) {
       case QUERY_MATCH_TYPE.EXACT:
-        return new RegExp(`^${value}$`);
-        break;
+        return new RegExp(`^${value}$`)
+        break
       case QUERY_MATCH_TYPE.CONTAINS:
-        return new RegExp(value);
-        break;
+        return new RegExp(value)
+        break
       case QUERY_MATCH_TYPE.REGEX:
-        return new RegExp(value);
-        break;
+        return new RegExp(value)
+        break
       case QUERY_MATCH_TYPE.IGNORECASE:
-        return new RegExp(`^${value}$`, "i");
-        break;
+        return new RegExp(`^${value}$`, 'i')
+        break
       case QUERY_MATCH_TYPE.CONTAINS_IGNORECASE:
-        return new RegExp(`${value}`, "i");
-        break;
+        return new RegExp(`${value}`, 'i')
+        break
       default:
-        throw new Error("Unknown Match type");
+        throw new Error('Unknown Match type')
     }
   }
 
@@ -208,8 +208,8 @@ export default class QueryParameter extends StringParameter {
    * @param {object} context - The context value.
    */
   readBinary(reader, context) {
-    const value = reader.loadStr();
-    this.setValue(value, ValueSetMode.DATA_LOAD);
+    const value = reader.loadStr()
+    this.setValue(value, ValueSetMode.DATA_LOAD)
   }
 
   // ////////////////////////////////////////
@@ -222,9 +222,9 @@ export default class QueryParameter extends StringParameter {
    * @return {QueryParameter} - Returns a new query parameter.
    */
   clone(flags) {
-    const clonedParam = new QueryParameter(this.__name, this.__value);
-    return clonedParam;
+    const clonedParam = new QueryParameter(this.__name, this.__value)
+    return clonedParam
   }
 }
 
-export { QueryParameter, QUERY_TYPES, QUERY_MATCH_TYPE, QUERY_LOGIC };
+export { QueryParameter, QUERY_TYPES, QUERY_MATCH_TYPE, QUERY_LOGIC }

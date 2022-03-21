@@ -1,4 +1,4 @@
-const { Parameter } = zeaEngine;
+const { Parameter } = zeaEngine
 
 /** Class representing a query set parameter.
  * @extends Parameter
@@ -9,8 +9,8 @@ export default class QuerySet extends Parameter {
    * @param {string} name - The name of the query set parameter.
    */
   constructor(name) {
-    super(name, undefined, "QueryParameter");
-    this.__items = new Set();
+    super(name, undefined, 'QueryParameter')
+    this.__items = new Set()
   }
 
   /**
@@ -19,7 +19,7 @@ export default class QuerySet extends Parameter {
    * @return {any} - The return value.
    */
   getItem(index) {
-    return Array.from(this.__items)[index];
+    return Array.from(this.__items)[index]
   }
 
   /**
@@ -29,11 +29,11 @@ export default class QuerySet extends Parameter {
    * @return {any} - The return value.
    */
   addItem(item, emit = true) {
-    if (this.__filterFn && !this.__filterFn(item)) return false;
-    item.on("valueChanged", () => this.emit("valueChanged", {}));
-    this.__items.add(item);
-    if (emit) this.emit("valueChanged", {});
-    return Array.from(this.__items).indexOf(item);
+    if (this.__filterFn && !this.__filterFn(item)) return false
+    item.on('valueChanged', () => this.emit('valueChanged', {}))
+    this.__items.add(item)
+    if (emit) this.emit('valueChanged', {})
+    return Array.from(this.__items).indexOf(item)
   }
 
   /**
@@ -43,13 +43,13 @@ export default class QuerySet extends Parameter {
    * @return {any} - The return value.
    */
   removeItem(item, emit = true) {
-    const items = Array.from(this.__items);
-    const index = items.indexOf(item);
+    const items = Array.from(this.__items)
+    const index = items.indexOf(item)
     // TODO: FIXME
     // items[index].valueChanged.disconnect(this.emit("valueChanged", {}));
-    this.__items.delete(item);
-    if (emit) this.emit("valueChanged", {});
-    return index;
+    this.__items.delete(item)
+    if (emit) this.emit('valueChanged', {})
+    return index
   }
 
   /**
@@ -57,7 +57,7 @@ export default class QuerySet extends Parameter {
    * @return {any} - The return value.
    */
   getNumItems() {
-    return Array.from(this.__items).length;
+    return Array.from(this.__items).length
   }
 
   /**
@@ -65,7 +65,7 @@ export default class QuerySet extends Parameter {
    * @return {any} - The return value.
    */
   getValue() {
-    return this.__items;
+    return this.__items
   }
 
   // ////////////////////////////////////////
@@ -78,7 +78,7 @@ export default class QuerySet extends Parameter {
    * @return {any} - The return value.
    */
   toJSON(context, flags) {
-    return {};
+    return {}
   }
 
   /**
@@ -99,9 +99,9 @@ export default class QuerySet extends Parameter {
    * @return {QuerySet} - Returns a new query set parameter.
    */
   clone(flags) {
-    const clonedParam = new QuerySet(this.__name, this.__filterFn);
-    return clonedParam;
+    const clonedParam = new QuerySet(this.__name, this.__filterFn)
+    return clonedParam
   }
 }
 
-export { QuerySet };
+export { QuerySet }
