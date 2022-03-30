@@ -1,6 +1,6 @@
 // Setup Schedule
 import Schedule from './Schedule.js'
-const { Vec3, Xfo, CADAsset, CADBody } = zeaEngine
+const { Vec3, Xfo, CADAsset, CADPart, GeomItem, Lines, LinesProxy, Mesh, MeshProxy, CompoundGeom } = zeaEngine
 
 function download(filename, textInput) {
   var element = document.createElement('a')
@@ -9,6 +9,34 @@ function download(filename, textInput) {
   document.body.appendChild(element)
   element.click()
   //document.body.removeChild(element);
+}
+
+const calcSceneComplexity = (scene) => {
+  let parts = 0
+  let geomItems = 0
+  let triangles = 0
+  let lines = 0
+  scene.getRoot().traverse((item) => {
+    if (item instanceof CADPart) {
+      parts++
+    } else if (item instanceof GeomItem) {
+      geomItems++
+      const geom = item.geomParam.value
+      if (geom instanceof Lines) {
+        lines += geom.getNumSegments()
+      } else if (geom instanceof LinesProxy) {
+        lines += geom.getNumLineSegments()
+      } else if (geom instanceof Mesh) {
+        triangles += geom.computeNumTriangles()
+      } else if (geom instanceof MeshProxy) {
+        triangles += geom.getNumTriangles()
+      } else if (geom instanceof CompoundGeom) {
+        lines += geom.getNumLineSegments()
+        triangles += geom.getNumTriangles()
+      }
+    }
+  })
+  console.log(`parts:${geomItems} geomItems:${geomItems} lines:${lines} triangles:${triangles}`)
 }
 
 export default function init(scene) {
@@ -22,6 +50,8 @@ export default function init(scene) {
   const selectionSetFiles = []
   const assets = {}
   const loadSelectionSetsAndBind = () => {
+    calcSceneComplexity(scene)
+
     if (loadBindingsCache) {
       fetch(new Request('./data/bindings.json'))
         .then((response) => response.json())
