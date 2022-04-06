@@ -173,7 +173,7 @@ export default function init(scene) {
       })
     }
   )
-  /**/
+  /** /
   loadAssetFile(
     'data/Hospital/Autodesk_Hospital_Architectural.ifc.zcad',
     'data/Hospital/Architectural.xml',

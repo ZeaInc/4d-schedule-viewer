@@ -128,6 +128,11 @@ export default class Task extends EventEmitter {
             this.group.getParameter('HighlightColor').setValue(TASK_COLORS.EQUIPMENT)
           }
           this.group.getParameter('HighlightFill').setValue(0.25)
+
+          const items = this.group.getItems()
+          items.forEach((item) => {
+            item.opacityParam.value = 0.99
+          })
         } else {
           console.log(this.name, ' IFCSelSet not found:', this.attachedTo)
         }
@@ -172,6 +177,11 @@ export default class Task extends EventEmitter {
             else if (this.state == STATE_TYPES.DURING) {
               // this.group.removeHighlight(this.name, true);
               this.group.getParameter('Highlighted').setValue(false)
+
+              const items = this.group.getItems()
+              items.forEach((item) => {
+                item.opacityParam.value = 0.4
+              })
             }
           } else if (this.taskType == TASK_TYPES.Equipment) {
             this.group.setVisible(false)
@@ -193,6 +203,10 @@ export default class Task extends EventEmitter {
             if (this.state == STATE_TYPES.BEFORE) {
               this.group.setVisible(true)
             }
+            const items = this.group.getItems()
+            items.forEach((item) => {
+              item.opacityParam.value = 0.99
+            })
             // this.group.addHighlight(this.name, TASK_COLORS.NEW_CONSTRUCTION, true);
             this.group.getParameter('Highlighted').setValue(true)
           } else {
