@@ -13,9 +13,8 @@
       href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.9/tailwind.min.css"
     />
     <link rel="stylesheet" href="./src/styles.css"/>
-    <script src="https://cdn.jsdelivr.net/npm/@zeainc/zea-engine@4.3.0-1a54dcc/dist/index.umd.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@zeainc/zea-engine@4.10.0-53cb196/dist/index.umd.min.js"></script>
     
-    <!-- <script src="./libs/zea-engine/index.umd.js"></script> -->
     <script src="./src/zea-fps-display.js" type="module"></script>
     <script src="./src/schedule-view.js" type="module"></script>
     <script src="https://cdn.jsdelivr.net/npm/@zeainc/zea-tree-view@0.1.0/dist/index.umd.development.js"></script>
@@ -88,149 +87,158 @@
         MeshProxy,
         LinesProxy,CADAsset, CADBody
       } = zeaEngine;
+      import init from "./src/init.js";
 
       document.addEventListener('contextmenu', (event) => {
         event.stopPropagation()
         event.preventDefault()
       })
 
-      const urlParams = new URLSearchParams(window.location.search);
-      const scene = new Scene();
-      // scene.setupGrid(100.0, 10);
+      function setupSceneAndRenderer() {
+        const urlParams = new URLSearchParams(window.location.search);
+        const scene = new Scene();
+        // scene.setupGrid(100.0, 10);
 
-      const renderer = new GLRenderer(document.getElementById("canvas"), {
-        debugGeomIds: false,
-        enableFrustumCulling: true,
-        enableOcclusionCulling: false,
-        debugOcclusionBuffer: false,
-      });
+        const renderer = new GLRenderer(document.getElementById("canvas"), {
+          debugGeomIds: false,
+          enableFrustumCulling: false,
+          enableOcclusionCulling: false,
+          debugOcclusionBuffer: false,
+        });
 
-      // //////////////////////////////////////////////////////
-      // Temporary fix till the next point release comes out.
-      // This code will be part of 3.11.2
-      let lastResize = performance.now();
-      let timoutId = 0;
-      const handleResize = renderer.handleResize.bind(renderer);
-      renderer.handleResize = (width, height) => {
-        // Note: Rapid resize events would cause WebGL to render black.
-        // There appeared nothing to indicate why we get black, but throttling
-        // the resizing of our canvas and buffers seems to work.
-        const now = performance.now();
-        if (now - lastResize > 100) {
-          lastResize = now;
-          // If a delayed resize is scheduled, cancel it.
-          if (timoutId) {
-            clearTimeout(timoutId);
-            timoutId = 0;
-          }
-          handleResize(width, height);
-        } else {
-          // Set a timer to see if we can delay this resize by a few ms.
-          // If a resize happens in the meantime that succeeds, then skip this one.
-          // This ensures that after a drag to resize, the final resize event
-          // should always eventually apply.
-          timoutId = setTimeout(() => {
-            const now = performance.now();
-            if (now - lastResize > 100) {
-              lastResize = now;
-              handleResize(width, height);
+        // //////////////////////////////////////////////////////
+        // Temporary fix till the next point release comes out.
+        // This code will be part of 3.11.2
+        let lastResize = performance.now();
+        let timoutId = 0;
+        const handleResize = renderer.handleResize.bind(renderer);
+        renderer.handleResize = (width, height) => {
+          // Note: Rapid resize events would cause WebGL to render black.
+          // There appeared nothing to indicate why we get black, but throttling
+          // the resizing of our canvas and buffers seems to work.
+          const now = performance.now();
+          if (now - lastResize > 100) {
+            lastResize = now;
+            // If a delayed resize is scheduled, cancel it.
+            if (timoutId) {
+              clearTimeout(timoutId);
+              timoutId = 0;
             }
-          }, 100);
-        }
-      };
-      // //////////////////////////////////////////////////////
+            handleResize(width, height);
+          } else {
+            // Set a timer to see if we can delay this resize by a few ms.
+            // If a resize happens in the meantime that succeeds, then skip this one.
+            // This ensures that after a drag to resize, the final resize event
+            // should always eventually apply.
+            timoutId = setTimeout(() => {
+              const now = performance.now();
+              if (now - lastResize > 100) {
+                lastResize = now;
+                handleResize(width, height);
+              }
+            }, 100);
+          }
+        };
+        // //////////////////////////////////////////////////////
 
-      // renderer.outlineThickness = 0.75
-      // renderer.outlineSensitivity = 5
-      // renderer.solidAngleLimit = 0.0;
-      renderer.setScene(scene);
-      renderer
+        // renderer.outlineThickness = 0.75
+        // renderer.outlineSensitivity = 5
+        // renderer.solidAngleLimit = 0.0;
+        renderer.setScene(scene);
+        renderer
+          .getViewport()
+          .getCamera()
+          .setPositionAndTarget(new Vec3(12, 12, 10), new Vec3(0, 0, 1.5));
+
+        const envMap = new EnvMap();
+        envMap.load("./data/StudioG.zenv");
+        scene.setEnvMap(envMap);
+
+        // renderer.on("resized", (event) => {
+        //   console.log("resized:", event)
+        // });
+
+        //   renderer.on("redrawOccurred", () => {
+        //   console.log("redrawOccurred")
+        // });
+
+        renderer.getViewport().backgroundColorParam.value = new Color('#87CEEB')
+        // .getViewport().setBackgroundColor(new Color('#87CEEB'))
+        renderer
         .getViewport()
         .getCamera()
-        .setPositionAndTarget(new Vec3(12, 12, 10), new Vec3(0, 0, 1.5));
+        .setPositionAndTarget(new Vec3(-80, -40, 20), new Vec3(40, 80, 10))
 
-      const envMap = new EnvMap();
-      envMap.load("./data/StudioG.zenv");
-      scene.setEnvMap(envMap);
+        const schedule = init(scene)
 
-      // renderer.on("resized", (event) => {
-      //   console.log("resized:", event)
-      // });
+        // Setup TreeView Display
+        const treeElement = document.getElementById("tree");
+        treeElement.setTreeItem(scene.getRoot());
 
-      //   renderer.on("redrawOccurred", () => {
-      //   console.log("redrawOccurred")
-      // });
+        // Setup Schedule view
+        const scheduleViewer = document.getElementById("schedule-viewer");
+        scheduleViewer.schedule = schedule
 
-      renderer.getViewport().backgroundColorParam.value = new Color('#87CEEB')
-      // .getViewport().setBackgroundColor(new Color('#87CEEB'))
-      renderer
-      .getViewport()
-      .getCamera()
-      .setPositionAndTarget(new Vec3(-80, -40, 20), new Vec3(40, 80, 10))
-
-      import init from "./src/init.js";
-      const schedule = init(scene)
-
-      // Setup TreeView Display
-      const treeElement = document.getElementById("tree");
-      treeElement.setTreeItem(scene.getRoot());
-
-      // Setup Schedule view
-      const scheduleViewer = document.getElementById("schedule-viewer");
-      scheduleViewer.schedule = schedule
-
-      // Setup FPS Display
-      const fpsElement = document.getElementById("fps");
-      fpsElement.renderer = renderer;
+        // Setup FPS Display
+        const fpsElement = document.getElementById("fps");
+        fpsElement.renderer = renderer;
 
 
-      const filterItem = (item) => item
+        const filterItem = (item) => item
 
-      renderer.getViewport().on("pointerDown", (event) => {
-        if (event.intersectionData) {
-          const  geomItem = filterItem(event.intersectionData.geomItem);
-          console.log(geomItem.getPath());
-        }
-      });
-
-      resourceLoader.on("progressIncremented", (event) => {
-        const pct = document.getElementById("progress");
-        pct.value = event.percent;
-        if (event.percent >= 100) {
-          setTimeout(() => pct.classList.add("hidden"), 1000);
-        }
-      });
-
-      renderer.getXRViewport().then((xrvp) => {
-        fpsElement.style.bottom = "70px";
-
-        const xrButton = document.getElementById("xr-button");
-        xrButton.textContent = "Launch VR";
-        xrButton.classList.remove("hidden");
-
-        xrvp.on("presentingChanged", (event) => {
-          const { state } = event;
-          if (state) {
-            xrButton.textContent = "Exit VR";
-          } else {
-            xrButton.textContent = "Launch VR";
+        renderer.getViewport().on("pointerDown", (event) => {
+          if (event.intersectionData) {
+            const  geomItem = filterItem(event.intersectionData.geomItem);
+            console.log(geomItem.getPath());
           }
         });
 
-        xrButton.addEventListener("click", function (event) {
-          xrvp.togglePresenting();
+        resourceLoader.on("progressIncremented", (event) => {
+          const pct = document.getElementById("progress");
+          pct.value = event.percent;
+          if (event.percent >= 100) {
+            setTimeout(() => pct.classList.add("hidden"), 1000);
+          }
         });
 
-        document.addEventListener("keydown", (event) => {
-          if (event.key == " ") {
+        renderer.getXRViewport().then((xrvp) => {
+          fpsElement.style.bottom = "70px";
+
+          const xrButton = document.getElementById("xr-button");
+          xrButton.textContent = "Launch VR";
+          xrButton.classList.remove("hidden");
+
+          xrvp.on("presentingChanged", (event) => {
+            const { state } = event;
+            if (state) {
+              xrButton.textContent = "Exit VR";
+            } else {
+              xrButton.textContent = "Launch VR";
+            }
+          });
+
+          xrButton.addEventListener("click", function (event) {
             xrvp.togglePresenting();
-          }
-        });
-      });
+          });
 
-      if (urlParams.has("profile")) {
-        renderer.startContinuousDrawing();
+          document.addEventListener("keydown", (event) => {
+            if (event.key == " ") {
+              xrvp.togglePresenting();
+            }
+          });
+        });
+
+        if (urlParams.has("profile")) {
+          renderer.startContinuousDrawing();
+        }
+
       }
+
+      const { IndexDBCache } = zeaEngine
+      resourceLoader.cache = new IndexDBCache('zcad-viewer', 'zcad')
+      resourceLoader.cache.init().then(() => {
+        setupSceneAndRenderer()
+      })
     </script>
   </body>
 </html>
