@@ -13,7 +13,7 @@
       href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.9/tailwind.min.css"
     />
     <link rel="stylesheet" href="./src/styles.css"/>
-    <script src="https://cdn.jsdelivr.net/npm/@zeainc/zea-engine@4.10.0-53cb196/dist/index.umd.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@zeainc/zea-engine@4.12.0/dist/index.umd.js"></script>
     
     <script src="./src/zea-fps-display.js" type="module"></script>
     <script src="./src/schedule-view.js" type="module"></script>
@@ -101,8 +101,8 @@
 
         const renderer = new GLRenderer(document.getElementById("canvas"), {
           debugGeomIds: false,
-          enableFrustumCulling: false,
-          enableOcclusionCulling: false,
+          enableFrustumCulling: true,
+          enableOcclusionCulling: true,
           debugOcclusionBuffer: false,
         });
 
